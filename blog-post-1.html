@@ -152,7 +152,7 @@ Simplicity is the art of conveying a message clearly and concisely through minim
                         <span class="entry-date">
                           <a href="#" rel="bookmark">
                             <i class="far fa-clock"></i>
-                            <time class="entry-date" datetime="2020-04-04T08:29:37+00:00">14 Apr 2024</time>
+                            <time class="entry-date" datetime="2020-04-04T08:29:37+00:00">14 Apr &copy; <span id="year"></span></time>
                           </a>
                         </span>
 
@@ -198,7 +198,7 @@ Simplicity is the art of conveying a message clearly and concisely through minim
           </div>
               
           <div class="footer-copyrights">
-            <p>© Ishara Bandara - 2024 All rights reserved.</p>
+            <p>© Ishara Bandara - &copy; <span id="year"></span> All rights reserved.</p>
           </div>
         </footer>
         
@@ -222,5 +222,6 @@ Simplicity is the art of conveying a message clearly and concisely through minim
     <script src="js/jquery.googlemap.js"></script>
     <script src="js/validator.js"></script>
     <script src="js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </body>
 </html>

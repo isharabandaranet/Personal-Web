@@ -196,7 +196,7 @@
           </div>
               
           <div class="footer-copyrights">
-            <p>© Ishara Bandara - 2024 All rights reserved.</p>
+            <p>© Ishara Bandara - &copy; <span id="year"></span> All rights reserved.</p>
           </div>
         </footer>
         
@@ -215,5 +215,6 @@
     <script src="js/jquery.googlemap.js"></script>
     <script src="js/validator.js"></script>
     <script src="js/main.js"></script>
+    <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
   </body>
 </html>
