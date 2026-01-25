@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <title>Ishara Bandara | Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Personal Web Space" />
+    <meta name="keywords" content="vcard, resposnive, retina, resume, jquery, css3, bootstrap, portfolio" />
+    <meta name="author" content="Ishara Bandara" />
+    <link rel="shortcut icon" href="img/favicon.ico">
+
+
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+  </head>
+
+  <body class="page">
+
+    <div class="lm-animated-bg"></div>
+    
+    <!-- Loading animation -->
+    <div class="preloader">
+      <div class="preloader-animation">
+        <div class="preloader-spinner">
+        </div>
+      </div>
+    </div>
+    <!-- /Loading animation -->
+
+    <!-- Scroll To Top Button -->
+    <div class="lmpixels-scroll-to-top"><i class="lnr lnr-chevron-up"></i></div>
+    <!-- /Scroll To Top Button -->
+
+    <div class="page-scroll">
+      <div id="page_container" class="page-container bg-move-effect" data-animation="transition-flip-in-right">
+
+        <!-- Header -->
+        <header id="site_header" class="header">
+          <div class="header-content clearfix">
+                
+            <!-- Text Logo -->
+            <div class="text-logo">
+              <a href="index.php">
+                <div class="logo-symbol"> <img src="img/logo.png" alt="IB"> </div>
+                <div class="logo-text">Ishara Bandara</div>
+              </a>
+            </div>
+            <!-- /Text Logo -->
+
+            <!-- Navigation -->
+            <div class="site-nav mobile-menu-hide">
+              <ul class="leven-classic-menu site-main-menu">
+                <li class="menu-item">
+                  <a href="index.php">About Me</a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="portfolio.html">Portfolio</a>
+                </li>
+                
+                <li class="menu-item menu-item-has-children current-menu-item">
+                  <a href="blog.php">Blog</a>
+                </li>
+
+                <li class="menu-item">
+                  <a href="contact.php">Contact</a>
+                </li>
+              </ul>
+            </div>
+
+            <a class="menu-toggle mobile-visible">
+              <i class="fa fa-bars"></i>
+            </a>
+          </div>
+        </header>
+        <!-- /Header -->
+
+        <div id="main" class="site-main">
+          <div id="main-content" class="single-page-content">
+            <div id="primary" class="content-area">
+              <div id="content" class="page-content site-content" role="main">
+
+                <article class="post">
+
+                  <header class="entry-header">
+                    <div class="entry-meta entry-meta-top">
+                      <span><a href="#" rel="category tag">Business</a></span>      
+                    </div><!-- .entry-meta -->
+
+                    <h2 class="entry-title">The Power of Branding: Why it Matters for Your Business</h2>
+                  </header><!-- .entry-header -->
+
+                  <div class="post-content">
+                    <div class="entry-content">
+
+                      <div class="row">
+                        <div class=" col-xs-12 col-sm-12 ">
+
+                            <p>In today's fiercely competitive marketplace, where consumers are bombarded with endless choices, having a strong brand is not just beneficial; it's essential for business success. Whether you're a startup or a well-established company, branding plays a pivotal role in shaping perceptions, building trust, and ultimately driving growth. Here's why branding matters more than ever:</p>
+                            
+                            <div class="single-image ">
+                              <a href="" class="lightbox">
+                                <img src="./img/blog/blog_post_2.jpg" alt="image">
+                              </a>
+                            </div>
+
+                            <p> <h6>1. First Impressions Count:</h6>
+ Your brand is often the first point of contact between your business and potential customers. It's what sets you apart from competitors and conveys your unique identity. A strong brand creates a positive first impression, making consumers more likely to engage with your products or services.<br><br>
+
+<h6>2. Builds Trust and Credibility:</h6>
+A well-defined brand instills confidence in consumers. It signals consistency, quality, and reliability, helping to build trust over time. When customers trust your brand, they're more likely to choose your offerings over alternatives, leading to increased loyalty and repeat business.<br><br>
+
+<h6>3. Differentiation in a Crowded Market:</h6>
+In a crowded marketplace, differentiation is key. Your brand identity— encompassing your logo, colors, messaging, and values— helps you stand out amidst the noise. It's what makes you memorable and gives consumers a reason to choose you over competitors.<br><br>
+
+<h6>4. Emotional Connection:</h6>
+Beyond just products or services, branding is about forging an emotional connection with your audience. Strong brands evoke feelings of belonging, aspiration, or excitement, fostering deeper relationships with customers. These emotional bonds can lead to long-term brand advocacy and word-of-mouth referrals.<br><br>
+
+<h6>5. Increases Perceived Value:</h6>
+A well-crafted brand can command higher prices and attract more affluent customers. By positioning your offerings as premium or exclusive, you can elevate the perceived value of your products or services, leading to improved profitability and market positioning.<br><br>
+
+<h6>6. Facilitates Marketing and Growth: </h6>
+ Effective branding serves as the foundation for all marketing efforts. It provides a cohesive framework for communication across various channels, ensuring consistency in messaging and imagery. A strong brand also simplifies expansion into new markets or product lines, as it's already established a loyal following.<br><br>
+
+<h6>7. Competitive Advantage:</h6>
+ In today's hypercompetitive landscape, a strong brand can be a significant competitive advantage. It creates barriers to entry for new players and makes it harder for existing competitors to poach your customers. By investing in branding, you're investing in the long-term sustainability and success of your business.<br><br>
+
+                            
+                            <p>In conclusion, branding is not just about logos and colors; it's about the overall perception and reputation of your business. It's the promise you make to your customers and the experience you deliver at every touchpoint. In a world where consumer choices abound, a strong brand is the anchor that keeps your business steady amidst the waves of competition. So, invest in your brand wisely, and watch it become the driving force behind your business's success.</p>
+
+                        </div>
+                      </div>
+
+                    </div><!-- .entry-content -->
+  
+                    <div class="entry-meta entry-meta-bottom">
+                      <div class="date-author">
+                        
+                        <span class="entry-date">
+                          <a href="#" rel="bookmark">
+                            <i class="far fa-clock"></i>
+                            <time class="entry-date" datetime="2020-04-04T08:29:37+00:00">02 May 2024</time>
+                          </a>
+                        </span>
+
+                        <span class="author vcard">
+                          <a class="url fn n" href="#" rel="author">
+                            <i class="fas fa-user"></i>
+                            <span>Ishara Bandara</span>
+                          </a>
+                        </span>
+                      </div>
+  
+                    </div>
+
+                    <div class="post-tags">
+                      <span class="tags">
+                        <a href="" rel="tag">Business</a>
+                      </span>
+                    </div>
+                  </div>
+                </article>
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="site-footer clearfix">
+          <div class="footer-social">
+            <ul class="footer-social-links">
+
+              <li>
+                <a href="https://www.facebook.com/isharabandaranet" target="_blank">Facebook</a>
+              </li>
+
+              <li>
+                <a href="https://www.instagram.com/isharabandaranet" target="_blank">Instagram</a>
+              </li>
+
+            </ul>
+          </div>
+              
+          <div class="footer-copyrights">
+            <p>© Ishara Bandara - 2024 All rights reserved.</p>
+          </div>
+        </footer>
+        
+      </div>
+    </div>
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src='js/jquery.shuffle.min.js'></script>
+    <script src='js/masonry.pkgd.min.js'></script>
+    <script src='js/owl.carousel.min.js'></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrDf32aQTCVENBhFJbMBKOUTiUAABtC2o"></script>
+    <script src="js/jquery.googlemap.js"></script>
+    <script src="js/validator.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
