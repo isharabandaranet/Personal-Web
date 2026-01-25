@@ -1,5 +1,0 @@
-msgid "Unknown error"
-msgstr ""
-
-msgid "Too many subscriptions at checkout"
-msgstr ""
