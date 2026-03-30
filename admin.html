@@ -41,6 +41,27 @@
       padding-top: 4px;
     }
 
+    /* Publish status */
+    .publish-status {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      display: none;
+    }
+    .publish-status.success {
+      display: block;
+      background: rgba(0,124,237,.12);
+      border: 1px solid #007ced;
+      color: #e0f0ff;
+    }
+    .publish-status.error {
+      display: block;
+      background: rgba(192,57,43,.12);
+      border: 1px solid #c0392b;
+      color: #ffd5d0;
+    }
+
     /* ── Admin nav tabs (reuse site nav style) ───────────────────────────── */
     .admin-nav {
       margin-bottom: 30px;
@@ -844,7 +865,7 @@
                     <li><a data-section="overview" class="active" onclick="navigateTo('overview',this)">Overview</a></li>
                     <li><a data-section="blog" onclick="navigateTo('blog',this)">Blog Posts</a></li>
                     <li><a data-section="portfolio" onclick="navigateTo('portfolio',this)">Portfolio</a></li>
-                    <li><a data-section="export" onclick="navigateTo('export',this)">Export Data</a></li>
+                    <li><a data-section="publish" onclick="navigateTo('publish',this)">🚀 Publish</a></li>
                     <li><a data-section="settings" onclick="navigateTo('settings',this)">Settings</a></li>
                   </ul>
                 </div>
@@ -873,10 +894,10 @@
             </div>
           </div>
 
-          <div class="admin-notice">
-            <strong>⚠️ About localStorage</strong>
-            Content you create here is saved in your browser's localStorage.
-            To publish it permanently, use <strong>Export Data</strong> to download <code>data.js</code> and commit it to your repository.
+          <div class="admin-notice" style="background:rgba(0,124,237,.10);border-color:#007ced;">
+            <strong>🚀 One-click Publish</strong>
+            Make changes here, then click <strong>Publish to GitHub</strong> — your live site updates in ~30 seconds.
+            First time? Set up your GitHub token in the <a href="#" onclick="navigateTo('settings',document.querySelector('[data-section=settings]'))" style="color:#007ced;">Settings tab</a>.
           </div>
 
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
@@ -886,8 +907,8 @@
             <button class="btn btn-secondary" onclick="navigateTo('portfolio',document.querySelector('[data-section=portfolio]'));openNewPortfolioModal()">
               🖼️ &nbsp;Add Portfolio Item
             </button>
-            <button class="btn btn-secondary" onclick="exportDataJs()">
-              📤 &nbsp;Export data.js
+            <button class="btn btn-primary" style="background:#007ced;border-color:#007ced;" onclick="navigateTo('publish',document.querySelector('[data-section=publish]'))">
+              🚀 &nbsp;Publish to GitHub
             </button>
           </div>
 
@@ -929,41 +950,71 @@
         </div>
         <!-- /PORTFOLIO -->
 
-        <!-- ════════════ EXPORT ══════════════════════════════════════════ -->
-        <div class="admin-section" id="section-export">
+        <!-- ════════════ PUBLISH ══════════════════════════════════════════ -->
+        <div class="admin-section" id="section-publish">
 
           <div class="block-title" style="margin-bottom:26px;">
-            <h2>Export &amp; Publish</h2>
+            <h2>🚀 Publish to GitHub</h2>
           </div>
 
           <div class="admin-export-card">
-            <h3>📤 Export data.js</h3>
+            <h3>One-click Deploy</h3>
             <p>
-              Your website is fully static. Content created here lives in your browser's localStorage.
-              To make it permanently public, export and commit the data file to GitHub.
+              This will commit the current <code>js/data.js</code> directly to your GitHub repository.
+              GitHub Pages will then automatically rebuild your live site within ~30 seconds.
             </p>
-            <ol>
-              <li>Click <strong>Export data.js</strong> below</li>
-              <li>Replace <strong>js/data.js</strong> in your project with the downloaded file</li>
-              <li>Commit &amp; push to GitHub — your site updates automatically</li>
-            </ol>
-            <button class="btn btn-primary" onclick="exportDataJs()">📤 &nbsp;Export data.js</button>
+            <p style="margin-top:8px;font-size:13px;opacity:.7;">Make sure you have saved your GitHub token in the <strong>Settings</strong> tab first.</p>
+            <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+              <button id="publish-btn" class="btn btn-primary" style="background:#007ced;border-color:#007ced;font-size:15px;padding:12px 28px;" onclick="publishToGitHub()">
+                🚀 &nbsp;Publish to GitHub
+              </button>
+              <button class="btn btn-secondary" onclick="exportDataJs()" title="Download data.js as fallback">
+                📥 &nbsp;Download data.js
+              </button>
+            </div>
+            <div id="publish-status" class="publish-status"></div>
           </div>
 
-          <div class="admin-notice" style="max-width:580px;">
-            <strong>💡 Tip</strong>
-            After committing the file, new visitors will see your posts immediately.
-            The blog and portfolio pages always load from both the committed file and localStorage.
+          <div class="admin-notice" style="max-width:580px;margin-top:20px;">
+            <strong>🔒 Security note</strong>
+            Your GitHub token is stored only in your browser's localStorage and never sent anywhere except directly to api.github.com over HTTPS.
           </div>
 
         </div>
-        <!-- /EXPORT -->
+        <!-- /PUBLISH -->
 
         <!-- ════════════ SETTINGS ════════════════════════════════════════ -->
         <div class="admin-section" id="section-settings">
 
           <div class="block-title" style="margin-bottom:26px;">
             <h2>Settings</h2>
+          </div>
+
+          <div class="admin-settings-card">
+            <h3>⚙️ GitHub Integration</h3>
+            <p style="margin-bottom:18px;font-size:13px;opacity:.8;">Connect your GitHub repo to enable one-click publishing. Your token is stored only in this browser.</p>
+            <div class="admin-form-grid" style="grid-template-columns:1fr 1fr;">
+              <div class="admin-form-group">
+                <label for="gh-owner">GitHub Username / Org</label>
+                <input type="text" id="gh-owner" placeholder="e.g. isharabandaranet">
+              </div>
+              <div class="admin-form-group">
+                <label for="gh-repo">Repository Name</label>
+                <input type="text" id="gh-repo" placeholder="e.g. Personal-Web">
+              </div>
+              <div class="admin-form-group">
+                <label for="gh-branch">Branch</label>
+                <input type="text" id="gh-branch" placeholder="main">
+              </div>
+              <div class="admin-form-group">
+                <label for="gh-token">Personal Access Token</label>
+                <input type="password" id="gh-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off">
+              </div>
+            </div>
+            <p class="form-hint" style="margin-bottom:14px;">
+              Create a token at <a href="https://github.com/settings/tokens/new" target="_blank" style="color:#007ced;">github.com/settings/tokens</a> → select <strong>repo</strong> scope → copy and paste here.
+            </p>
+            <button class="btn btn-primary" onclick="saveGithubSettings()">💾 &nbsp;Save GitHub Settings</button>
           </div>
 
           <div class="admin-settings-card">
@@ -1126,6 +1177,7 @@
       if (section === 'blog')      renderBlogList();
       if (section === 'portfolio') renderPortfolioList();
       if (section === 'overview')  updateStats();
+      if (section === 'settings')  loadGithubSettings();
     }
 
     // ── Toast (override admin.js to use our new IDs) ─────────────────────
