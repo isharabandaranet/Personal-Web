@@ -331,14 +331,43 @@ function renderPortfolioList() {
   `).join('');
 }
 
-// ─── Export ───────────────────────────────────────────────────────────────────
+// ─── GitHub Config helpers ────────────────────────────────────────────────────
 
-function exportDataJs() {
+const GH_KEY = 'ib_github_config';
+
+function getGithubConfig() {
+  try { return JSON.parse(localStorage.getItem(GH_KEY)) || {}; } catch(e) { return {}; }
+}
+function saveGithubConfig(cfg) {
+  localStorage.setItem(GH_KEY, JSON.stringify(cfg));
+}
+
+// Populate GitHub settings fields from saved config
+function loadGithubSettings() {
+  const cfg = getGithubConfig();
+  const f = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+  f('gh-owner',  cfg.owner);
+  f('gh-repo',   cfg.repo);
+  f('gh-branch', cfg.branch || 'main');
+  f('gh-token',  cfg.token);
+}
+
+function saveGithubSettings() {
+  const g = (id) => (document.getElementById(id) || {}).value?.trim() || '';
+  const cfg = { owner: g('gh-owner'), repo: g('gh-repo'), branch: g('gh-branch') || 'main', token: g('gh-token') };
+  if (!cfg.owner || !cfg.repo || !cfg.token) { showToast('Please fill in all GitHub fields.', 'error'); return; }
+  saveGithubConfig(cfg);
+  showToast('GitHub settings saved! ✅');
+}
+
+// ─── Build data.js content ────────────────────────────────────────────────────
+
+function buildDataJsContent() {
   const posts = getBlogPosts();
   const items = getPortfolioItems();
-  const content = `/**
- * data.js — Exported from Admin Panel on ${new Date().toLocaleString()}
- * Commit this file to your repository to publish content permanently.
+  return `/**
+ * data.js — Published from Admin Panel on ${new Date().toLocaleString()}
+ * Auto-committed to GitHub via Admin Panel.
  */
 
 const IB_DEFAULT_BLOG_POSTS = ${JSON.stringify(posts, null, 2)};
@@ -393,15 +422,100 @@ function escapeHtml(str) {
   return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;');
 }
 `;
+}
+
+// ─── Publish to GitHub ────────────────────────────────────────────────────────
+
+async function publishToGitHub() {
+  const cfg = getGithubConfig();
+  if (!cfg.owner || !cfg.repo || !cfg.token) {
+    showToast('Set up GitHub settings first (Settings tab).', 'error');
+    navigateTo('settings', document.querySelector('[data-section=settings]'));
+    return;
+  }
+
+  const btn = document.getElementById('publish-btn');
+  const statusEl = document.getElementById('publish-status');
+  if (btn) { btn.disabled = true; btn.textContent = '⏳ Publishing…'; }
+  if (statusEl) { statusEl.textContent = ''; statusEl.className = 'publish-status'; }
+
+  const filePath = 'js/data.js';
+  const apiBase = `https://api.github.com/repos/${cfg.owner}/${cfg.repo}/contents/${filePath}`;
+  const headers = {
+    'Authorization': `token ${cfg.token}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  };
+
+  try {
+    // Step 1: Get current file SHA (needed for the update)
+    let sha = null;
+    const getRes = await fetch(`${apiBase}?ref=${cfg.branch}`, { headers });
+    if (getRes.ok) {
+      const data = await getRes.json();
+      sha = data.sha;
+    } else if (getRes.status !== 404) {
+      throw new Error(`GitHub API error: ${getRes.status} ${getRes.statusText}`);
+    }
+
+    // Step 2: Base64-encode the new data.js content
+    const content = buildDataJsContent();
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+
+    // Step 3: Commit the file
+    const body = {
+      message: `Admin: update data.js [${new Date().toISOString()}]`,
+      content: encoded,
+      branch: cfg.branch
+    };
+    if (sha) body.sha = sha;
+
+    const putRes = await fetch(apiBase, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(body)
+    });
+
+    if (!putRes.ok) {
+      const err = await putRes.json();
+      throw new Error(err.message || `HTTP ${putRes.status}`);
+    }
+
+    const result = await putRes.json();
+    const commitUrl = result.commit?.html_url || `https://github.com/${cfg.owner}/${cfg.repo}/commits/${cfg.branch}`;
+
+    if (statusEl) {
+      statusEl.innerHTML = `✅ Published! <a href="${commitUrl}" target="_blank" style="color:#007ced;">View commit →</a><br><small style="opacity:.7;">GitHub Pages will update in ~30 seconds.</small>`;
+      statusEl.className = 'publish-status success';
+    }
+    showToast('Published to GitHub! ✅ Site updates in ~30s.');
+
+  } catch (err) {
+    console.error('GitHub publish error:', err);
+    if (statusEl) {
+      statusEl.innerHTML = `❌ Error: ${err.message}`;
+      statusEl.className = 'publish-status error';
+    }
+    showToast('Publish failed: ' + err.message, 'error');
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '🚀 Publish to GitHub'; }
+  }
+}
+
+// ─── Export (fallback download) ───────────────────────────────────────────────
+
+function exportDataJs() {
+  const content = buildDataJsContent();
   const blob = new Blob([content], { type: 'text/javascript' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = 'data.js';
   a.click();
-  showToast('data.js exported! Replace js/data.js with this file and commit.');
+  showToast('data.js downloaded. Replace js/data.js and git push.');
 }
 
 // ─── Change Password ──────────────────────────────────────────────────────────
+
 
 async function changePassword() {
   const current = document.getElementById('current-password').value;
