@@ -97,55 +97,8 @@
               <div class="row">
                 <div class=" col-xs-12 col-sm-12 ">
 
-                  <div class="blog-masonry two-columns clearfix">
-
-                    <!-- Blog Post 1 -->
-                    <div class="item">
-                      <div class="blog-card">
-                        <div class="media-block">
-                          <div class="category">
-                            <a>Design</a>
-                          </div>
-                          <a href="blog-post-1.html">
-                            <img src="./img/blog/blog_post_1.jpg"
-                              alt="10 Essential Graphic Design Principles Every Designer Should Know" title="" />
-                            <div class="mask"></div>
-                          </a>
-                        </div>
-                        <div class="post-info">
-                          <div class="post-date">14 Apr 2024</div>
-                          <a href="blog-post-1.html">
-                            <h4 class="blog-item-title">10 Essential Graphic Design Principles Every Designer Should
-                              Know</h4>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End of Blog Post 1 -->
-
-                    <!-- Blog Post 2 -->
-                    <div class="item">
-                      <div class="blog-card">
-                        <div class="media-block">
-                          <div class="category">
-                            <a>Business</a>
-                          </div>
-                          <a href="blog-post-2.html">
-                            <img src="./img/blog/blog_post_2.jpg"
-                              alt="The Power of Branding: Why it Matters for Your Business" title="" />
-                            <div class="mask"></div>
-                          </a>
-                        </div>
-                        <div class="post-info">
-                          <div class="post-date">02 May 2024</div>
-                          <a href="blog-post-1.html">
-                            <h4 class="blog-item-title">The Power of Branding: Why it Matters for Your Business</h4>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- End of Blog Post 2 -->
-
+                  <div id="blog-posts-container" class="blog-masonry two-columns clearfix">
+                    <!-- Blog posts are rendered dynamically by js/data.js -->
                   </div>
                 </div>
               </div>
@@ -177,6 +130,7 @@
     </div>
   </div>
 
+  <script src="js/data.js"></script>
   <script src="js/jquery-3.5.1.min.js"></script>
   <script src="js/imagesloaded.pkgd.min.js"></script>
   <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -189,7 +143,10 @@
   <script src="js/jquery.googlemap.js"></script>
   <script src="js/validator.js"></script>
   <script src="js/main.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderBlogPosts();
+  </script>
 </body>
 
 </html>
