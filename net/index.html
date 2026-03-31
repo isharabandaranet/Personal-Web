@@ -197,7 +197,7 @@
             <div class="options-container" id="options"></div>
             
             <div class="nav-buttons">
-                <button class="btn btn-prev" id="prev-btn" onclick="prevQuestion()">&larr; Back</button>
+                <button class="btn btn-prev" id="prev-btn"></button>
                 <button class="btn btn-next" id="next-btn" onclick="nextQuestion()">Next &rarr;</button>
             </div>
         </div>
@@ -357,7 +357,16 @@
                 optionsEl.appendChild(btn);
             });
 
-            prevBtn.style.display = (currentQIndex === 0) ? "none" : "inline-block";
+            // මෙතන තමයි අලුත් වෙනස! පලවෙනි ප්‍රශ්නෙදි Main Menu යන්න දෙනවා.
+            if (currentQIndex === 0) {
+                prevBtn.style.display = "inline-block";
+                prevBtn.innerHTML = "&larr; Main Menu";
+                prevBtn.onclick = showMenu;
+            } else {
+                prevBtn.style.display = "inline-block";
+                prevBtn.innerHTML = "&larr; Back";
+                prevBtn.onclick = prevQuestion;
+            }
             
             if (currentQIndex === currentSet.length - 1) {
                 nextBtn.innerText = "Submit Exam \u2713";
