@@ -180,7 +180,7 @@
         
         <div id="menu-screen">
             <div class="menu-title">Networking Master Exam</div>
-            <p class="menu-desc">මචන්, උත්තර ඔක්කොම දීලා අන්තිමට Submit කරාම ලකුණුයි විවරණයයි (Explanations) බලාගන්න පුළුවන්. කැමති සෙට් එකක් තෝරපන්!</p>
+            <p class="menu-desc">උත්තර ඔක්කොම දීලා අන්තිමට Submit කරාම ලකුණුයි විවරණයයි බලාගන්න පුළුවන්. කැමති සෙට් එකක් තෝරලා කරමු.</p>
             <button class="set-btn" onclick="startQuiz(0)">Set 1: Fundamentals & Physical Layer (1-10)</button>
             <button class="set-btn" onclick="startQuiz(1)">Set 2: Application Layer (11-20)</button>
             <button class="set-btn" onclick="startQuiz(2)">Set 3: Transport Layer (21-30)</button>
@@ -357,7 +357,6 @@
                 optionsEl.appendChild(btn);
             });
 
-            // මෙතන තමයි අලුත් වෙනස! පලවෙනි ප්‍රශ්නෙදි Main Menu යන්න දෙනවා.
             if (currentQIndex === 0) {
                 prevBtn.style.display = "inline-block";
                 prevBtn.innerHTML = "&larr; Main Menu";
@@ -395,7 +394,7 @@
                 loadQuestion();
             } else {
                 if(userAnswers.includes(null)) {
-                    if(!confirm("මචන් උඹ සමහර ප්‍රශ්න වලට උත්තර දීලා නෑ. එහෙම්මම Submit කරනවද?")) {
+                    if(!confirm("ඒ​යි සමහර ප්‍රශ්න වලට උත්තර දීලා නෑ. එහෙම්මම Submit කරනවද?")) {
                         return; 
                     }
                 }
@@ -452,11 +451,11 @@
             
             const msgEl = document.getElementById("result-message");
             if(score >= 8) {
-                msgEl.innerText = "පට්ට මචන්! මේ සෙට් එක උඹට සුපිරියටම පුළුවන්. 🔥";
+                msgEl.innerText = "නියම​යි ඒ​යි! මේ සෙට් එක ඔයා​ට සුපිරියටම පුළුවන්. 🔥";
             } else if(score >= 5) {
-                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාගනින්. 👍";
+                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාග​මු. 👍";
             } else {
-                msgEl.innerText = "අවුලක් නෑ මචන්. යට තියෙන විවරණ (Explanations) ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කරපන්. 💪";
+                msgEl.innerText = "අවුලක් නෑ ඒ​යි. යට තියෙන විවරණ ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කර​මු. 💪";
             }
         }
     </script>
