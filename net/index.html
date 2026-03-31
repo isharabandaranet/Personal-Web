@@ -180,7 +180,7 @@
         
         <div id="menu-screen">
             <div class="menu-title">Networking Master Exam</div>
-            <p class="menu-desc">මචන්, උත්තර ඔක්කොම දීලා අන්තිමට Submit කරාම ලකුණුයි විවරණයයි (Explanations) බලාගන්න පුළුවන්. කැමති සෙට් එකක් තෝරපන්!</p>
+            <p class="menu-desc">උත්තර ඔක්කොම දීලා අන්තිමට Submit කරාම ලකුණුයි විවරණයයි බලාගන්න පුළුවන්. කැමති සෙට් එකක් තෝරලා කරමු.</p>
             <button class="set-btn" onclick="startQuiz(0)">Set 1: Fundamentals & Physical Layer (1-10)</button>
             <button class="set-btn" onclick="startQuiz(1)">Set 2: Application Layer (11-20)</button>
             <button class="set-btn" onclick="startQuiz(2)">Set 3: Transport Layer (21-30)</button>
@@ -197,7 +197,7 @@
             <div class="options-container" id="options"></div>
             
             <div class="nav-buttons">
-                <button class="btn btn-prev" id="prev-btn" onclick="prevQuestion()">&larr; Back</button>
+                <button class="btn btn-prev" id="prev-btn"></button>
                 <button class="btn btn-next" id="next-btn" onclick="nextQuestion()">Next &rarr;</button>
             </div>
         </div>
@@ -357,7 +357,15 @@
                 optionsEl.appendChild(btn);
             });
 
-            prevBtn.style.display = (currentQIndex === 0) ? "none" : "inline-block";
+            if (currentQIndex === 0) {
+                prevBtn.style.display = "inline-block";
+                prevBtn.innerHTML = "&larr; Main Menu";
+                prevBtn.onclick = showMenu;
+            } else {
+                prevBtn.style.display = "inline-block";
+                prevBtn.innerHTML = "&larr; Back";
+                prevBtn.onclick = prevQuestion;
+            }
             
             if (currentQIndex === currentSet.length - 1) {
                 nextBtn.innerText = "Submit Exam \u2713";
@@ -386,7 +394,7 @@
                 loadQuestion();
             } else {
                 if(userAnswers.includes(null)) {
-                    if(!confirm("මචන් උඹ සමහර ප්‍රශ්න වලට උත්තර දීලා නෑ. එහෙම්මම Submit කරනවද?")) {
+                    if(!confirm("ඒ​යි සමහර ප්‍රශ්න වලට උත්තර දීලා නෑ. එහෙම්මම Submit කරනවද?")) {
                         return; 
                     }
                 }
@@ -443,11 +451,11 @@
             
             const msgEl = document.getElementById("result-message");
             if(score >= 8) {
-                msgEl.innerText = "පට්ට මචන්! මේ සෙට් එක උඹට සුපිරියටම පුළුවන්. 🔥";
+                msgEl.innerText = "නියම​යි ඒ​යි! මේ සෙට් එක ඔයා​ට සුපිරියටම පුළුවන්. 🔥";
             } else if(score >= 5) {
-                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාගනින්. 👍";
+                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාග​මු. 👍";
             } else {
-                msgEl.innerText = "අවුලක් නෑ මචන්. යට තියෙන විවරණ (Explanations) ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කරපන්. 💪";
+                msgEl.innerText = "අවුලක් නෑ ඒ​යි. යට තියෙන විවරණ ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කර​මු. 💪";
             }
         }
     </script>
