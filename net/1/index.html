@@ -450,7 +450,9 @@
             document.getElementById("review-container").innerHTML = reviewHTML;
             
             const msgEl = document.getElementById("result-message");
-            if(score >= 8) {
+            if(score >= 10) {
+                msgEl.innerText = "නියම​යි ඒ​යි! Love Youuu 😘❤️";
+            } else if(score >= 8) {
                 msgEl.innerText = "නියම​යි ඒ​යි! මේ සෙට් එක ඔයා​ට සුපිරියටම පුළුවන්. 🔥";
             } else if(score >= 5) {
                 msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාග​මු. 👍";
