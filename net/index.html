@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networking Master Exam</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>Networking Master - Exam Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Nunito', sans-serif;
-            background: linear-gradient(135deg, #e2e8f0 0%, #f8fafc 100%);
+            background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -16,448 +16,166 @@
             margin: 0;
             padding: 20px;
             box-sizing: border-box;
-            color: #334155;
+            color: #102a43;
         }
 
         .container {
             background-color: #ffffff;
             border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(148, 163, 184, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
             width: 100%;
-            max-width: 850px;
-            padding: 40px;
+            max-width: 900px;
+            padding: 50px 40px;
+            text-align: center;
             position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        /* Custom Scrollbar */
-        .container::-webkit-scrollbar { width: 8px; }
-        .container::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
-        .container::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .container::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+        .main-title {
+            font-size: 3em;
+            font-weight: 900;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+        }
 
-        /* Menu Styles */
-        .menu-title {
-            font-size: 2.2em;
+        .subtitle {
+            font-size: 1.3em;
+            color: #627d98;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        @media (min-width: 768px) {
+            .cards-container {
+                flex-direction: row;
+                justify-content: center;
+            }
+        }
+
+        .exam-card {
+            flex: 1;
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .exam-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .exam-card:hover {
+            transform: translateY(-10px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        }
+
+        .exam-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 1.6em;
             font-weight: 800;
             color: #0f172a;
             margin-bottom: 15px;
-            text-align: center;
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
         }
-        .menu-desc { text-align: center; margin-bottom: 35px; font-size: 1.15em; color: #64748b; font-weight: 600; }
-        
-        .set-btn {
-            display: block;
-            width: 100%;
-            background-color: #f8fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 16px;
-            font-size: 1.1em;
-            font-weight: 700;
+
+        .card-desc {
+            font-size: 1.05em;
             color: #475569;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: left;
-            padding-left: 25px;
-        }
-        .set-btn:hover { 
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-color: transparent; 
-            color: #fff; 
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
-        }
-
-        /* Quiz Styles */
-        #quiz-screen, #result-screen { display: none; }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            font-size: 1.2em;
-            font-weight: 700;
-            color: #64748b;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 15px;
-        }
-        #set-title { color: #3b82f6; }
-
-        .question-text { font-size: 1.4em; margin-bottom: 30px; font-weight: 700; color: #1e293b; line-height: 1.4; }
-        
-        .options-container { display: flex; flex-direction: column; gap: 15px; }
-        
-        .option-btn {
-            background-color: #ffffff;
-            border: 2px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 16px 20px;
-            font-size: 1.1em;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-align: left;
-            font-weight: 600;
-            color: #475569;
-        }
-        .option-btn:hover { background-color: #f8fafc; border-color: #cbd5e1; }
-        .option-btn.selected { 
-            background-color: #eff6ff; 
-            border-color: #3b82f6; 
-            color: #1d4ed8; 
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.1);
-        }
-
-        .nav-buttons {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 35px;
-        }
-
-        .btn {
-            border: none;
-            border-radius: 12px;
-            padding: 14px 28px;
-            font-size: 1.1em;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: inherit;
-        }
-        .btn-prev { background-color: #f1f5f9; color: #475569; }
-        .btn-prev:hover { background-color: #e2e8f0; color: #1e293b; }
-        
-        .btn-next { background-color: #3b82f6; color: #fff; box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2); }
-        .btn-next:hover { background-color: #2563eb; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3); }
-        
-        .btn-submit { background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2); }
-        .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(16, 185, 129, 0.3); }
-
-        /* Result Styles */
-        .result-header { text-align: center; margin-bottom: 40px; padding: 30px; background: #f8fafc; border-radius: 20px; }
-        .final-score { font-size: 3em; font-weight: 800; color: #10b981; }
-        
-        .review-box {
-            background-color: #ffffff;
-            border: 2px solid #f1f5f9;
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 25px;
-            text-align: left;
-            box-shadow: 0 4px 6px rgba(148, 163, 184, 0.05);
-        }
-        .review-q { font-weight: 700; font-size: 1.2em; margin-bottom: 15px; color: #1e293b; }
-        .review-ans { margin-bottom: 8px; font-size: 1.05em; }
-        .ans-correct { color: #059669; font-weight: 700; }
-        .ans-wrong { color: #e11d48; text-decoration: line-through; margin-right: 10px; font-weight: 600; }
-        .review-exp {
-            margin-top: 20px;
-            padding: 18px;
-            background-color: #f0fdfa;
-            border-left: 5px solid #0d9488;
-            border-radius: 8px;
-            font-size: 1em;
-            color: #0f766e;
             font-weight: 600;
             line-height: 1.5;
+            margin-bottom: 20px;
         }
 
-        .fade-in { animation: fadeIn 0.4s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        .btn-start {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .exam-card:hover .btn-start {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container fade-in" id="main-container">
+    <div class="container fade-in">
+        <h1 class="main-title">Networking Master Portal</h1>
+        <p class="subtitle">මචන්, විභාගෙට ලෑස්ති වෙන්න කැමති කොටසක් තෝරපන්! 🔥</p>
         
-        <div id="menu-screen">
-            <div class="menu-title">Networking Master Exam</div>
-            <p class="menu-desc">උත්තර ඔක්කොම දීලා අන්තිමට Submit කරාම ලකුණුයි විවරණයයි බලාගන්න පුළුවන්. කැමති සෙට් එකක් තෝරලා කරමු.</p>
-            <button class="set-btn" onclick="startQuiz(0)">Set 1: Fundamentals & Physical Layer (1-10)</button>
-            <button class="set-btn" onclick="startQuiz(1)">Set 2: Application Layer (11-20)</button>
-            <button class="set-btn" onclick="startQuiz(2)">Set 3: Transport Layer (21-30)</button>
-            <button class="set-btn" onclick="startQuiz(3)">Set 4: Network Layer & Routing (31-40)</button>
-            <button class="set-btn" onclick="startQuiz(4)">Set 5: Link Layer, Subnetting & Encapsulation (41-50)</button>
-        </div>
-
-        <div id="quiz-screen">
-            <div class="header">
-                <span id="set-title">Set 1</span>
-                <span id="question-counter">Q: 1/10</span>
-            </div>
-            <div class="question-text" id="question">Loading...</div>
-            <div class="options-container" id="options"></div>
+        <div class="cards-container">
             
-            <div class="nav-buttons">
-                <button class="btn btn-prev" id="prev-btn"></button>
-                <button class="btn btn-next" id="next-btn" onclick="nextQuestion()">Next &rarr;</button>
-            </div>
-        </div>
+            <a href="/net/1/" class="exam-card">
+                <div class="icon">🚀</div>
+                <h2 class="card-title">Part 1: Upper Layers</h2>
+                <p class="card-desc">Fundamentals, Application, Transport & Network Layers (Questions 1 - 50)</p>
+                <div class="btn-start">Start Exam</div>
+            </a>
 
-        <div id="result-screen">
-            <div class="result-header">
-                <div class="final-score" id="final-score">Score: 0/10</div>
-                <p id="result-message" style="font-size: 1.3em; color: #475569; margin-top: 15px; font-weight: 700;"></p>
-                <div style="margin-top: 25px; display: flex; gap: 15px; justify-content: center;">
-                    <button class="btn btn-prev" onclick="showMenu()">Main Menu</button>
-                    <button class="btn btn-next" onclick="startQuiz(currentSetIndex)">Retake This Set</button>
-                </div>
-            </div>
-            <h3 style="border-bottom: 2px solid #e2e8f0; padding-bottom: 15px; color: #1e293b; font-size: 1.5em;">විවරණ (Review & Explanations)</h3>
-            <div id="review-container"></div>
-            <div style="text-align: center; margin-top: 40px;">
-                <button class="btn btn-next" onclick="showMenu()">Back to Main Menu</button>
-            </div>
-        </div>
+            <a href="/net/2/" class="exam-card">
+                <div class="icon">⚡</div>
+                <h2 class="card-title">Part 2: Lower Layers</h2>
+                <p class="card-desc">Data Link, Switches, VLANs, Physical Layer & Subnetting (Questions 51 - 100)</p>
+                <div class="btn-start">Start Exam</div>
+            </a>
 
+        </div>
     </div>
 
-    <script>
-        const quizSets = [
-            { // SET 1
-                title: "Set 1: Fundamentals & Physical Layer",
-                questions: [
-                    { q: "1. The time required to push all packet bits into a link is called:", options: ["Propagation Delay", "Transmission Delay", "Queuing Delay", "Processing Delay"], a: 1, exp: "Transmission Delay කියන්නේ පැකට් එකක තියෙන බිට්ස් ඔක්කොම ලින්ක් එකට දාන්න යන වෙලාව. සමීකරණය: L / R." },
-                    { q: "2. The formula for Propagation Delay is:", options: ["d / s", "L / R", "(L * a) / R", "2 * RTT"], a: 0, exp: "Propagation Delay (d/s) කියන්නේ එක බිට් එකක් වයර් එක දිගේ ඊළඟ රවුටර් එකට යන්න ගන්න වෙලාව (Distance / Speed)." },
-                    { q: "3. If Traffic Intensity ((L * a) / R) > 1, what happens to Queuing Delay?", options: ["It becomes zero", "It remains constant", "It becomes infinite", "It decreases"], a: 2, exp: "ට්‍රැෆික් එක රවුටර් එකට එන වේගය, ඒකෙන් පිටවෙන වේගයට වඩා වැඩි නම් (Traffic Intensity > 1), පෝලිම දිග වෙලා Queuing Delay එක අනන්තයට (infinite) යනවා." },
-                    { q: "4. Which layer is NOT present in the Internet (TCP/IP) protocol stack but IS in the OSI model?", options: ["Network", "Transport", "Presentation", "Application"], a: 2, exp: "OSI මොඩල් එකේ තියෙන Presentation සහ Session ලේයර් දෙක TCP/IP මොඩල් එකේ වෙනම නෑ. ඒවා Application ලේයර් එකටම එකතු කරලයි තියෙන්නේ." },
-                    { q: "5. According to Nyquist, what is the capacity of a noiseless channel with 4kHz bandwidth and 4 signal levels?", options: ["8 kbps", "16 kbps", "24 kbps", "32 kbps"], a: 1, exp: "Nyquist සමීකරණය: C = 2 * B * log2(V). මෙතන 2 * 4000 * log2(4) = 8000 * 2 = 16,000 bps (16 kbps)." },
-                    { q: "6. Shannon Capacity is used for:", options: ["Noiseless channels", "Determining MAC addresses", "Noisy channels", "Calculating subnet masks"], a: 2, exp: "Shannon Capacity (C = B * log2(1 + SNR)) පාවිච්චි කරන්නේ ඝෝෂාව (Noise) තියෙන ප්‍රායෝගික චැනල් වල උපරිම වේගය හොයන්න." },
-                    { q: "7. In Manchester encoding, a transition happens:", options: ["At the start of the bit", "Only for '1's", "In the middle of every bit", "Never"], a: 2, exp: "Manchester encoding වල අනිවාර්යයෙන්ම හැම බිට් එකකම හරි මැදදී (middle) transition එකක් වෙනවා clocking පහසු කරන්න. මේක Ethernet වල පාවිච්චි වෙනවා." },
-                    { q: "8. The overall end-to-end throughput is constrained by:", options: ["The fastest link", "The bottleneck link", "The propagation speed", "The RAM of the router"], a: 1, exp: "සම්පූර්ණ Throughput එක තීරණය වෙන්නේ නෙට්වර්ක් එකේ තියෙන අඩුම වේගයක් තියෙන ලින්ක් එක මතයි (Bottleneck link)." },
-                    { q: "9. When an application message moves down the stack, the Transport layer adds:", options: ["A MAC Header", "An IP Header", "A Transport Header (Ht)", "A Frame Trailer"], a: 2, exp: "Encapsulation වලදී, Transport layer එකෙන් අදාල ඩේටා එකට Transport Header (Ht) එකක් (Ports තියෙන) එකතු කරලා Segment එකක් හදනවා." },
-                    { q: "10. In a network, 'throughput' refers to:", options: ["Error rate", "Rate at which bits are transferred", "Physical distance", "Number of routers"], a: 1, exp: "Throughput කියන්නේ යවන්නාගේ සිට ලබන්නා දක්වා බිට්ස් සාර්ථකව ගමන් කරන වේගයයි (Rate of successful bit transfer)." }
-                ]
-            },
-            { // SET 2
-                title: "Set 2: Application Layer",
-                questions: [
-                    { q: "11. Which protocol uses Port 80?", options: ["DNS", "HTTP", "SMTP", "FTP"], a: 1, exp: "Web පිටු යවන්න පාවිච්චි කරන HTTP ප්‍රොටෝකෝල් එක වැඩ කරන්නේ Port 80 එකෙන්. (HTTPS නම් 443)." },
-                    { q: "12. The Domain Name System (DNS) operates on which port?", options: ["21", "25", "53", "110"], a: 2, exp: "DNS (Domain Name System) වැඩ කරන්නේ Port 53 එකෙන්. ගොඩක් වෙලාවට මේකට UDP පාවිච්චි කරනවා වේගවත් නිසා." },
-                    { q: "13. In DNS, an 'A' record maps a Hostname to:", options: ["An IPv4 Address", "A Mail Server", "A Canonical Name", "A MAC Address"], a: 0, exp: "DNS වල Type 'A' රෙකෝඩ් එකකින් කරන්නේ නමක් (Hostname) කෙලින්ම IPv4 address එකකට හරවන එකයි." },
-                    { q: "14. What is the response time for Non-Persistent HTTP?", options: ["1 RTT", "1 RTT + file time", "2 RTT + file time", "3 RTT"], a: 2, exp: "Non-Persistent HTTP වලදී TCP සම්බන්ධතාවය හදන්න 1 RTT එකකුත්, ඩේටා ඉල්ලලා ඒක එන්න තව 1 RTT එකකුත් යන නිසා මුළු කාලය 2 RTT + file transmission time වෙනවා." },
-                    { q: "15. What is the main advantage of Persistent HTTP?", options: ["Encrypts data", "Sends multiple objects over 1 TCP connection", "Uses UDP", "No IP needed"], a: 1, exp: "Persistent HTTP වලදී එක පාරක් TCP කනෙක්ෂන් එක හැදුවාම, ඒක දිගටම තියාගෙන ඔක්කොම ෆයිල්ස් (Images, HTML) ඒක හරහා යවනවා. ඒ නිසා වෙලාව ඉතුරුයි." },
-                    { q: "16. Which protocol is a 'Push' protocol used to send emails?", options: ["POP3", "IMAP", "HTTP", "SMTP"], a: 3, exp: "SMTP (Simple Mail Transfer Protocol - Port 25) කියන්නේ ඊමේල් යවන්න (Push කරන්න) පාවිච්චි කරන ප්‍රොටෝකෝල් එකයි." },
-                    { q: "17. Which protocol keeps all email messages stored on the server and allows folders?", options: ["POP3", "IMAP", "SMTP", "ARP"], a: 1, exp: "IMAP වලින් ඊමේල් සර්වර් එකේම තියාගෙන ෆෝල්ඩර් හදන්න දෙනවා. POP3 වලින් කරන්නේ ඊමේල් ටික ඩවුන්ලෝඩ් කරලා සර්වර් එකෙන් මකලා දාන එකයි." },
-                    { q: "18. Cookies are used in HTTP because:", options: ["HTTP is too slow", "HTTP is stateless", "HTTP requires encryption", "HTTP uses UDP"], a: 1, exp: "HTTP කියන්නේ Stateless ප්‍රොටෝකෝල් එකක් (කලින් ආපු කෙනාව මතක නෑ). ඒක නිසා user ව අඳුරගන්න Cookies පාවිච්චි කරනවා." },
-                    { q: "19. DASH (Dynamic Adaptive Streaming over HTTP) is used for:", options: ["Sending Emails", "Translating IPs", "Video Streaming", "Routing packets"], a: 2, exp: "DASH කියන්නේ යූටියුබ්, නෙට්ෆ්ලික්ස් වගේ ඒවයේ ඉන්ටර්නෙට් වේගය අනුව වීඩියෝ කොලිටිය (Quality) වෙනස් කරමින් වීඩියෝ ස්ට්‍රීම් කරන්න පාවිච්චි කරන තාක්ෂණයක්." },
-                    { q: "20. Content Distribution Networks (CDNs) solve the problem of:", options: ["Subnetting", "Bandwidth bottlenecks by storing copies geographically", "MAC address exhaustion", "WiFi interference"], a: 1, exp: "CDNs (උදා: Akamai) කරන්නේ ලෝකේ වටේම සර්වර් වල වීඩියෝ/ඩේටා කොපි කරලා තියන එකයි. එතකොට යූසර්ට ළඟම තියෙන සර්වර් එකෙන් ඩේටා එන නිසා ට්‍රැෆික් බ්ලොක් වෙන්නේ නෑ." }
-                ]
-            },
-            { // SET 3
-                title: "Set 3: Transport Layer",
-                questions: [
-                    { q: "21. UDP Demultiplexing uses a:", options: ["2-tuple", "3-tuple", "4-tuple", "5-tuple"], a: 0, exp: "UDP පාවිච්චි කරන්නේ 2-tuple එකක් (Destination IP සහ Destination Port විතරයි). ඒකයි ඒක සරල සහ වේගවත්." },
-                    { q: "22. TCP Demultiplexing uses a 4-tuple which includes:", options: ["Src IP, Dest IP", "Src MAC, Dest MAC", "Src IP, Src Port, Dest IP, Dest Port", "Src Port, Dest Port"], a: 2, exp: "TCP කනෙක්ෂන් එකක් අඳුරගන්නේ (Source IP, Source Port, Destination IP, Destination Port) කියන 4-tuple එකෙන්. මේ නිසා එකම සර්වර් එකට එකම port එකෙන් කනෙක්ෂන් ගොඩක් හදන්න පුළුවන්." },
-                    { q: "23. Which is a characteristic of UDP?", options: ["Connection-oriented", "Flow Control", "Reliable", "Connectionless & Fast"], a: 3, exp: "UDP කියන්නේ Connectionless, Unreliable ප්‍රොටෝකෝල් එකක්. කිසිම ගාණක් නැතුව වේගයෙන් ඩේටා යවනවා (DNS, Video Streaming වලට කියාපු භාණ්ඩේ)." },
-                    { q: "24. The TCP 3-way handshake establishes:", options: ["A wireless link", "A connection-oriented reliable channel", "An IP to MAC resolution", "A routing table"], a: 1, exp: "TCP 3-way handshake (SYN -> SYN/ACK -> ACK) එකෙන් කරන්නේ ඩේටා යවන්න කලින් දෙගොල්ලොම ලෑස්තිද කියලා බලලා විශ්වාසදායක සම්බන්ධතාවයක් හදාගන්න එකයි." },
-                    { q: "25. In TCP Congestion Control, 'Slow Start' increases the CWND:", options: ["Linearly", "Exponentially", "Logarithmically", "Randomly"], a: 1, exp: "Slow Start අවස්ථාවේදී CWND (Congestion Window) එක හැම RTT එකකදීම දෙගුණ (double) වෙනවා. ඒ කියන්නේ Exponentially වැඩි වෙනවා." },
-                    { q: "26. What triggers 'Fast Recovery' in TCP?", options: ["Timeout", "3 Duplicate ACKs", "Reaching ssthresh", "Closing the browser"], a: 1, exp: "පැකට් එකක් නැති වුණාම රිසීවර් එක දිගට එකම ACK එක 3 පාරක් එවනවා (3 Duplicate ACKs). එතකොට TCP කෙලින්ම Fast Recovery වලට යනවා CWND එක බිංදුවටම වට්ටන්නේ නැතුව." },
-                    { q: "27. In a 'Timeout' event, what does TCP set the CWND to?", options: ["ssthresh", "CWND / 2", "1 MSS", "0"], a: 2, exp: "Timeout එකක් කියන්නේ නෙට්වර්ක් එකේ ලොකු ට්‍රැෆික් බ්ලොක් එකක් තියෙනවා කියන එකයි. ඒක නිසා TCP එක CWND එක කෙලින්ම 1 MSS එකට වට්ටලා මුල ඉඳන් Slow Start පටන් ගන්නවා." },
-                    { q: "28. Stop-and-Wait RDT has terrible utilization because:", options: ["It encrypts too heavily", "Sender spends most time waiting for ACKs", "It uses UDP", "It floods the network"], a: 1, exp: "Stop-and-Wait වලදී එක පැකට් එකක් යවලා ඒකෙ ACK එක එනකන් නිකන් බලන් ඉන්න නිසා ලින්ක් එකේ capacity එක අපතේ යනවා (Terrible channel utilization)." },
-                    { q: "29. Pipelining protocols like Go-Back-N (GBN) are used to:", options: ["Increase channel utilization", "Decrease security", "Bypass routers", "Hide IP addresses"], a: 0, exp: "Pipelining (Go-Back-N සහ Selective Repeat) වලින් කරන්නේ ACK එනකන් බලන් ඉන්නේ නැතුව එක දිගට පැකට් ගොඩක් යවන එකයි. ඒකෙන් Channel Utilization එක උපරිම වෙනවා." },
-                    { q: "30. In TCP Flow Control, what matches the sender's rate to the receiver's reading rate?", options: ["Subnet Mask", "Receive Window (rwnd)", "TTL", "Sequence Number"], a: 1, exp: "රිසීවර්ගේ බෆර් එක පිරෙනවද කියලා යවන්නාට දැනුම් දෙන්නේ Receive Window (rwnd) එක හරහා. ඒකෙන් Flow Control එක පාලනය වෙනවා." }
-                ]
-            },
-            { // SET 4
-                title: "Set 4: Network Layer & Routing",
-                questions: [
-                    { q: "31. Moving packets from a router's input to output is called:", options: ["Routing", "Multiplexing", "Forwarding", "Encapsulation"], a: 2, exp: "Forwarding (Data Plane) කියන්නේ රවුටර් එක ඇතුළට ආපු පැකට් එකක් අදාල නිවැරදි port එකෙන් එළියට දාන එකයි (Local action)." },
-                    { q: "32. Determining the end-to-end path through a network is called:", options: ["Forwarding", "Routing", "Switching", "Hashing"], a: 1, exp: "Routing (Control Plane) කියන්නේ මුල ඉඳන් අගටම පැකට් එක යන්න ඕනෙ පාර (Path) ගණනය කරන එකයි (Global action)." },
-                    { q: "33. Which routing protocol uses Dijkstra's Link-State algorithm?", options: ["RIP", "BGP", "EIGRP", "OSPF"], a: 3, exp: "OSPF (Open Shortest Path First) පාවිච්චි කරන්නේ Dijkstra's Link-State ඇල්ගොරිතම එක. මේකෙදි හැම රවුටරයක්ම මුළු නෙට්වර්ක් එකේම මැප් එකක් තියාගන්නවා." },
-                    { q: "34. The 'Count-to-Infinity' problem is a known issue in:", options: ["Link-State algorithms", "Distance-Vector algorithms (like RIP)", "TCP Congestion", "Ethernet Switches"], a: 1, exp: "Distance-Vector ඇල්ගොරිතම වල (උදා: RIP) තියෙන ලොකුම අවුලක් තමයි ලින්ක් එකක් කැඩුනාම වැරදි දුරවල් අප්ඩේට් වෙවී Count-to-Infinity (අනන්තයට ගණනය වීම) වෙන එක." },
-                    { q: "35. Which Cisco protocol uses the DUAL algorithm for extremely fast convergence?", options: ["RIP", "OSPF", "EIGRP", "BGP"], a: 2, exp: "EIGRP කියන්නේ Cisco ලා හදපු protocol එකක්. ඒකෙ තියෙන DUAL algorithm එක නිසා තත්පර ගාණකින් (fast convergence) කැඩුන පාරවල් හදාගන්න පුළුවන්." },
-                    { q: "36. What is the primary purpose of the TTL (Time to Live) field?", options: ["To speed up packets", "To prevent packets from looping endlessly", "To assign an IP", "To encrypt data"], a: 1, exp: "TTL (Time to Live) එක හැම රවුටරයක් ගානෙම 1කින් අඩු වෙනවා. ඒක බිංදුව වුණාම පැකට් එක අයින් කරනවා. මේකෙන් රවුටිං ලූප් වල පැකට් සදාකාලිකව කැරකෙන එක නවතිනවා." },
-                    { q: "37. How many bits are in an IPv4 address?", options: ["16", "32", "48", "64"], a: 1, exp: "IPv4 Address එකක බිට්ස් 32ක් තියෙනවා (උදා: 192.168.1.1). MAC Address එකක තියෙන්නේ බිට්ස් 48යි." },
-                    { q: "38. What is the default subnet mask for a Class C network?", options: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.255"], a: 2, exp: "Class C IP Address එකක (උදා: 192.x.x.x) default subnet mask එක 255.255.255.0 (CIDR /24). ඒකෙන් හොස්ට්ලා 254ක් හදාගන්න පුළුවන්." },
-                    { q: "39. The Border Gateway Protocol (BGP) is used for:", options: ["Local LAN switching", "Assigning MAC addresses", "Global Internet routing between Autonomous Systems", "WiFi connections"], a: 2, exp: "BGP කියන්නේ අන්තර්ජාලයේ මහ කොඳුනාරටිය (Backbone protocol) වගේ. ලෝකෙ වටේ තියෙන Autonomous Systems (ISPs) අතරේ රවුට් කරන්නේ මේකෙන්." },
-                    { q: "40. Routers use which technique to find the correct entry in a Forwarding Table?", options: ["Shortest Prefix Matching", "Longest Prefix Matching", "Alphabetical Sorting", "Random Selection"], a: 1, exp: "රවුටර් එකක් Forwarding table එක බැලුවාම, ගැලපෙන IP රේන්ජ් කීපයක් තිබ්බොත් එයා තෝරගන්නේ දිගම කෑල්ල ගැලපෙන එකයි (Longest Prefix Matching)." }
-                ]
-            },
-            { // SET 5
-                title: "Set 5: Link Layer, Subnetting & Encapsulation",
-                questions: [
-                    { q: "41. How many usable hosts are in a /24 subnet?", options: ["126", "254", "256", "510"], a: 1, exp: "/24 කියන්නේ 32 - 24 = 8 bits ඉතුරුයි hosts ලට. 2^8 = 256යි. ඒකෙන් Network ID එකයි Broadcast ID එකයි අඩු කරාම Usable hosts 254යි." },
-                    { q: "42. The formula to find usable hosts in CIDR is:", options: ["2^(32 - prefix) - 2", "2^(prefix) - 2", "32 - prefix", "2^(32) - prefix"], a: 0, exp: "භාවිතා කළ හැකි හොස්ට් ගණන හොයන සූත්‍රය: 2^(32 - prefix length) - 2." },
-                    { q: "43. What is the length of a MAC address?", options: ["32 bits", "48 bits", "64 bits", "128 bits"], a: 1, exp: "MAC Address (Physical Address) එකක දිග බිට්ස් 48යි. මේවා සාමාන්‍යයෙන් Hexadecimal වලින් ලියන්නේ (උදා: 00:1A:2B:3C:4D:5E)." },
-                    { q: "44. The Address Resolution Protocol (ARP) translates:", options: ["Domain to IP", "IP to MAC", "MAC to IP", "Private IP to Public IP"], a: 1, exp: "ARP (Address Resolution Protocol) එකෙන් කරන්නේ අදාල IP Address එක තියෙන කෙනාගේ MAC Address එක හොයාගන්න එකයි." },
-                    { q: "45. An ARP Query is a ______ and an ARP Reply is a ______.", options: ["Unicast, Broadcast", "Broadcast, Unicast", "Multicast, Broadcast", "Unicast, Unicast"], a: 1, exp: "ARP Query එකක් හැමෝටම ඇහෙන්න (Broadcast - FF:FF:FF:FF:FF:FF) යවනවා. ඒත් Reply එක එවන්නේ අහපු කෙනාට විතරක් කෙලින්ම (Unicast)." },
-                    { q: "46. What does a Switch do if it doesn't know the Destination MAC?", options: ["Drops it", "Sends to Default Gateway", "Floods it to all ports except incoming", "Replies to Sender"], a: 2, exp: "ස්විච් එකේ MAC table එකේ අදාල කෙනා නැත්නම්, ස්විච් එක ඒ ෆ්‍රේම් එක ආපු පෝට් එක ඇරෙන්න අනිත් හැම පෝට් එකකටම යවනවා (Flooding)." },
-                    { q: "47. Which protocol is used to avoid collisions in Ethernet?", options: ["CSMA/CA", "CSMA/CD", "OSPF", "ALOHA"], a: 1, exp: "Ethernet වලදී Collision (ගැටීම්) පාලනය කරන්නේ CSMA/CD (Collision Detection) වලින්. (WiFi වල පාවිච්චි කරන්නේ CSMA/CA)." },
-                    { q: "48. When Ping travels across multiple routers, which addresses NEVER change?", options: ["Source & Dest MAC", "Source IP & Dest MAC", "Source & Dest IP", "Both IP & MAC change"], a: 2, exp: "එන්කැප්සුලේෂන් (Encapsulation) රන්-රීතිය: යවන්නාගේ සහ ලබන්නාගේ IP addresses මුල ඉඳන් අගටම කිසිම වෙනසක් වෙන්නේ නෑ (NAT නැත්නම්)." },
-                    { q: "49. When Ping travels across routers, which addresses change at EVERY hop?", options: ["Source & Dest MAC", "Source & Dest IP", "Port Numbers", "Neither IP nor MAC"], a: 0, exp: "හැම රවුටරයක් ගානෙම ෆ්‍රේම් එක අලුතින් හැදෙන නිසා, Source සහ Destination MAC Addresses හැම තිස්සෙම වෙනස් වෙනවා." },
-                    { q: "50. How many Collision Domains does a 24-port Switch have?", options: ["1", "12", "24", "48"], a: 2, exp: "Switch එකක තියෙන හැම පෝට් එකක්ම වෙනම Collision Domain එකක්. ඒක නිසා 24-port ස්විච් එකක Collision Domains 24ක් තියෙනවා. (Hub එකක නම් ඔක්කොටම තියෙන්නේ 1යි)." }
-                ]
-            }
-        ];
-
-        let currentSetIndex = 0;
-        let currentQIndex = 0;
-        let userAnswers = [];
-
-        const menuScreen = document.getElementById("menu-screen");
-        const quizScreen = document.getElementById("quiz-screen");
-        const resultScreen = document.getElementById("result-screen");
-        const questionEl = document.getElementById("question");
-        const optionsEl = document.getElementById("options");
-        const prevBtn = document.getElementById("prev-btn");
-        const nextBtn = document.getElementById("next-btn");
-        const container = document.getElementById("main-container");
-
-        function showMenu() {
-            menuScreen.style.display = "block";
-            quizScreen.style.display = "none";
-            resultScreen.style.display = "none";
-            container.className = "container fade-in";
-            container.scrollTop = 0;
-        }
-
-        function startQuiz(index) {
-            currentSetIndex = index;
-            currentQIndex = 0;
-            userAnswers = new Array(quizSets[index].questions.length).fill(null);
-            
-            menuScreen.style.display = "none";
-            resultScreen.style.display = "none";
-            quizScreen.style.display = "block";
-            document.getElementById("set-title").innerText = quizSets[index].title;
-            loadQuestion();
-        }
-
-        function loadQuestion() {
-            optionsEl.innerHTML = "";
-            
-            quizScreen.classList.remove("fade-in");
-            void quizScreen.offsetWidth; 
-            quizScreen.classList.add("fade-in");
-            container.scrollTop = 0;
-
-            const currentSet = quizSets[currentSetIndex].questions;
-            const currentQ = currentSet[currentQIndex];
-
-            document.getElementById("question-counter").innerText = `Q: ${currentQIndex + 1} of ${currentSet.length}`;
-            questionEl.innerText = currentQ.q;
-
-            currentQ.options.forEach((opt, idx) => {
-                const btn = document.createElement("button");
-                btn.innerText = opt;
-                btn.className = "option-btn";
-                if(userAnswers[currentQIndex] === idx) {
-                    btn.classList.add("selected");
-                }
-                btn.onclick = () => selectAnswer(idx, btn);
-                optionsEl.appendChild(btn);
-            });
-
-            if (currentQIndex === 0) {
-                prevBtn.style.display = "inline-block";
-                prevBtn.innerHTML = "&larr; Main Menu";
-                prevBtn.onclick = showMenu;
-            } else {
-                prevBtn.style.display = "inline-block";
-                prevBtn.innerHTML = "&larr; Back";
-                prevBtn.onclick = prevQuestion;
-            }
-            
-            if (currentQIndex === currentSet.length - 1) {
-                nextBtn.innerText = "Submit Exam \u2713";
-                nextBtn.classList.remove("btn-next");
-                nextBtn.classList.add("btn-submit");
-            } else {
-                nextBtn.innerText = "Next \u2192";
-                nextBtn.classList.remove("btn-submit");
-                nextBtn.classList.add("btn-next");
-            }
-        }
-
-        function selectAnswer(selectedIdx, btn) {
-            userAnswers[currentQIndex] = selectedIdx;
-            
-            const allBtns = optionsEl.children;
-            for(let i=0; i<allBtns.length; i++) {
-                allBtns[i].classList.remove("selected");
-            }
-            btn.classList.add("selected");
-        }
-
-        function nextQuestion() {
-            if (currentQIndex < quizSets[currentSetIndex].questions.length - 1) {
-                currentQIndex++;
-                loadQuestion();
-            } else {
-                if(userAnswers.includes(null)) {
-                    if(!confirm("ඒ​යි සමහර ප්‍රශ්න වලට උත්තර දීලා නෑ. එහෙම්මම Submit කරනවද?")) {
-                        return; 
-                    }
-                }
-                showResults();
-            }
-        }
-
-        function prevQuestion() {
-            if (currentQIndex > 0) {
-                currentQIndex--;
-                loadQuestion();
-            }
-        }
-
-        function showResults() {
-            quizScreen.style.display = "none";
-            resultScreen.style.display = "block";
-            resultScreen.classList.add("fade-in");
-            container.scrollTop = 0;
-            
-            const currentSet = quizSets[currentSetIndex].questions;
-            let score = 0;
-            let reviewHTML = "";
-
-            currentSet.forEach((q, index) => {
-                const userAns = userAnswers[index];
-                const isCorrect = (userAns === q.a);
-                if(isCorrect) score++;
-
-                const userAnsText = (userAns !== null) ? q.options[userAns] : "උත්තර දීලා නෑ (Not Answered)";
-                const correctAnsText = q.options[q.a];
-
-                let ansHTML = "";
-                if(isCorrect) {
-                    ansHTML = `<div class="review-ans ans-correct">&#10004; Your Answer: ${userAnsText}</div>`;
-                } else {
-                    ansHTML = `
-                        <div class="review-ans"><span class="ans-wrong">&#10008; Your Answer: ${userAnsText}</span></div>
-                        <div class="review-ans ans-correct">&#10004; Correct Answer: ${correctAnsText}</div>
-                    `;
-                }
-
-                reviewHTML += `
-                    <div class="review-box">
-                        <div class="review-q">${q.q}</div>
-                        ${ansHTML}
-                        <div class="review-exp"><strong>විවරණය:</strong> ${q.exp}</div>
-                    </div>
-                `;
-            });
-
-            document.getElementById("final-score").innerText = `Score: ${score} / ${currentSet.length}`;
-            document.getElementById("review-container").innerHTML = reviewHTML;
-            
-            const msgEl = document.getElementById("result-message");
-            if(score >= 8) {
-                msgEl.innerText = "නියම​යි ඒ​යි! මේ සෙට් එක ඔයා​ට සුපිරියටම පුළුවන්. 🔥";
-            } else if(score >= 5) {
-                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාග​මු. 👍";
-            } else {
-                msgEl.innerText = "අවුලක් නෑ ඒ​යි. යට තියෙන විවරණ ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කර​මු. 💪";
-            }
-        }
-    </script>
 </body>
 </html>
