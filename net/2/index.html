@@ -450,12 +450,14 @@
             document.getElementById("review-container").innerHTML = reviewHTML;
             
             const msgEl = document.getElementById("result-message");
-            if(score >= 8) {
-                msgEl.innerText = "පට්ට මචන්! මේ සෙට් එක උඹට සුපිරියටම පුළුවන්. 🔥";
+            if(score >= 10) {
+                msgEl.innerText = "නියම​යි ඒ​යි! Love Youuu 😘❤️";
+            } else if(score >= 8) {
+                msgEl.innerText = "නියම​යි ඒ​යි! මේ සෙට් එක ඔයා​ට සුපිරියටම පුළුවන්. 🔥";
             } else if(score >= 5) {
-                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාගනින්. 👍";
+                msgEl.innerText = "එලකිරි! හොඳයි. යට තියෙන විවරණ ටික කියවලා වැරදුණ තැන් හදාග​මු. 👍";
             } else {
-                msgEl.innerText = "අවුලක් නෑ මචන්. යට තියෙන විවරණ (Explanations) ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කරපන්. 💪";
+                msgEl.innerText = "අවුලක් නෑ ඒ​යි. යට තියෙන විවරණ ටික අනිවාර්යයෙන් කියවලා ආයෙත් සෙට් එක කර​මු. 💪";
             }
         }
     </script>
