@@ -49,6 +49,82 @@ const IB_DEFAULT_BLOG_POSTS = [
 <h6>Why Does Branding Matter?</h6>
 <p>A strong brand builds trust with your customers and creates recognition in the marketplace. It sets you apart from competitors, creates customer loyalty, and can even command premium pricing. Your brand is ultimately your reputation — and it's invaluable.</p>
 <p>Invest in building a cohesive, authentic brand that truly represents your business values and resonates with your target audience.</p>`
+  },
+  {
+    id: "blog-post-3",
+    title: "UI/UX Design Fundamentals: Crafting Seamless Digital Experiences",
+    category: "Design",
+    date: "10 Jul 2024",
+    dateISO: "2024-07-10",
+    image: "./img/blog/blog_post_3.jpg",
+    link: "blog-post-3.html",
+    tags: ["Design", "UI/UX"],
+    excerpt: "In an era where digital products compete fiercely for user attention, the quality of your UI/UX design can be the decisive factor between success and obscurity.",
+    content: `<p>In an era where digital products compete fiercely for user attention, the quality of your UI/UX design can be the decisive factor between success and obscurity. Understanding the core fundamentals of UI and UX will elevate your work from functional to unforgettable.</p>
+<h6>Understand the Difference Between UI and UX:</h6>
+<p>UI (User Interface) refers to the visual elements users interact with. UX (User Experience) is the broader journey a user takes through a product. Great design requires both to work in harmony.</p>
+<h6>Prioritise User Research:</h6>
+<p>Before touching design tools, invest time in understanding your users. Conduct surveys, interviews, and usability tests. Build user personas and map out user journeys. Design decisions grounded in real user data are always more effective than assumptions.</p>
+<h6>Design for Accessibility:</h6>
+<p>Accessible design is good design. Ensure sufficient colour contrast, provide text alternatives for images, and make interactive elements keyboard-navigable. Following WCAG guidelines not only broadens your audience but also improves overall usability.</p>
+<p>Mastering UI/UX design is a lifelong journey. By grounding your practice in user empathy, visual clarity, and continuous iteration, you will craft digital experiences that users don't just use — they love.</p>`
+  },
+  {
+    id: "blog-post-4",
+    title: "The Art of Typography: How Fonts Shape Your Design",
+    category: "Design",
+    date: "22 Aug 2024",
+    dateISO: "2024-08-22",
+    image: "./img/blog/blog_post_4.jpg",
+    link: "blog-post-4.html",
+    tags: ["Design", "Typography"],
+    excerpt: "Typography is far more than choosing a font. It is the art and science of arranging type to make written language legible, readable, and visually appealing.",
+    content: `<p>Typography is far more than choosing a font. It is the art and science of arranging type to make written language legible, readable, and visually appealing. In design, typography communicates mood, personality, and brand values before a single word is consciously processed.</p>
+<h6>Understand Typeface Classifications:</h6>
+<p>Typefaces fall into several broad families: Serif, Sans-serif, Script, Display, and Monospace. Each carries distinct personality traits. Serifs feel authoritative and traditional; sans-serifs feel modern and clean.</p>
+<h6>Master Font Pairing:</h6>
+<p>A common rule is to pair a display or serif typeface for headings with a clean sans-serif for body text. Look for contrast in style but harmony in proportions.</p>
+<h6>Limit Your Typeface Selection:</h6>
+<p>Restraint is a virtue. Stick to two typefaces per project — three at most. Using too many fonts creates visual noise and undermines cohesion. Each font you introduce should serve a distinct purpose within your typographic hierarchy.</p>
+<p>Typography is the quiet workhorse of design. When it works well, users barely notice it — they simply experience seamless, effortless communication.</p>`
+  },
+  {
+    id: "blog-post-5",
+    title: "Colour Psychology in Design: Harnessing Emotion Through Colour",
+    category: "Design",
+    date: "05 Oct 2024",
+    dateISO: "2024-10-05",
+    image: "./img/blog/blog_post_5.jpg",
+    link: "blog-post-5.html",
+    tags: ["Design", "Colour Theory"],
+    excerpt: "Colour is one of the most powerful tools in a designer's arsenal. Long before a user reads a single word, colour has already communicated mood, trustworthiness, or urgency.",
+    content: `<p>Colour is one of the most powerful tools in a designer's arsenal. Long before a user reads a single word, colour has already communicated mood, trustworthiness, urgency, or playfulness. Understanding colour psychology allows you to craft designs that resonate deeply.</p>
+<h6>The Psychology Behind Core Colours:</h6>
+<p>Red evokes energy, passion, and urgency. Blue conveys trust, calm, and professionalism. Yellow signals optimism and attention; green represents growth and nature; purple suggests luxury and creativity.</p>
+<h6>Colour and Brand Identity:</h6>
+<p>Consistent colour usage builds brand recognition. Studies show that colour increases brand recognition by up to 80%. When users see your brand's specific shade consistently across touchpoints, it builds familiarity and trust.</p>
+<h6>Cultural Considerations:</h6>
+<p>Colour meaning is not universal. White signals purity in Western cultures but mourning in parts of Asia. Always research cultural colour associations when designing for international audiences.</p>
+<p>Colour is silent but never subtle. Used intentionally, it can be the difference between a design that is merely seen and one that is truly felt.</p>`
+  },
+  {
+    id: "blog-post-6",
+    title: "How to Build a Successful Freelance Design Career from Scratch",
+    category: "Business",
+    date: "18 Jan 2025",
+    dateISO: "2025-01-18",
+    image: "./img/blog/blog_post_6.jpg",
+    link: "blog-post-6.html",
+    tags: ["Business", "Freelancing"],
+    excerpt: "Freelancing as a designer offers creative freedom, flexible hours, and the potential to earn significantly more than a traditional salary — but it demands business savvy.",
+    content: `<p>Freelancing as a designer offers creative freedom, flexible hours, and the potential to earn significantly more than a traditional salary. But it also demands self-discipline, business savvy, and resilience.</p>
+<h6>Build a Portfolio Before You Need One:</h6>
+<p>Your portfolio is your most powerful sales tool. Before seeking clients, build 5–8 strong case studies — even if they are self-initiated or spec projects. Show your process: research, sketches, iterations, and final results.</p>
+<h6>Price Your Work Confidently:</h6>
+<p>Underpricing is the most common mistake new freelancers make. Research market rates in your region and niche. Factor in non-billable time: client communication, revisions, and administration. Charge for value delivered, not just hours worked.</p>
+<h6>Use Contracts for Every Project:</h6>
+<p>Never start work without a signed contract. A good design contract specifies scope, deliverables, revision rounds, payment terms, and intellectual property rights. It protects both you and the client.</p>
+<p>Freelancing is not just a career — it is a business. The designers who thrive are those who treat it as such, combining creative excellence with entrepreneurial discipline.</p>`
   }
 ];
 
@@ -274,14 +350,26 @@ function getActiveCodingProjects() {
 }
 
 /**
- * Returns the active list of blog posts:
- * starts from defaults, then merges in any admin-created/edited posts from localStorage.
+ * Returns the active list of blog posts.
+ * Merges default posts with any admin-created posts from localStorage,
+ * ensuring new default posts always appear even for returning visitors.
  */
 function getActiveBlogPosts() {
   try {
     const stored = localStorage.getItem('ib_blog_posts');
     if (stored) {
-      return JSON.parse(stored);
+      const storedPosts = JSON.parse(stored);
+      // Merge: add any default posts not already in stored list (by id)
+      const storedIds = new Set(storedPosts.map(p => p.id));
+      const merged = [
+        ...storedPosts,
+        ...IB_DEFAULT_BLOG_POSTS.filter(p => !storedIds.has(p.id))
+      ];
+      // Persist the merged list back
+      if (merged.length !== storedPosts.length) {
+        localStorage.setItem('ib_blog_posts', JSON.stringify(merged));
+      }
+      return merged;
     }
   } catch (e) { /* ignore */ }
   // Seed localStorage with defaults on first run
