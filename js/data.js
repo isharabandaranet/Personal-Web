@@ -228,7 +228,7 @@ const IB_DEFAULT_CODING_PROJECTS = [
     icon: "🌐",
     stack: ["HTML", "CSS", "JavaScript", "PHP"],
     github: "https://github.com/isharabandaranet/Personal-Web",
-    liveUrl: "https://isharabandara.net",
+    liveUrl: "https://isharabandara.com",
     shortDescription: "My personal portfolio & blog website built from scratch with vanilla HTML/CSS/JS and a custom admin panel.",
     description: "A fully custom personal portfolio and blog website. It includes a dynamic blog engine, portfolio gallery, admin panel with GitHub Pages auto-deployment, and a contact form powered by Formspree. Built entirely with vanilla web technologies — no frameworks.",
     highlights: [
@@ -241,13 +241,13 @@ const IB_DEFAULT_CODING_PROJECTS = [
   },
   {
     id: "cp2",
-    title: "Desinup Design Tool",
+    title: "EduWave",
     category: "Web",
     filter: "web",
     icon: "🎨",
     stack: ["JavaScript", "HTML", "CSS", "Node.js"],
     github: "https://github.com/isharabandaranet",
-    liveUrl: "",
+    liveUrl: "https://eduwave.lk",
     shortDescription: "An in-browser graphic design tool for social media content, posters and branding materials.",
     description: "A web-based design application allowing users to create social media posts, posters, handbills, and business card designs directly in the browser. Supports drag-and-drop elements, custom fonts, and image export.",
     highlights: [
