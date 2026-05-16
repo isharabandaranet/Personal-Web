@@ -240,96 +240,76 @@ const IB_DEFAULT_CODING_PROJECTS = [
     ]
   },
   {
-    id: "cp2",
+    id: "eduwave",
     title: "EduWave",
-    category: "Web",
+    category: "E-Learning Web",
     filter: "web",
-    icon: "🎨",
+    icon: "🎓",
     stack: ["JavaScript", "HTML", "CSS", "Node.js"],
-    github: "https://github.com/isharabandaranet",
+    github: "https://github.com/isharabandaranet/EduWave",
     liveUrl: "https://eduwave.lk",
-    shortDescription: "An in-browser graphic design tool for social media content, posters and branding materials.",
-    description: "A web-based design application allowing users to create social media posts, posters, handbills, and business card designs directly in the browser. Supports drag-and-drop elements, custom fonts, and image export.",
+    shortDescription: "Sri Lanka's premier digital learning platform offering A/L past papers, live classes, and expert student coaching.",
+    description: "A comprehensive e-learning web application specifically designed for Advanced Level Science stream students in Sri Lanka. The platform provides access to a massive library of past papers with real exam conditions, personalized one-on-one coaching, and detailed performance analytics. It features a seamless role-based authentication system for both Students and Coaches.",
     highlights: [
-      "Canvas-based rendering with real-time preview",
-      "Drag-and-drop design elements",
-      "Custom font and colour palette management",
-      "PNG/JPEG export"
+      "Interactive past paper library with quiz history tracking",
+      "Role-based multi-login system (Student, Coach, Classes)",
+      "Personalized student coaching dashboard with real-time analytics",
+      "Responsive, modern UI tailored for A/L Science stream subjects"
     ]
   },
   {
-    id: "cp3",
-    title: "Brand Identity Dashboard",
-    category: "Tool",
-    filter: "tool",
-    icon: "🛠️",
-    stack: ["React", "Node.js", "MongoDB"],
-    github: "https://github.com/isharabandaranet",
-    liveUrl: "",
-    shortDescription: "A client dashboard for managing brand assets, campaigns, and deliverables in one place.",
-    description: "A SaaS-style dashboard built for managing multiple client brands. Clients can upload assets, track campaign status, leave feedback, and download final deliverables. Admins manage briefs and deadlines from a unified interface.",
-    highlights: [
-      "Role-based access control (admin vs client)",
-      "Real-time status updates with WebSocket",
-      "Secure file upload and CDN delivery",
-      "Integrated feedback and revision system"
-    ]
-  },
-  {
-    id: "cp4",
-    title: "Infinity Physics Learning App",
-    category: "Mobile",
-    filter: "mobile",
-    icon: "⚛️",
-    stack: ["Flutter", "Dart", "Firebase"],
-    github: "https://github.com/isharabandaranet",
-    liveUrl: "",
-    shortDescription: "A mobile learning app for A/L Physics students featuring video lessons, quizzes and progress tracking.",
-    description: "A Flutter-based mobile application designed for Advanced Level Physics students. Features curated video lessons, topic-wise MCQ quizzes, past paper walkthroughs, progress analytics, and push notifications for new content.",
-    highlights: [
-      "Video streaming with offline download support",
-      "Adaptive quiz engine with instant explanations",
-      "Firebase Authentication and Firestore data sync",
-      "Progress charts and streak tracking",
-      "Push notifications via Firebase Cloud Messaging"
-    ]
-  },
-  {
-    id: "cp5",
-    title: "Marketing Campaign Tracker",
-    category: "Tool",
-    filter: "tool",
-    icon: "📊",
-    stack: ["Python", "JavaScript", "MySQL"],
-    github: "https://github.com/isharabandaranet",
-    liveUrl: "",
-    shortDescription: "An analytics tool to track marketing campaign performance across social platforms in real time.",
-    description: "A lightweight analytics dashboard that aggregates engagement data from Facebook, Instagram and WhatsApp campaigns. Provides reach, engagement rate, CTR, and conversion funnels with automated weekly summary reports.",
-    highlights: [
-      "Multi-platform social API integrations",
-      "Automated weekly PDF report generation",
-      "Interactive charts with Chart.js",
-      "MySQL-backed historical data storage",
-      "Alert system for underperforming campaigns"
-    ]
-  },
-  {
-    id: "cp6",
-    title: "E-Commerce Store Builder",
-    category: "Web",
+    id: "notebase-frontend",
+    title: "NoteBase - Frontend App",
+    category: "Frontend Web",
     filter: "web",
-    icon: "🛒",
-    stack: ["PHP", "MySQL", "JavaScript", "CSS"],
-    github: "https://github.com/isharabandaranet",
-    liveUrl: "",
-    shortDescription: "A lightweight e-commerce platform for small businesses to list products and accept orders online.",
-    description: "A PHP-based e-commerce system designed for small Sri Lankan businesses to quickly set up an online store. Includes product management, order tracking, local payment gateway integration, and a WhatsApp order notification system.",
+    icon: "💻",
+    stack: ["React", "JavaScript", "Tailwind CSS", "Clerk Auth"],
+    github: "https://github.com/isharabandaranet/NoteBase-Frontend",
+    liveUrl: "https://notebase.isharabandara.com",
+    shortDescription: "The interactive and responsive user interface for the NoteBase study workspace.",
+    description: "A highly responsive single-page application (SPA) built with React, serving as the client-side interface for NoteBase. It features a custom rich-text inline editor (Tiptap) with auto-save capabilities, inline image rendering, and seamless drag-and-drop file uploads. User authentication and session management are securely handled via Clerk OAuth.",
     highlights: [
-      "Product catalogue with inventory management",
-      "WhatsApp order alerts for instant notifications",
-      "Local payment gateway (IPG) integration",
-      "Admin order fulfillment dashboard",
-      "Mobile-responsive storefront"
+      "Responsive React SPA hosted on Vercel",
+      "Custom rich-text editor with auto-save functionality",
+      "Secure user authentication using Clerk OAuth",
+      "Seamless drag-and-drop file and image handling UI"
+    ]
+  },
+  {
+    id: "notebase-backend",
+    title: "NoteBase - REST API & AI",
+    category: "Backend / AI",
+    filter: "backend",
+    icon: "⚙️",
+    stack: ["Python (Flask)", "MySQL", "Google Drive API", "Google Gemini API"],
+    github: "https://github.com/isharabandaranet/NoteBase-Backend",
+    liveUrl: "https://notebase-backend.onrender.com",
+    shortDescription: "A Python-powered backend service handling databases, cloud storage, and AI integrations.",
+    description: "A robust backend REST API built with Python and Flask to power the NoteBase platform. It manages a relational MySQL database (hosted on Aiven), securely interfaces with the Google Drive API to store user uploads (bypassing database bloat), and integrates the Google Gemini AI to generate intelligent, context-aware study guides.",
+    highlights: [
+      "RESTful API architecture using Python and Flask",
+      "Relational database management with Aiven MySQL",
+      "Secure Google Drive API integration for infinite cloud storage",
+      "Google Gemini AI integration for smart study features"
+    ]
+  },
+  {
+    id: "infinity-physics",
+    title: "Infinity Physics Platform",
+    category: "E-Learning Web",
+    filter: "web",
+    icon: "🎓",
+    stack: ["WordPress", "PHP", "MySQL", "LMS", "Elementor"],
+    github: "https://github.com/isharabandaranet",
+    liveUrl: "", // Live Link
+    shortDescription: "A comprehensive Learning Management System (LMS) built to manage online tuition classes and student enrollments.",
+    description: "A fully functional e-learning platform developed for a physics tuition class. Built on WordPress, it allows administrators to efficiently manage student enrollments, schedule live classes, organize recorded video lessons, and conduct online quizzes. The platform provides a seamless, secure, and interactive learning experience for students across all devices.",
+    highlights: [
+      "Complete Learning Management System (LMS) architecture",
+      "Secure student registration and individual profile management",
+      "Organized access to live class links and recorded video lessons",
+      "Interactive online quizzes and assignment tracking",
+      "Fully responsive and user-friendly UI designed with Elementor"
     ]
   }
 ];
