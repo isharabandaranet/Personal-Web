@@ -1,8 +1,5 @@
 {
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/page": "app/page.js",
   "/portfolio/page": "app/portfolio/page.js",
-  "/founder/page": "app/founder/page.js",
-  "/blog/page": "app/blog/page.js",
-  "/contact/page": "app/contact/page.js"
+  "/services/page": "app/services/page.js",
+  "/page": "app/page.js"
 }

@@ -66,14 +66,14 @@ export default function Home() {
         <ScrollReveal direction="none" delay={0.1}>
           <div className="inline-flex items-center space-x-2 bg-zinc-900/60 border border-zinc-800 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide text-zinc-300 mb-6 hover:border-zinc-700/60 transition-colors">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-            <span>Premium Creative & Software Services</span>
+            <span>Hey, I'm Ishara Bandara</span>
           </div>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={0.2}>
           <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight max-w-4xl leading-tight">
-            I engineer premium <br className="hidden md:inline" />
-            <span className="text-gradient-indigo">digital experiences</span>
+            Let's Build Something<br className="hidden md:inline" />
+            <span className="text-gradient-indigo">Brilliant</span>
           </h1>
         </ScrollReveal>
 

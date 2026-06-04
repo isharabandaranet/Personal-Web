@@ -6,7 +6,7 @@ import './globals.css';
 export const metadata = {
   metadataBase: new URL('https://isharabandara.com'),
   title: {
-    default: 'Ishara Bandara | Modern Software Services & Creative Specialist',
+    default: 'Ishara Bandara',
     template: '%s | Ishara Bandara'
   },
   description: 'Ishara Bandara is a software developer and technology consulting expert building high-end digital products, branding, marketing, and web interfaces.',
