@@ -67,12 +67,12 @@ export default function ContactClient() {
       </section>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
         {/* Info Column */}
-        <div className="lg:col-span-4 space-y-6">
-          <ScrollReveal direction="right">
-            <Card glow className="border-zinc-800/80 p-8 space-y-8">
+        <div className="lg:col-span-4 h-full">
+          <ScrollReveal direction="right" className="h-full">
+            <Card glow className="border-zinc-800/80 p-8 space-y-8 h-full">
               <div>
                 <h3 className="text-lg font-bold text-zinc-100 tracking-tight">Contact Information</h3>
                 <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
@@ -139,9 +139,9 @@ export default function ContactClient() {
         </div>
 
         {/* Form Column */}
-        <div className="lg:col-span-8">
-          <ScrollReveal direction="left">
-            <Card glow hoverEffect={false} className="border-zinc-800/80 p-8 md:p-10">
+        <div className="lg:col-span-8 h-full">
+          <ScrollReveal direction="left" className="h-full">
+            <Card glow className="border-zinc-800/80 p-8 md:p-10 h-full">
               <h3 className="text-xl font-bold text-zinc-100 mb-6 tracking-tight">How Can I Help You?</h3>
 
               {status === 'success' ? (
