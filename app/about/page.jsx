@@ -61,7 +61,7 @@ export default function Founder() {
                 <div className="space-y-4 pt-4 border-t border-zinc-800/60">
                   <div className="flex items-center space-x-3 text-sm text-zinc-400">
                     <Phone className="w-4.5 h-4.5 text-indigo-400 shrink-0" />
-                    <span>(+94) 76 30 38 075</span>
+                    <span>(+94) 71 18 39 224</span>
                   </div>
                   <div className="flex items-center space-x-3 text-sm text-zinc-400">
                     <Mail className="w-4.5 h-4.5 text-indigo-400 shrink-0" />
@@ -88,7 +88,7 @@ export default function Founder() {
             <h2 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">My Profile</h2>
             <h1 className="text-4xl font-extrabold text-gradient">Hello, I'm Ishara Bandara</h1>
             <p className="text-zinc-400 text-sm md:text-base leading-relaxed">
-              Welcome to my digital journey, where creativity has no limit. The space for my passions, my projects, my pursuits. Check out my blog posts, my portfolio, and take a glimpse into the various aspects of my life. No matter what you are looking for — inspiration, education, or tech collaboration — you have come to the right spot. Go and return as you please, and to participate and connect — I look forward to doing this with you.
+              Welcome to my digital journey, where creativity has no limit. The space for my passions, my projects, my pursuits. Check out my portfolio and take a glimpse into the various aspects of my life. No matter what you are looking for — inspiration, education, or tech collaboration — you have come to the right spot. Go and return as you please, and to participate and connect — I look forward to doing this with you.
             </p>
           </ScrollReveal>
 

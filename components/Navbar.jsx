@@ -36,7 +36,6 @@ export default function Navbar() {
     { name: 'Services', path: '/services' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'About Me', path: '/about' },
-    { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' }
   ];
 

@@ -8,10 +8,10 @@ export const codingProjects = [
     stack: ["HTML", "CSS", "JavaScript", "PHP"],
     github: "https://github.com/isharabandaranet/Personal-Web",
     liveUrl: "https://isharabandara.com",
-    shortDescription: "My personal portfolio & blog website built from scratch with vanilla HTML/CSS/JS and a custom admin panel.",
-    description: "A fully custom personal portfolio and blog website. It includes a dynamic blog engine, portfolio gallery, admin panel with GitHub Pages auto-deployment, and a contact form powered by Formspree. Built entirely with vanilla web technologies — no frameworks.",
+    shortDescription: "My personal portfolio website built from scratch with vanilla HTML/CSS/JS and a custom admin panel.",
+    description: "A fully custom personal portfolio website. It includes a portfolio gallery, admin panel with GitHub Pages auto-deployment, and a contact form powered by Formspree. Built entirely with vanilla web technologies — no frameworks.",
     highlights: [
-      "Custom admin panel for creating and editing blog posts and portfolio items",
+      "Custom admin panel for creating and editing portfolio items",
       "One-click GitHub Pages deployment via the GitHub REST API",
       "Responsive design with dark-mode aesthetics and smooth animations",
       "Contact form integration with Formspree",
