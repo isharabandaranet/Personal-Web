@@ -81,7 +81,8 @@ export const clientBrands = [
   { name: "Infinity Physics", logo: "/img/clients/client-4.png" },
   { name: "Sell Sigma", logo: "/img/clients/client-5.png" },
   { name: "Nipun Palliyaguru", logo: "/img/clients/client-6.png" },
-  { name: "Oshadha Nimesh", logo: "/img/clients/client-7.png" }
+  { name: "Oshadha Nimesh", logo: "/img/clients/client-7.png" },
+  { name: "CaptureZen", logo: "/img/clients/client-8.png" }
 ];
 
 export const funFacts = [

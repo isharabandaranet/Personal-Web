@@ -72,7 +72,7 @@ export default function Home() {
 
         <ScrollReveal direction="up" delay={0.2}>
           <h1 className="text-4xl md:text-7xl font-extrabold tracking-tight max-w-4xl leading-tight">
-            Let's Build Something<br className="hidden md:inline" />
+            Let's Build Something <br className="hidden md:inline" />
             <span className="text-gradient-indigo">Brilliant</span>
           </h1>
         </ScrollReveal>
@@ -179,14 +179,14 @@ export default function Home() {
           <h2 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Collaborations</h2>
           <h3 className="text-2xl md:text-3xl font-bold text-gradient">Brands Around Me</h3>
         </ScrollReveal>
-        
+
         <ScrollReveal direction="up" delay={0.2} className="w-full">
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-65 hover:opacity-100 transition-opacity duration-300">
             {clientBrands.map((brand) => (
               <div key={brand.name} className="h-10 md:h-12 w-28 md:w-36 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 relative">
-                <Image 
-                  src={brand.logo} 
-                  alt={`${brand.name} Logo`} 
+                <Image
+                  src={brand.logo}
+                  alt={`${brand.name} Logo`}
                   width={144}
                   height={48}
                   className="max-h-full max-w-full object-contain"

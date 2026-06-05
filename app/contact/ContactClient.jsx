@@ -48,7 +48,7 @@ export default function ContactClient() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-12">
-      
+
       {/* Title */}
       <section className="text-center max-w-2xl mx-auto space-y-4">
         <ScrollReveal direction="down">
@@ -68,7 +68,7 @@ export default function ContactClient() {
 
       {/* Grid Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
+
         {/* Info Column */}
         <div className="lg:col-span-4 space-y-6">
           <ScrollReveal direction="right">
@@ -88,7 +88,7 @@ export default function ContactClient() {
                   <div>
                     <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Phone</h4>
                     <p className="text-sm text-zinc-300 font-medium mt-1 hover:text-indigo-400 transition-colors">
-                      (+94) 76 30 38 075
+                      (+94) 71 18 39 224
                     </p>
                   </div>
                 </div>
@@ -128,7 +128,7 @@ export default function ContactClient() {
           <ScrollReveal direction="left">
             <Card className="border-zinc-800/80 p-8 md:p-10">
               <h3 className="text-xl font-bold text-zinc-100 mb-6 tracking-tight">How Can I Help You?</h3>
-              
+
               {status === 'success' ? (
                 <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-8 text-center space-y-4">
                   <div className="w-12 h-12 rounded-full bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center mx-auto text-indigo-400">
@@ -202,9 +202,9 @@ export default function ContactClient() {
                   </div>
 
                   <div className="flex justify-end pt-2">
-                    <Button 
-                      type="submit" 
-                      variant="primary" 
+                    <Button
+                      type="submit"
+                      variant="primary"
                       className="w-full sm:w-auto"
                       disabled={status === 'submitting'}
                     >

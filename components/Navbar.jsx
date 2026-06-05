@@ -35,7 +35,7 @@ export default function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Services', path: '/services' },
     { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Founder', path: '/founder' },
+    { name: 'About Me', path: '/about' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contact', path: '/contact' }
   ];
@@ -43,11 +43,10 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'glass-panel bg-zinc-950/80 shadow-lg shadow-zinc-950/20 py-4' 
-            : 'bg-transparent py-6 border-b border-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+          ? 'glass-panel bg-zinc-950/80 shadow-lg shadow-zinc-950/20 py-4'
+          : 'bg-transparent py-6 border-b border-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
@@ -70,8 +69,8 @@ export default function Navbar() {
                   href={link.path}
                   className={`
                     px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300
-                    ${isActive 
-                      ? 'text-indigo-400 bg-zinc-900/40 border border-zinc-800/60' 
+                    ${isActive
+                      ? 'text-indigo-400 bg-zinc-900/40 border border-zinc-800/60'
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/20 border border-transparent'}
                   `}
                 >
@@ -110,8 +109,8 @@ export default function Navbar() {
                   href={link.path}
                   className={`
                     block px-4 py-3 text-base font-medium rounded-lg transition-all
-                    ${isActive 
-                      ? 'text-indigo-400 bg-zinc-900/60 border border-zinc-800' 
+                    ${isActive
+                      ? 'text-indigo-400 bg-zinc-900/60 border border-zinc-800'
                       : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/30'}
                   `}
                 >
