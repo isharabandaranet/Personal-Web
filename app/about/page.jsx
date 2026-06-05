@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Download, CheckCircle2, Award, GraduationCap, Users } from 'lucide-react';
+import { Mail, Phone, MapPin, Download, CheckCircle2, Award, GraduationCap, Users, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
@@ -206,6 +206,27 @@ export default function Founder() {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <ScrollReveal direction="up" delay={0.1}>
+        <section className="relative overflow-hidden rounded-2xl glass-panel p-8 md:p-16 border border-zinc-800 text-center space-y-6 max-w-4xl mx-auto pt-12 pb-12">
+          <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-600/10 rounded-full blur-[80px] pointer-events-none" />
+          <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-cyan-600/10 rounded-full blur-[80px] pointer-events-none" />
+
+          <div className="space-y-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-gradient">Let's build something brilliant together</h3>
+            <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+              Whether you need a custom web application, a scalable software system, or high-fidelity design work, let's connect and make it happen.
+            </p>
+          </div>
+          <div className="pt-2">
+            <Button to="/contact" variant="primary" size="lg" className="group">
+              Let's Connect
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </section>
+      </ScrollReveal>
 
     </div>
   );

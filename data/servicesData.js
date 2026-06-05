@@ -82,7 +82,8 @@ export const clientBrands = [
   { name: "Sell Sigma", logo: "/img/clients/client-5.png" },
   { name: "Nipun Palliyaguru", logo: "/img/clients/client-6.png" },
   { name: "Oshadha Nimesh", logo: "/img/clients/client-7.png" },
-  { name: "CaptureZen", logo: "/img/clients/client-8.png" }
+  { name: "CaptureZen", logo: "/img/clients/client-8.png" },
+  { name: "EduWave", logo: "/img/clients/client-9.png" }
 ];
 
 const yearsOfExperience = new Date().getFullYear() - 2018;

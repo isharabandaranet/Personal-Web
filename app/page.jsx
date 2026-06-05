@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import ScrollReveal from '../components/ui/ScrollReveal';
+import Counter from '../components/ui/Counter';
 import { services, clientBrands, funFacts, testimonials } from '../data/servicesData';
 
 export default function Home() {
@@ -166,7 +167,9 @@ export default function Home() {
         <ScrollReveal direction="left" className="grid grid-cols-2 gap-4">
           {funFacts.map((fact, index) => (
             <Card key={fact.label} glow={index === 1} className="text-center p-8 flex flex-col justify-center border-zinc-800/80">
-              <div className="text-4xl md:text-5xl font-extrabold text-gradient-indigo leading-none">{fact.value}</div>
+              <div className="text-4xl md:text-5xl font-extrabold text-gradient-indigo leading-none">
+                <Counter value={fact.value} />
+              </div>
               <div className="text-xs md:text-sm text-zinc-400 font-medium tracking-wide mt-3">{fact.label}</div>
             </Card>
           ))}
