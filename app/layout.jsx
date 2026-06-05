@@ -31,8 +31,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ishara Bandara | Modern Software Services & Creative Specialist',
-    description: 'Premium web development, branding, graphic design, and video editing solutions.',
+    title: 'Ishara Bandara | Let&apos;s Build Something Brilliant',
+    description: 'Premium web development, branding, UX / UI design and software development solutions.',
     images: ['/img/main_photo.jpg'],
   },
   icons: {
@@ -49,15 +49,15 @@ export default function RootLayout({ children }) {
         {/* Dynamic Glowing Ambient Lights */}
         <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-cyan-600/5 rounded-full blur-[100px] pointer-events-none" />
-        
+
         <header>
           <Navbar />
         </header>
-        
+
         <main className="flex-grow pt-28 pb-20 relative z-10">
           {children}
         </main>
-        
+
         <Footer />
       </body>
     </html>
