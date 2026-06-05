@@ -6,10 +6,10 @@ export const projects = [
     filter: "web",
     year: "2024",
     type: "coding",
-    stack: ["JavaScript", "HTML", "CSS", "Node.js"],
+    stack: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com/isharabandaranet/EduWave",
     liveUrl: "https://eduwave.lk",
-    image: "/img/portfolio/11.png",
+    image: "/img/portfolio/eduwave/11.png",
     gallery: [
       "/img/portfolio/eduwave/1.png",
       "/img/portfolio/eduwave/2.png",
@@ -17,13 +17,13 @@ export const projects = [
       "/img/portfolio/eduwave/4.png",
       "/img/portfolio/eduwave/5.png"
     ],
-    shortDescription: "Sri Lanka's premier digital learning platform offering A/L past papers, live classes, and expert student coaching.",
-    description: "A comprehensive e-learning web application specifically designed for Advanced Level Science stream students in Sri Lanka. The platform provides access to a massive library of past papers with real exam conditions, personalized one-on-one coaching, and detailed performance analytics. It features a seamless role-based authentication system for both Students and Coaches.",
+    shortDescription: "A clean and responsive frontend for an e-learning platform, developed as an academic project.",
+    description: "A frontend interface for an e-learning platform developed as a university campus project. Built using vanilla HTML, CSS, and JavaScript, it focuses on providing a clean learning layout. I plan to build the backend in the future to develop it into a fully functional LMS application.",
     highlights: [
-      "Interactive past paper library with quiz history tracking",
-      "Role-based multi-login system (Student, Coach, Classes)",
-      "Personalized student coaching dashboard with real-time analytics",
-      "Responsive, modern UI tailored for A/L Science stream subjects"
+      "Developed as a university academic project",
+      "Built entirely with vanilla HTML, CSS, and JavaScript",
+      "Responsive and clean layout designed for online students",
+      "Future roadmap includes custom backend development for full interactivity"
     ]
   },
   {
@@ -33,7 +33,7 @@ export const projects = [
     filter: "web",
     year: "2026",
     type: "coding",
-    stack: ["React", "JavaScript", "Tailwind CSS", "Clerk Auth"],
+    stack: ["React", "Tailwind CSS", "Clerk Auth"],
     github: "https://github.com/isharabandaranet/NoteBase-Frontend",
     liveUrl: "https://notebase.isharabandara.com",
     image: "/img/portfolio/notebase/06.png",
@@ -44,13 +44,13 @@ export const projects = [
       "/img/portfolio/notebase/04.png",
       "/img/portfolio/notebase/05.png"
     ],
-    shortDescription: "The interactive and responsive user interface for the NoteBase study workspace.",
-    description: "A highly responsive single-page application (SPA) built with React, serving as the client-side interface for NoteBase. It features a custom rich-text inline editor (Tiptap) with auto-save capabilities, inline image rendering, and seamless drag-and-drop file uploads. User authentication and session management are securely handled via Clerk OAuth.",
+    shortDescription: "A smart study workspace web app for university students to organize notes and ask questions with AI.",
+    description: "The frontend client of NoteBase, a web application designed for university students to manage their studies systematically. It allows students to write and format their own notes, insert photos, upload PDFs, and categorize them into lecture notes and past papers. It interfaces with a custom AI chatbot that allows users to ask questions about any note.",
     highlights: [
-      "Responsive React SPA hosted on Vercel",
-      "Custom rich-text editor with auto-save functionality",
-      "Secure user authentication using Clerk OAuth",
-      "Seamless drag-and-drop file and image handling UI"
+      "Clean user interface for student lecture notes and past papers organization",
+      "Interactive note-writing workspace with image inserting capabilities",
+      "Seamless integration with PDF uploading features",
+      "Interactive chatbot UI to query notes and documents using AI"
     ]
   },
   {
@@ -58,19 +58,19 @@ export const projects = [
     title: "NoteBase - REST API & AI",
     category: "Backend / AI",
     filter: "software",
-    year: "2024",
+    year: "2026",
     type: "coding",
-    stack: ["Python (Flask)", "MySQL", "Google Drive API", "Google Gemini API"],
+    stack: ["Python (Flask)", "MySQL", "Google Drive API", "AI API Integration"],
     github: "https://github.com/isharabandaranet/NoteBase-Backend",
     liveUrl: "https://notebase-backend.onrender.com",
-    image: "/img/portfolio/nb-back.jpg",
-    shortDescription: "A Python-powered backend service handling databases, cloud storage, and AI integrations.",
-    description: "A robust backend REST API built with Python and Flask to power the NoteBase platform. It manages a relational MySQL database (hosted on Aiven), securely interfaces with the Google Drive API to store user uploads (bypassing database bloat), and integrates the Google Gemini AI to generate intelligent, context-aware study guides.",
+    image: "/img/portfolio/notebase/nb-back.jpg",
+    shortDescription: "A Python backend REST API managing document uploads and integrating LLM API to query notes.",
+    description: "The backend REST API powering NoteBase. It manages note storage in a MySQL database, handles document and photo uploads using the Google Drive API to conserve database space, and integrates a Large Language Model (LLM) API to enable the intelligent document-querying and question-answering features.",
     highlights: [
-      "RESTful API architecture using Python and Flask",
-      "Relational database management with Aiven MySQL",
-      "Secure Google Drive API integration for infinite cloud storage",
-      "Google Gemini AI integration for smart study features"
+      "Python Flask API handling database and storage integrations",
+      "MySQL database management for user profiles, notes metadata, and chat history",
+      "Google Drive API integration to store uploaded PDFs and note photos securely",
+      "Advanced LLM API integration to enable AI-powered querying over uploaded notes"
     ]
   },
   {
@@ -80,19 +80,18 @@ export const projects = [
     filter: "web",
     year: "2025",
     type: "coding",
-    stack: ["HTML", "CSS", "JavaScript", "PHP"],
+    stack: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/isharabandaranet/Personal-Web",
     liveUrl: "https://isharabandara.com",
-    image: "/img/portfolio/personal-web-t.png",
-    gallery: ["/img/portfolio/personal-web.png"],
-    shortDescription: "My personal portfolio website built from scratch with vanilla HTML/CSS/JS and a custom admin panel.",
-    description: "A fully custom personal portfolio website. It includes a portfolio gallery, admin panel with GitHub Pages auto-deployment, and a contact form powered by Formspree. Built entirely with vanilla web technologies — no frameworks.",
+    image: "/img/portfolio/personal-web/personal-web-t.png",
+    gallery: ["/img/portfolio/personal-web/personal-web.png"],
+    shortDescription: "My personal portfolio website built with Next.js, React, and Tailwind CSS to showcase my work.",
+    description: "My personal portfolio website designed to showcase my projects, freelance services, and UI/UX branding work. Built using Next.js and React with Tailwind CSS for layout, and Framer Motion to provide smooth, high-fidelity micro-interactions and transitions.",
     highlights: [
-      "Custom admin panel for creating and editing portfolio items",
-      "One-click GitHub Pages deployment via the GitHub REST API",
-      "Responsive design with dark-mode aesthetics and smooth animations",
-      "Contact form integration with Formspree",
-      "localStorage-powered content store with seed data fallback"
+      "Responsive portfolio displaying web development and graphic design projects",
+      "Next.js App Router setup with optimal image loading and page routing",
+      "Interactive sections with custom theme-matching styling and smooth animations",
+      "Integrated contact forms and live links to WhatsApp, email, and social profiles"
     ]
   },
   {
@@ -102,18 +101,17 @@ export const projects = [
     filter: "web",
     year: "2023",
     type: "coding",
-    stack: ["WordPress", "PHP", "MySQL", "LMS", "Elementor"],
+    stack: ["WordPress", "LMS", "Elementor"],
     github: "",
     liveUrl: "",
-    image: "/img/portfolio/2.png",
-    shortDescription: "A comprehensive Learning Management System (LMS) built to manage online tuition classes and student enrollments.",
-    description: "A fully functional e-learning platform developed for a physics tuition class. Built on WordPress, it allows administrators to efficiently manage student enrollments, schedule live classes, organize recorded video lessons, and conduct online quizzes. The platform provides a seamless, secure, and interactive learning experience for students across all devices.",
+    image: "/img/portfolio/infinity-physics/2.png",
+    shortDescription: "An online learning platform built with WordPress for physics tuition students.",
+    description: "An online e-learning platform built with WordPress and Elementor for a physics tuition class to conduct lectures, host course materials, and manage student enrollments. Currently inactive as the teacher discontinued online classes after some time.",
     highlights: [
-      "Complete Learning Management System (LMS) architecture",
-      "Secure student registration and individual profile management",
-      "Organized access to live class links and recorded video lessons",
-      "Interactive online quizzes and assignment tracking",
-      "Fully responsive and user-friendly UI designed with Elementor"
+      "WordPress LMS setup with Elementor design templates",
+      "Built for online classes registration and student dashboard",
+      "Integrated quiz tracking and course lecture videos hosting",
+      "Currently inactive due to change of tuition delivery mode"
     ]
   },
   {
@@ -122,24 +120,25 @@ export const projects = [
     category: "Branding",
     filter: "branding",
     year: "2024",
+    type: "design",
     tools: ["Photoshop", "Illustrator"],
-    image: "/img/portfolio/CaptureZen/logo v.png",
+    image: "/img/portfolio/capturezen/logo-v.png",
     gallery: [
-      "/img/portfolio/CaptureZen/logo v.png",
-      "/img/portfolio/CaptureZen/PP.png",
-      "/img/portfolio/CaptureZen/Business card.png",
-      "/img/portfolio/CaptureZen/Marketing banner.png",
-      "/img/portfolio/CaptureZen/t-Shirt.png",
-      "/img/portfolio/CaptureZen/Project.png",
-      "/img/portfolio/CaptureZen/feedback.png"
+      "/img/portfolio/capturezen/logo-v.png",
+      "/img/portfolio/capturezen/pp.png",
+      "/img/portfolio/capturezen/business-card.png",
+      "/img/portfolio/capturezen/marketing-banner.png",
+      "/img/portfolio/capturezen/t-shirt.png",
+      "/img/portfolio/capturezen/project.png",
+      "/img/portfolio/capturezen/feedback.png"
     ],
-    shortDescription: "Bold poster design for a free online revision classes campaign with strong typography and visual hierarchy.",
-    description: "A bold promotional poster designed for free online revision classes. It features large typography and clear scheduling blocks to drive student sign-ups.",
+    shortDescription: "A unique brand identity design for a photography agency combining 'C', 'Z', and a lens.",
+    description: "A unique visual branding identity created for a photography agency. The design features a custom logo mark that creatively combines the letters 'C' and 'Z' with a camera lens icon to establish a clean and modern photography brand identity.",
     highlights: [
-      "High-contrast color scheme for maximum visibility",
-      "Clear information structure and readability",
-      "Includes class schedule and lecturer credentials",
-      "Print-ready high-resolution layouts"
+      "Custom brand logo blending 'C', 'Z', and a camera lens",
+      "Designed full suite of business cards, marketing banners, and stationery",
+      "Sleek and photography-focused color branding",
+      "Created using Adobe Photoshop and Adobe Illustrator"
     ]
   },
   {
@@ -150,21 +149,21 @@ export const projects = [
     year: "2023 - 2024",
     type: "design",
     tools: ["Photoshop", "Illustrator"],
-    image: "/img/portfolio/4.png",
+    image: "/img/portfolio/poster-designs/4.png",
     gallery: [
-      "/img/portfolio/3.png",
-      "/img/portfolio/4.png",
-      "/img/portfolio/5.jpg",
-      "/img/portfolio/6.png",
-      "/img/portfolio/7.png"
+      "/img/portfolio/poster-designs/3.png",
+      "/img/portfolio/poster-designs/4.png",
+      "/img/portfolio/poster-designs/5.jpg",
+      "/img/portfolio/poster-designs/6.png",
+      "/img/portfolio/poster-designs/7.png"
     ],
-    shortDescription: "Social media promotional campaign for online Tution classes targeting A/L students.",
-    description: "A social media marketing campaign designed for the online tution classes. Visuals were optimized for engagement, targeting Advanced Level science students in Sri Lanka.",
+    shortDescription: "A collection of tuition marketing and promotional posters.",
+    description: "A compilation of promotional and marketing posters created primarily for the educational tuition field to promote A/L classes, schedules, and lecturer campaigns.",
     highlights: [
-      "High-impact social media campaign graphics",
-      "Strong visual hierarchy highlighting course features",
-      "Optimized text readability for mobile screens",
-      "Consistent theme and styling across all design variations"
+      "High-contrast, engaging social media promotional poster designs",
+      "Optimized text layout and typography for tuition branding",
+      "Clear class schedule layout design",
+      "Created using Adobe Photoshop and Adobe Illustrator"
     ]
   },
   {
@@ -175,23 +174,23 @@ export const projects = [
     year: "2024",
     type: "design",
     tools: ["Photoshop", "Illustrator"],
-    image: "/img/portfolio/8.jpg",
+    image: "/img/portfolio/logo-designs/8.jpg",
     gallery: [
-      "/img/portfolio/1.png",
-      "/img/portfolio/2.png",
-      "/img/portfolio/8.jpg",
-      "/img/portfolio/9.png",
-      "/img/portfolio/10.png",
-      "/img/portfolio/11.png",
-      "/img/portfolio/12.png"
+      "/img/portfolio/logo-designs/1.png",
+      "/img/portfolio/logo-designs/2.png",
+      "/img/portfolio/logo-designs/8.jpg",
+      "/img/portfolio/logo-designs/9.png",
+      "/img/portfolio/logo-designs/10.png",
+      "/img/portfolio/logo-designs/11.png",
+      "/img/portfolio/logo-designs/12.png"
     ],
-    shortDescription: "Bold poster design for a free online revision classes campaign with strong typography and visual hierarchy.",
-    description: "A bold promotional poster designed for free online revision classes. It features large typography and clear scheduling blocks to drive student sign-ups.",
+    shortDescription: "A collection of creative logos designed as a personal hobby.",
+    description: "A collection of minimal, creative logo designs created as a hobby and passion project to explore brand identity styles, vector marks, and typography concepts.",
     highlights: [
-      "High-contrast color scheme for maximum visibility",
-      "Clear information structure and readability",
-      "Includes class schedule and lecturer credentials",
-      "Print-ready high-resolution layouts"
+      "Diverse branding marks exploring various visual concepts",
+      "Focus on vector art, clean layout, and modern aesthetics",
+      "Designed as a hobby for personal skill improvement",
+      "Created using Adobe Photoshop and Adobe Illustrator"
     ]
   }
 ];
