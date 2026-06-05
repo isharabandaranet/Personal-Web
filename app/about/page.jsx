@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Download, CheckCircle2, Award, Briefcase } from 'lucide-react';
+import { Mail, Phone, MapPin, Download, CheckCircle2, Award, GraduationCap, Users } from 'lucide-react';
 import Image from 'next/image';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
@@ -7,27 +7,40 @@ import ScrollReveal from '../../components/ui/ScrollReveal';
 
 export const metadata = {
   title: 'About',
-  description: 'Meet Ishara Bandara, and know more about his work timeline, tech stacks, and career insights.',
+  description: 'Meet Ishara Bandara, and learn about his education timeline, technical expertise, and general skills.',
 };
 
 export default function Founder() {
   const skills = {
     engineering: ["JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "Node.js", "Python (Flask)", "MySQL / PHP"],
-    creative: ["User Interface (UI) Design", "Brand Identity & Logos", "Vector Illustration", "Video Editing", "Social Media Marketing", "Canva / Figma"]
+    creative: ["User Interface (UI) Design", "Brand Identity & Logos", "Vector Illustration", "Video Editing", "Social Media Marketing", "Canva / Figma"],
+    general: ["Teamwork", "Leadership", "Communication Skills", "Problem Solving", "Collaboration"]
   };
 
-  const experience = [
+  const education = [
     {
-      role: "Lead Engineer & Founder",
-      company: "Ishara Bandara Digital Services",
-      period: "2020 - Present",
-      description: "Managing bespoke web applications, WordPress LMS deployments, brand identities, and commercial videography editing."
+      degree: "Bachelor of Computer Science (UG)",
+      institution: "University Of Ruhuna",
+      period: "2025 - Present"
     },
     {
-      role: "Freelance Creative Designer",
-      company: "Various Tech Brands & LMS Platforms",
-      period: "2018 - 2020",
-      description: "Designed promotional assets, course layouts, and logos for regional education institutions and startup stores."
+      degree: "GCE Advanced Level - Physical Science Stream",
+      institution: "Badulla Central College",
+      period: "2022"
+    },
+    {
+      degree: "GCE Ordinary Level",
+      institution: "Welimada Central College",
+      period: "2019"
+    }
+  ];
+
+  const leadership = [
+    {
+      role: "Badulla District Coordinator",
+      organization: "Sasnaka Sansada",
+      period: "Jan 2025 - Dec 2025",
+      description: "Coordinated educational workshops, community projects, and youth empowerment programs."
     }
   ];
 
@@ -80,6 +93,25 @@ export default function Founder() {
               </div>
             </Card>
           </ScrollReveal>
+
+          {/* General Skills Card */}
+          <ScrollReveal direction="right" delay={0.1}>
+            <Card className="p-6 border border-zinc-800/80 bg-zinc-950/40">
+              <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-400 mb-4 pb-2 border-b border-zinc-900">
+                General Skills
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {skills.general.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 bg-zinc-900/50 border border-zinc-800/80 text-zinc-300 rounded-lg text-xs font-semibold hover:border-indigo-500/50 hover:text-white transition-colors duration-300"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </Card>
+          </ScrollReveal>
         </div>
 
         {/* Narrative Biography Col */}
@@ -126,29 +158,52 @@ export default function Founder() {
             </div>
           </ScrollReveal>
 
-          {/* Experience Timeline */}
-          <ScrollReveal direction="left" delay={0.2} className="space-y-6">
-            <h3 className="text-lg font-bold text-zinc-200 border-b border-zinc-900 pb-3 flex items-center space-x-2">
-              <Briefcase className="w-5 h-5 text-indigo-400" />
-              <span>Timeline of Work</span>
-            </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Education Timeline */}
+            <ScrollReveal direction="left" delay={0.2} className="space-y-6">
+              <h3 className="text-lg font-bold text-zinc-200 border-b border-zinc-900 pb-3 flex items-center space-x-2">
+                <GraduationCap className="w-5 h-5 text-indigo-400" />
+                <span>Education</span>
+              </h3>
 
-            <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 before:w-[1px] before:bg-zinc-800">
-              {experience.map((exp) => (
-                <div key={exp.role} className="relative pl-8 space-y-2 group">
-                  {/* Timeline bullet */}
-                  <span className="absolute left-1.5 top-2.5 w-3.5 h-3.5 rounded-full border border-indigo-500 bg-zinc-950 group-hover:bg-indigo-600 transition-colors" />
+              <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 before:w-[1px] before:bg-zinc-800">
+                {education.map((edu) => (
+                  <div key={edu.degree} className="relative pl-8 space-y-1 group">
+                    {/* Timeline bullet */}
+                    <span className="absolute left-1.5 top-2.5 w-3.5 h-3.5 rounded-full border border-indigo-500 bg-zinc-950 group-hover:bg-indigo-600 transition-colors" />
 
-                  <div className="flex flex-wrap items-center justify-between gap-1">
-                    <h4 className="font-bold text-zinc-200 text-base">{exp.role}</h4>
-                    <span className="text-xs text-zinc-500 font-semibold">{exp.period}</span>
+                    <h4 className="font-bold text-zinc-200 text-base leading-snug">{edu.degree}</h4>
+                    <p className="text-xs text-indigo-400/80 font-semibold">{edu.institution}</p>
+                    <span className="inline-block text-xs text-zinc-500 font-semibold pt-0.5">{edu.period}</span>
                   </div>
-                  <p className="text-xs text-indigo-400/80 font-semibold">{exp.company}</p>
-                  <p className="text-xs text-zinc-400 leading-relaxed pt-1">{exp.description}</p>
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+                ))}
+              </div>
+            </ScrollReveal>
+
+            {/* Leadership & Volunteering Timeline */}
+            <ScrollReveal direction="left" delay={0.3} className="space-y-6">
+              <h3 className="text-lg font-bold text-zinc-200 border-b border-zinc-900 pb-3 flex items-center space-x-2">
+                <Users className="w-5 h-5 text-indigo-400" />
+                <span>Leadership & Volunteering</span>
+              </h3>
+
+              <div className="space-y-6 relative before:absolute before:inset-0 before:left-3 before:w-[1px] before:bg-zinc-800">
+                {leadership.map((lead) => (
+                  <div key={lead.role} className="relative pl-8 space-y-1 group">
+                    {/* Timeline bullet */}
+                    <span className="absolute left-1.5 top-2.5 w-3.5 h-3.5 rounded-full border border-indigo-500 bg-zinc-950 group-hover:bg-indigo-600 transition-colors" />
+
+                    <h4 className="font-bold text-zinc-200 text-base leading-snug">{lead.role}</h4>
+                    <p className="text-xs text-indigo-400/80 font-semibold">{lead.organization}</p>
+                    <span className="inline-block text-xs text-zinc-500 font-semibold pt-0.5">{lead.period}</span>
+                    {lead.description && (
+                      <p className="text-xs text-zinc-400 leading-relaxed pt-1.5">{lead.description}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </ScrollReveal>
+          </div>
         </div>
       </section>
 
