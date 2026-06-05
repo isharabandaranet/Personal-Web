@@ -85,9 +85,41 @@ export const clientBrands = [
   { name: "CaptureZen", logo: "/img/clients/client-8.png" }
 ];
 
+const yearsOfExperience = new Date().getFullYear() - 2018;
+
 export const funFacts = [
   { label: "Happy Clients", value: "99+" },
-  { label: "Years of Experience", value: "7+" },
+  { label: "Years of Experience", value: `${yearsOfExperience}+` },
   { label: "Projects Done", value: "140" },
-  { label: "Brands Around Us", value: "7" }
+  { label: "Brands Around Me", value: `${clientBrands.length}` }
+];
+
+export const testimonials = [
+  {
+    id: "review-1",
+    name: "Nipun Palliyaguru",
+    role: "Physics Educator",
+    company: "Infinity Physics",
+    initials: "NP",
+    content: "Ishara delivered an exceptional online learning platform for our physics classes. His blend of software engineering and creative branding helped us double student engagement.",
+    rating: 5
+  },
+  {
+    id: "review-2",
+    name: "Oshadha Nimesh",
+    role: "Creative Director",
+    company: "Desinup Academy",
+    initials: "ON",
+    content: "The video editing and graphic layouts Ishara created for our campaigns were top-notch. He has a great sense of modern aesthetics and understands how to engage the target audience.",
+    rating: 5
+  },
+  {
+    id: "review-3",
+    name: "Sell Sigma",
+    role: "Marketing Team",
+    company: "Sell Sigma",
+    initials: "SS",
+    content: "We hired Ishara to launch our e-commerce campaigns and design our brand identity. The results were outstanding and gave us a highly premium look in the market.",
+    rating: 5
+  }
 ];

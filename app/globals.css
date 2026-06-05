@@ -96,3 +96,21 @@ h1, h2, h3, h4, h5, h6 {
 .bg-radial-gradient {
   background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
 }
+
+/* Infinite scroller marquee animation */
+@keyframes infinite-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 40s linear infinite;
+}
+
+.hover-pause:hover .animate-infinite-scroll {
+  animation-play-state: paused;
+}

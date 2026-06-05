@@ -1,10 +1,10 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Palette, Video, Award, Megaphone } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Palette, Video, Award, Megaphone, Star } from 'lucide-react';
 import Image from 'next/image';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import ScrollReveal from '../components/ui/ScrollReveal';
-import { services, clientBrands, funFacts } from '../data/servicesData';
+import { services, clientBrands, funFacts, testimonials } from '../data/servicesData';
 
 export default function Home() {
   const iconMap = {
@@ -166,36 +166,117 @@ export default function Home() {
         <ScrollReveal direction="left" className="grid grid-cols-2 gap-4">
           {funFacts.map((fact, index) => (
             <Card key={fact.label} glow={index === 1} className="text-center p-8 flex flex-col justify-center border-zinc-800/80">
-              <span className="text-4xl md:text-5xl font-extrabold text-gradient-indigo">{fact.value}</span>
-              <span className="text-xs md:text-sm text-zinc-400 font-medium tracking-wide mt-3">{fact.label}</span>
+              <div className="text-4xl md:text-5xl font-extrabold text-gradient-indigo leading-none">{fact.value}</div>
+              <div className="text-xs md:text-sm text-zinc-400 font-medium tracking-wide mt-3">{fact.label}</div>
             </Card>
           ))}
         </ScrollReveal>
       </section>
 
       {/* Brands Around Me Section */}
-      <section className="space-y-10 text-center py-6">
+      <section className="space-y-10 py-6 text-center">
         <ScrollReveal direction="up" className="space-y-3">
           <h2 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Collaborations</h2>
           <h3 className="text-2xl md:text-3xl font-bold text-gradient">Brands Around Me</h3>
         </ScrollReveal>
 
         <ScrollReveal direction="up" delay={0.2} className="w-full">
-          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-65 hover:opacity-100 transition-opacity duration-300">
-            {clientBrands.map((brand) => (
-              <div key={brand.name} className="h-10 md:h-12 w-28 md:w-36 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 relative">
-                <Image
-                  src={brand.logo}
-                  alt={`${brand.name} Logo`}
-                  width={144}
-                  height={48}
-                  className="max-h-full max-w-full object-contain"
-                />
+          {/* Infinite Marquee Container */}
+          <div className="relative w-full overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)] py-4">
+            <div className="flex w-max flex-nowrap hover-pause">
+              {/* First track */}
+              <div className="flex items-center animate-infinite-scroll">
+                {clientBrands.map((brand, i) => (
+                  <div key={`${brand.name}-1-${i}`} className="h-10 md:h-12 w-28 md:w-36 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 relative mx-6 shrink-0">
+                    <Image
+                      src={brand.logo}
+                      alt={`${brand.name} Logo`}
+                      width={144}
+                      height={48}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+              {/* Second duplicated track for seamless loop */}
+              <div className="flex items-center animate-infinite-scroll" aria-hidden="true">
+                {clientBrands.map((brand, i) => (
+                  <div key={`${brand.name}-2-${i}`} className="h-10 md:h-12 w-28 md:w-36 flex items-center justify-center grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300 relative mx-6 shrink-0">
+                    <Image
+                      src={brand.logo}
+                      alt={`${brand.name} Logo`}
+                      width={144}
+                      height={48}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
+        </ScrollReveal>
+      </section>
+
+      {/* Customer Reviews Section */}
+      <section className="space-y-12">
+        <ScrollReveal direction="right" className="space-y-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Reviews</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-gradient">What My Clients Say</h3>
+        </ScrollReveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <ScrollReveal key={testimonial.id} direction="up" delay={index * 0.1}>
+              <Card glow={index === 1} className="h-full flex flex-col justify-between hover:border-indigo-500/20">
+                <div className="space-y-5">
+                  {/* Rating Stars */}
+                  <div className="flex items-center space-x-1 text-indigo-400">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-indigo-400" />
+                    ))}
+                  </div>
+                  {/* Review text */}
+                  <p className="text-zinc-300 text-sm leading-relaxed italic">
+                    "{testimonial.content}"
+                  </p>
+                </div>
+
+                {/* Author Info */}
+                <div className="flex items-center space-x-3 mt-8 pt-4 border-t border-zinc-800/60">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-xs font-bold text-white uppercase shrink-0">
+                    {testimonial.initials}
+                  </div>
+                  <div className="text-left">
+                    <h4 className="text-sm font-bold text-zinc-100">{testimonial.name}</h4>
+                    <p className="text-xs text-zinc-500">{testimonial.role}, {testimonial.company}</p>
+                  </div>
+                </div>
+              </Card>
+            </ScrollReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative overflow-hidden rounded-2xl glass-panel p-8 md:p-16 border border-zinc-800 text-center space-y-6 max-w-4xl mx-auto pt-12 pb-12">
+        <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-600/10 rounded-full blur-[80px] pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-48 h-48 bg-cyan-600/10 rounded-full blur-[80px] pointer-events-none" />
+
+        <ScrollReveal direction="up" className="space-y-4">
+          <h3 className="text-2xl md:text-3xl font-bold text-gradient">Let's bring your vision to life</h3>
+          <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+            Ready to start your next project, elevate your brand design, or launch a result-driven marketing campaign? Let's connect and build something exceptional together.
+          </p>
+        </ScrollReveal>
+        <ScrollReveal direction="up" delay={0.1}>
+          <Button to="/contact" variant="primary" size="lg" className="group">
+            Let's Collaborate
+            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </ScrollReveal>
       </section>
     </div>
   );
 }
+
+
