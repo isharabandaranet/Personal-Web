@@ -97,18 +97,18 @@ export const funFacts = [
 export const testimonials = [
   {
     id: "review-1",
-    name: "Nipun Palliyaguru",
-    role: "Physics Educator",
-    company: "Infinity Physics",
-    initials: "NP",
-    content: "Ishara delivered an exceptional online learning platform for our physics classes. His blend of software engineering and creative branding helped us double student engagement.",
+    name: "Dev Team",
+    role: "EduWave Project",
+    company: "Desinup Group",
+    initials: "EW",
+    content: "Ishara delivered an exceptional online learning platform for our project. His blend of software engineering and creative branding helped us to compleate this project successfully.",
     rating: 5
   },
   {
     id: "review-2",
     name: "Oshadha Nimesh",
-    role: "Creative Director",
-    company: "Desinup Academy",
+    role: "Owner",
+    company: "CaprureZen",
     initials: "ON",
     content: "The video editing and graphic layouts Ishara created for our campaigns were top-notch. He has a great sense of modern aesthetics and understands how to engage the target audience.",
     rating: 5
