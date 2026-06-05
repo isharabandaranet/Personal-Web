@@ -87,8 +87,13 @@ export default function Services() {
               key={pkg.id} 
               direction="up" 
               delay={index * 0.1} 
-              className="flex flex-col w-full sm:w-[calc(50%-16px)] lg:flex-1 min-w-[300px] max-w-[390px] xl:max-w-[420px]"
+              className="relative flex flex-col w-full sm:w-[calc(50%-16px)] lg:flex-1 min-w-[300px] max-w-[390px] xl:max-w-[420px]"
             >
+              {pkg.popular && (
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] uppercase font-extrabold tracking-wider px-4.5 py-1.5 rounded-full border border-indigo-500/30 shadow-[0_2px_12px_rgba(99,102,241,0.3)] z-30">
+                  Most Popular
+                </span>
+              )}
               <Card 
                 glow={false}
                 hoverEffect={true}
@@ -98,11 +103,6 @@ export default function Services() {
                     : 'border border-zinc-800/80 bg-[#0e0e12] hover:border-zinc-700/80'
                 }`}
               >
-                {pkg.popular && (
-                  <span className="absolute -top-[44px] md:-top-[52px] left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[10px] uppercase font-extrabold tracking-wider px-4.5 py-1.5 rounded-full border border-indigo-500/30 shadow-[0_2px_12px_rgba(99,102,241,0.3)]">
-                    Most Popular
-                  </span>
-                )}
                 
                 <div className="space-y-3">
                   <div className="min-h-[40px] flex items-start">
