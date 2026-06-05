@@ -1,73 +1,73 @@
 export const services = [
   {
-    id: "designing",
-    title: "Designing",
-    description: "All your day-to-day graphical needs like social media posts, posters, handbills, business cards, etc. includes this option.",
-    icon: "Palette", // We'll map this to Lucide icons
-    features: ["Social Media Posts", "Posters & Flyers", "Business Cards", "Handbills"]
+    id: "custom-web-development",
+    title: "Custom Web Development",
+    description: "Bespoke website and web application development designed specifically around your requirements. I build high-performance, fully responsive, and SEO-optimized web systems.",
+    icon: "Code",
+    features: ["Custom Layout & Logic", "Responsive UI/UX", "SEO Optimization", "Modern Frameworks"]
   },
   {
-    id: "editing",
-    title: "Editing",
-    description: "All your editing needs like social media photos, videos, short films, YouTube program videos, etc. are included here.",
-    icon: "Video",
-    features: ["Video Editing", "Photo Manipulation", "Short Film Editing", "YouTube Content"]
+    id: "software-systems",
+    title: "Software & Systems",
+    description: "Development of custom software systems such as POS software, booking engines, reservation portals, and backend management interfaces built to match your business workflows.",
+    icon: "Cpu",
+    features: ["POS & Inventory Systems", "Booking & Scheduling", "Custom Admin Dashboards", "Database Management"]
   },
   {
-    id: "branding",
-    title: "Branding",
-    description: "Take your brand to the next level. Logo Design, Letter Heads, Brand Identity Design, etc. are included in this section.",
-    icon: "Award",
-    features: ["Logo Design", "Brand Identity", "Letterheads", "Visual Guidelines"]
+    id: "design-branding",
+    title: "UI / UX Design & Branding",
+    description: "Premium user interface and user experience design, brand creation, and rebranding services. I deliver striking, high-fidelity designs and logo designs that elevate your brand.",
+    icon: "Palette",
+    features: ["Logo & Brand Book", "Figma UI/UX Prototypes", "Rebranding Campaigns", "Vector Graphic Assets"]
   },
   {
-    id: "marketing",
-    title: "Marketing",
-    description: "Any of your marketing campaigns like product marketing, app launching, tuition marketing, etc. includes this.",
-    icon: "Megaphone",
-    features: ["Product Campaigns", "App Launches", "Tuition/Class Marketing", "Social Media Campaigns"]
+    id: "support-updates",
+    title: "Continuous Support & Updates",
+    description: "Reliable post-launch maintenance, dedicated updates, and client support to ensure your digital applications remain secure, fast, and up-to-date with new content.",
+    icon: "ShieldCheck",
+    features: ["Priority Help & Support", "Regular Security Backups", "Content & Text Updates", "Performance Monitoring"]
   }
 ];
 
 export const pricingPackages = [
   {
-    id: "silver",
-    name: "Silver",
-    price: "Rs: 5,999",
-    billing: "Best for individuals",
+    id: "pricing-design",
+    name: "UI/UX & Branding",
+    price: "Rs: 25,000",
+    billing: "Starting price",
     features: [
-      "Social Media Design",
-      "Poster Design",
-      "Video Editing"
+      "Bespoke Logo & Visual Identity",
+      "Interactive Figma Prototypes",
+      "Rebranding & Vector Asset Prep",
+      "Modern Web & Print Design Files"
     ],
     popular: false,
     cta: "Contact Now"
   },
   {
-    id: "gold",
-    name: "Gold",
-    price: "Rs: 7,999",
-    billing: "Best for professionals",
+    id: "pricing-web-dev",
+    name: "Custom Web Development",
+    price: "Rs: 45,000",
+    billing: "Starting price",
     features: [
-      "Social Media Design",
-      "Poster Design",
-      "Video Editing",
-      "Logo Design & Branding"
+      "Custom Layout & Logic",
+      "Responsive UI/UX (Mobile & Desktop)",
+      "SEO & Speed Optimization",
+      "Domain & Hosting Setup"
     ],
     popular: true,
     cta: "Contact Now"
   },
   {
-    id: "platinum",
-    name: "Platinum",
-    price: "Rs: 10,999",
-    billing: "Best for businesses",
+    id: "pricing-software",
+    name: "Software & Systems",
+    price: "Rs: 75,000",
+    billing: "Starting price",
     features: [
-      "Social Media Design",
-      "Poster Design",
-      "Video Editing",
-      "Logo Design & Branding",
-      "Marketing"
+      "Custom POS / Booking System",
+      "Admin Dashboard & Analytics",
+      "Database Integration & Security",
+      "User Roles & Access Control"
     ],
     popular: false,
     cta: "Contact Now"

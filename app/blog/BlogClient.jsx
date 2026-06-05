@@ -62,7 +62,7 @@ export default function BlogClient() {
       {/* Blog Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pt-6">
         {filteredPosts.map((post, index) => (
-          <ScrollReveal key={post.id} direction="up" delay={index * 0.1}>
+          <ScrollReveal key={post.id} direction="up" delay={index * 0.1} className="h-full">
             <Card className="h-full border border-zinc-850 hover:border-zinc-700 p-0 overflow-hidden flex flex-col justify-between group">
               <div className="relative aspect-video w-full overflow-hidden bg-zinc-950">
                 <Image 

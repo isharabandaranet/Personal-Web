@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CheckCircle2, Palette, Video, Award, Megaphone, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Palette, Code, Cpu, ShieldCheck, Star } from 'lucide-react';
 import Image from 'next/image';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
@@ -8,10 +8,10 @@ import { services, clientBrands, funFacts, testimonials } from '../data/services
 
 export default function Home() {
   const iconMap = {
+    Code: Code,
+    Cpu: Cpu,
     Palette: Palette,
-    Video: Video,
-    Award: Award,
-    Megaphone: Megaphone
+    ShieldCheck: ShieldCheck
   };
 
   const whyChooseMe = [
@@ -115,7 +115,7 @@ export default function Home() {
           {services.map((service, index) => {
             const Icon = iconMap[service.icon];
             return (
-              <ScrollReveal key={service.id} direction="up" delay={index * 0.1}>
+              <ScrollReveal key={service.id} direction="up" delay={index * 0.1} className="h-full">
                 <Card className="h-full flex flex-col justify-between hover:border-indigo-500/20 group">
                   <div className="space-y-6">
                     <div className="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500/10 group-hover:border-indigo-500/30 transition-all duration-300">
@@ -226,7 +226,7 @@ export default function Home() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
-            <ScrollReveal key={testimonial.id} direction="up" delay={index * 0.1}>
+            <ScrollReveal key={testimonial.id} direction="up" delay={index * 0.1} className="h-full">
               <Card glow={index === 1} className="h-full flex flex-col justify-between hover:border-indigo-500/20">
                 <div className="space-y-5">
                   {/* Rating Stars */}
