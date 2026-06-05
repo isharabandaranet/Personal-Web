@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react';
 import Button from '../../components/ui/Button';
 import Card from '../../components/ui/Card';
 import ScrollReveal from '../../components/ui/ScrollReveal';
-import { allProjects } from '../../data/projectsData';
+import { projects } from '../../data/projectsData';
 
 export default function PortfolioClient() {
   const router = useRouter();
@@ -22,7 +22,7 @@ export default function PortfolioClient() {
   ];
 
   // Filtering logic
-  const filteredProjects = allProjects.filter(project => {
+  const filteredProjects = projects.filter(project => {
     if (activeFilter === 'all') return true;
     return project.filter === activeFilter;
   });
@@ -124,14 +124,14 @@ export default function PortfolioClient() {
                     
                     <div className="mt-6 pt-4 border-t border-zinc-800/60 flex items-center justify-between">
                       <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-                        {(project.type === 'coding' ? project.stack : project.tools).slice(0, 3).map((t) => (
+                        {(project.stack || project.tools || []).slice(0, 3).map((t) => (
                           <span key={t} className="text-[9px] bg-zinc-900 text-zinc-400 px-2 py-1 rounded-md border border-zinc-800">
                             {t}
                           </span>
                         ))}
-                        {(project.type === 'coding' ? project.stack : project.tools).length > 3 && (
+                        {(project.stack || project.tools || []).length > 3 && (
                           <span className="text-[9px] text-zinc-500 pt-1 font-medium">
-                            +{(project.type === 'coding' ? project.stack : project.tools).length - 3} more
+                            +{(project.stack || project.tools || []).length - 3} more
                           </span>
                         )}
                       </div>

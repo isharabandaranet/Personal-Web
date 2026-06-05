@@ -20,7 +20,7 @@ export default function Services() {
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-12 space-y-24 md:space-y-32">
-      
+
       {/* Header */}
       <section className="text-center max-w-3xl mx-auto space-y-4">
         <ScrollReveal direction="down">
@@ -83,10 +83,10 @@ export default function Services() {
 
         <div className="flex flex-wrap justify-center gap-8 lg:gap-10 max-w-7xl mx-auto px-4">
           {pricingPackages.map((pkg, index) => (
-            <ScrollReveal 
-              key={pkg.id} 
-              direction="up" 
-              delay={index * 0.1} 
+            <ScrollReveal
+              key={pkg.id}
+              direction="up"
+              delay={index * 0.1}
               className="relative flex flex-col w-full sm:w-[calc(50%-16px)] lg:flex-1 min-w-[300px] max-w-[390px] xl:max-w-[420px]"
             >
               {pkg.popular && (
@@ -94,16 +94,15 @@ export default function Services() {
                   Most Popular
                 </span>
               )}
-              <Card 
+              <Card
                 glow={false}
                 hoverEffect={true}
-                className={`flex flex-col justify-between relative h-full rounded-2xl p-8 md:p-10 transition-all duration-300 ${
-                  pkg.popular 
-                    ? 'border-2 border-indigo-600 bg-[#0e0e12] shadow-[0_0_50px_rgba(99,102,241,0.15)] overflow-visible z-10' 
+                className={`flex flex-col justify-between relative h-full rounded-2xl p-8 md:p-10 transition-all duration-300 ${pkg.popular
+                    ? 'border-2 border-indigo-600 bg-[#0e0e12] shadow-[0_0_50px_rgba(99,102,241,0.15)] overflow-visible z-10'
                     : 'border border-zinc-800/80 bg-[#0e0e12] hover:border-zinc-700/80'
-                }`}
+                  }`}
               >
-                
+
                 <div className="space-y-3">
                   <div className="min-h-[40px] flex items-start">
                     <h4 className="text-xl font-bold text-white tracking-tight leading-snug">{pkg.name}</h4>
@@ -126,14 +125,13 @@ export default function Services() {
                   </ul>
                 </div>
 
-                <Button 
-                  to="/contact" 
-                  variant={pkg.popular ? 'primary' : 'outline'} 
-                  className={`w-full mt-auto rounded-xl py-3 text-sm font-semibold tracking-wide transition-all duration-300 ${
-                    pkg.popular 
-                      ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35 border-0' 
+                <Button
+                  to="/contact"
+                  variant={pkg.popular ? 'primary' : 'outline'}
+                  className={`w-full mt-auto rounded-xl py-3 text-sm font-semibold tracking-wide transition-all duration-300 ${pkg.popular
+                      ? 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/20 hover:shadow-indigo-600/35 border-0'
                       : 'bg-[#121217] border border-zinc-800 hover:bg-zinc-800/80 text-zinc-300 hover:text-white'
-                  }`}
+                    }`}
                 >
                   {pkg.cta}
                 </Button>
@@ -156,7 +154,7 @@ export default function Services() {
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
           <Button to="/contact" variant="primary" size="lg" className="group">
-            Schedule a Discovery Call
+            Discuss Now
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </ScrollReveal>

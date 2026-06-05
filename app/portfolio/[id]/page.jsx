@@ -6,7 +6,8 @@ import { ArrowLeft, ArrowRight, ExternalLink, Check, Calendar, Tag } from 'lucid
 import Button from '../../../components/ui/Button';
 import Card from '../../../components/ui/Card';
 import ScrollReveal from '../../../components/ui/ScrollReveal';
-import { allProjects } from '../../../data/projectsData';
+import { projects } from '../../../data/projectsData';
+import ProjectGallery from '../../../components/ProjectGallery';
 
 // Custom inline Github icon
 const GithubIcon = (props) => (
@@ -18,8 +19,8 @@ const GithubIcon = (props) => (
 
 export async function generateMetadata({ params }) {
   const { id } = await params;
-  const project = allProjects.find((p) => p.id === id);
-  
+  const project = projects.find((p) => p.id === id);
+
   if (!project) {
     return {
       title: 'Project Not Found | Ishara Bandara',
@@ -35,13 +36,12 @@ export async function generateMetadata({ params }) {
 
 export default async function ProjectDetailPage({ params }) {
   const { id } = await params;
-  const project = allProjects.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === id);
 
   if (!project) {
     notFound();
   }
 
-  const isCoding = project.type === 'coding';
   const filterLabelMap = {
     web: 'Web Development',
     software: 'Software Systems',
@@ -49,14 +49,17 @@ export default async function ProjectDetailPage({ params }) {
   };
 
   const hasMultipleImages = project.gallery && project.gallery.length > 1;
+  const tags = project.stack || project.tools || [];
+  const tagsTitle = project.stack ? 'Tech Stack' : (project.tools ? 'Tools Used' : 'Technologies');
+  const projectType = project.stack ? 'Software & Code' : 'Branding & Visual';
 
   return (
     <div className="max-w-6xl mx-auto px-6 md:px-12 py-12 space-y-12 relative min-h-[85vh]">
-      
+
       {/* Back Link */}
       <div>
-        <Link 
-          href="/portfolio" 
+        <Link
+          href="/portfolio"
           className="inline-flex items-center text-sm font-semibold text-zinc-400 hover:text-indigo-400 transition-colors group cursor-pointer"
         >
           <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
@@ -69,7 +72,7 @@ export default async function ProjectDetailPage({ params }) {
         <div className="space-y-4">
           <div className="flex flex-wrap gap-2">
             <span className="text-[10px] bg-zinc-900 border border-zinc-800 text-indigo-400 px-3 py-1 rounded-full uppercase tracking-wider font-extrabold">
-              {project.year} Completed
+              {project.year}
             </span>
             <span className="text-[10px] bg-zinc-900 border border-zinc-800 text-zinc-450 px-3 py-1 rounded-full uppercase tracking-wider font-bold">
               {project.category}
@@ -82,54 +85,35 @@ export default async function ProjectDetailPage({ params }) {
             {project.shortDescription}
           </p>
         </div>
-        
-        {/* Action Buttons in Header */}
+
+        {/* Action Buttons in Header (Data-Driven) */}
         <div className="flex flex-wrap gap-3 shrink-0">
-          {isCoding ? (
-            <>
-              <Button href={project.github} variant="primary" className="group">
-                <GithubIcon className="w-4 h-4 mr-2" />
-                View Repository
-              </Button>
-              {project.liveUrl && (
-                <Button href={project.liveUrl} variant="outline">
-                  <ExternalLink className="w-4 h-4 mr-2" />
-                  Live Demo
-                </Button>
-              )}
-            </>
-          ) : (
+          {project.github && (
+            <Button href={project.github} variant="primary" className="group">
+              <GithubIcon className="w-4 h-4 mr-2" />
+              View Repository
+            </Button>
+          )}
+          {project.liveUrl && (
+            <Button href={project.liveUrl} variant="outline">
+              <ExternalLink className="w-4 h-4 mr-2" />
+              Live Demo
+            </Button>
+          )}
+          {!project.github && !project.liveUrl && (
             <Button to="/contact" variant="primary">
-              Inquire About Design
+              Inquire About Project
             </Button>
           )}
         </div>
       </section>
 
-      {/* Full-Width Photo Gallery */}
-      <ScrollReveal direction="up">
-        <div className={`grid gap-6 ${hasMultipleImages ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'}`}>
-          {project.gallery && project.gallery.map((imgUrl, index) => (
-            <div 
-              key={index} 
-              className="flex justify-center items-center group"
-            >
-              <img
-                src={imgUrl}
-                alt={`${project.title} Gallery Visual ${index + 1}`}
-                className="rounded-2xl border border-zinc-800 shadow-2xl shadow-indigo-500/5 max-w-full h-auto max-h-[65vh] object-contain group-hover:scale-[1.01] transition-transform duration-500"
-              />
-            </div>
-          ))}
-        </div>
-      </ScrollReveal>
-
       {/* Description & Metadata split */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-4">
-        
+
         {/* Left/Middle: About & Highlights */}
         <div className="lg:col-span-2 space-y-8">
-          
+
           {/* Detailed description */}
           <ScrollReveal direction="up" className="space-y-4">
             <h2 className="text-xl font-bold text-zinc-100 border-b border-zinc-800 pb-3">About the Project</h2>
@@ -161,7 +145,7 @@ export default async function ProjectDetailPage({ params }) {
         <div>
           <ScrollReveal direction="left" className="h-full">
             <Card className="border border-zinc-800/80 bg-zinc-900/40 p-6 md:p-8 space-y-6">
-              
+
               <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-200">
                 Project Information
               </h3>
@@ -180,22 +164,22 @@ export default async function ProjectDetailPage({ params }) {
                   <Calendar className="w-4 h-4 text-zinc-500 shrink-0" />
                   <div>
                     <span className="font-semibold text-zinc-500 block text-[10px] uppercase tracking-wider">Project Type</span>
-                    <span className="text-zinc-200">{isCoding ? 'Software / Code' : 'Branding / Visual'}</span>
+                    <span className="text-zinc-200">{projectType}</span>
                   </div>
                 </div>
               </div>
 
               <div className="border-t border-zinc-800/80 my-4" />
 
-              {/* Technologies / Tools list */}
+              {/* Technologies / Tools list (Data-Driven) */}
               <div className="space-y-3">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">
-                  {isCoding ? 'Tech Stack' : 'Tools Used'}
+                  {tagsTitle}
                 </h3>
                 <div className="flex flex-wrap gap-1.5">
-                  {(isCoding ? project.stack : project.tools).map((item) => (
-                    <span 
-                      key={item} 
+                  {tags.map((item) => (
+                    <span
+                      key={item}
                       className="text-xs bg-zinc-950 text-zinc-350 border border-zinc-850 px-3 py-1.5 rounded-lg font-medium"
                     >
                       {item}
@@ -204,13 +188,39 @@ export default async function ProjectDetailPage({ params }) {
                 </div>
               </div>
 
+              {/* Action buttons (Data-Driven) */}
+              <div className="flex flex-col gap-3 pt-4 border-t border-zinc-800/80">
+                {project.github && (
+                  <Button href={project.github} variant="primary" className="w-full justify-center group py-3">
+                    <GithubIcon className="w-4 h-4 mr-2" />
+                    View Repository
+                  </Button>
+                )}
+                {project.liveUrl && (
+                  <Button href={project.liveUrl} variant="outline" className="w-full justify-center py-3">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Live Demo
+                  </Button>
+                )}
+                {!project.github && !project.liveUrl && (
+                  <Button to="/contact" variant="primary" className="w-full justify-center py-3">
+                    Inquire About Project
+                  </Button>
+                )}
+              </div>
+
             </Card>
           </ScrollReveal>
         </div>
 
       </div>
 
-      {/* CTA Section */}
+      {/* Dynamic Project Photo Gallery (Placed at the bottom) */}
+      <ScrollReveal direction="up" delay={0.1}>
+        <ProjectGallery images={project.gallery} title={project.title} />
+      </ScrollReveal>
+
+      {/* Unified CTA Section (No Type Checks) */}
       <ScrollReveal direction="up" delay={0.1}>
         <section className="relative overflow-hidden rounded-2xl glass-panel p-8 md:p-16 border border-zinc-800 text-center space-y-6 max-w-4xl mx-auto pt-12 pb-12 mt-16">
           <div className="absolute -top-24 -left-24 w-48 h-48 bg-indigo-600/10 rounded-full blur-[80px] pointer-events-none" />
@@ -218,18 +228,15 @@ export default async function ProjectDetailPage({ params }) {
 
           <div className="space-y-4">
             <h3 className="text-2xl md:text-3xl font-bold text-gradient">
-              {isCoding ? 'Interested in building something similar?' : 'Love this brand design identity?'}
+              Interested in a similar project?
             </h3>
             <p className="text-zinc-400 text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-              {isCoding 
-                ? "If you have a concept or need a custom web platform or software system engineered, let's connect and design the perfect solution."
-                : "I can help you create a modern, high-impact brand design, social media assets, or marketing campaigns that make your business stand out."
-              }
+              If you have a concept, need a custom software system engineered, or want to elevate your brand design and marketing, let's connect and design the perfect solution.
             </p>
           </div>
           <div className="pt-2">
             <Button to="/contact" variant="primary" size="lg" className="group">
-              {isCoding ? 'Get in Touch' : 'Inquire About Similar Work'}
+              Let's Collaborate
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
