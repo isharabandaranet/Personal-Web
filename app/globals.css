@@ -64,25 +64,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-fill-color: transparent;
 }
 
-.glow-hover {
-  position: relative;
-  transition: all 0.3s ease;
-}
 
-.glow-hover::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  background: linear-gradient(90deg, #6366f1, #22d3ee);
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.glow-hover:hover::after {
-  opacity: 0.5;
-}
 
 /* Background grid animation */
 .bg-grid-pattern {

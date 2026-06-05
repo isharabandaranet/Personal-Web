@@ -1,8 +1,10 @@
+import { projects } from '../data/projectsData';
+
 export default async function sitemap() {
   const baseUrl = 'https://isharabandara.com';
 
   // Static routes
-  const routes = [
+  const staticRoutes = [
     '',
     '/services',
     '/portfolio',
@@ -15,5 +17,13 @@ export default async function sitemap() {
     priority: route === '' ? 1.0 : 0.8,
   }));
 
-  return routes;
+  // Dynamic portfolio project routes
+  const dynamicRoutes = projects.map((project) => ({
+    url: `${baseUrl}/portfolio/${project.id}`,
+    lastModified: new Date().toISOString().split('T')[0],
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...dynamicRoutes];
 }
