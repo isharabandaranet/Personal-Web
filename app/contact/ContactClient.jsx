@@ -82,31 +82,46 @@ export default function ContactClient() {
 
               <div className="space-y-6 pt-4 border-t border-zinc-800/50">
                 <div className="flex items-start space-x-3.5 group">
-                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0 group-hover:border-indigo-500/50 group-hover:text-indigo-300 transition-colors">
                     <Phone className="w-4.5 h-4.5" />
                   </div>
                   <div>
                     <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Phone</h4>
-                    <p className="text-sm text-zinc-300 font-medium mt-1 hover:text-indigo-400 transition-colors">
+                    <a href="tel:+94711839224" className="block text-sm text-zinc-300 font-medium mt-1 hover:text-indigo-400 transition-colors">
                       (+94) 71 18 39 224
-                    </p>
+                    </a>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3.5 group">
-                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0 group-hover:border-indigo-500/50 group-hover:text-indigo-300 transition-colors">
                     <Mail className="w-4.5 h-4.5" />
                   </div>
                   <div>
                     <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">Email</h4>
-                    <p className="text-sm text-zinc-300 font-medium mt-1 hover:text-indigo-400 transition-colors">
+                    <a href="mailto:hello@isharabandara.com" className="block text-sm text-zinc-300 font-medium mt-1 hover:text-indigo-400 transition-colors">
                       hello@isharabandara.com
-                    </p>
+                    </a>
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0">
+                <div className="flex items-start space-x-3.5 group">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0 group-hover:border-indigo-500/50 group-hover:text-indigo-300 transition-colors">
+                    <svg viewBox="0 0 24 24" className="w-4.5 h-4.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" />
+                      <path d="M9 10a0.5 0 0 0 1 0v-1a0.5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a0.5 0 0 0 0 -1h-1a0.5 0 0 0 0 1" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-zinc-500">WhatsApp</h4>
+                    <a href="https://wa.me/94711839224" target="_blank" rel="noopener noreferrer" className="block text-sm text-zinc-300 font-medium mt-1 hover:text-indigo-400 transition-colors">
+                      (+94) 71 18 39 224
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-3.5 group">
+                  <div className="w-10 h-10 rounded-lg bg-zinc-900 border border-zinc-800 flex items-center justify-center text-indigo-400 shrink-0 group-hover:border-indigo-500/50 group-hover:text-indigo-300 transition-colors">
                     <MapPin className="w-4.5 h-4.5" />
                   </div>
                   <div>
@@ -126,7 +141,7 @@ export default function ContactClient() {
         {/* Form Column */}
         <div className="lg:col-span-8">
           <ScrollReveal direction="left">
-            <Card className="border-zinc-800/80 p-8 md:p-10">
+            <Card glow hoverEffect={false} className="border-zinc-800/80 p-8 md:p-10">
               <h3 className="text-xl font-bold text-zinc-100 mb-6 tracking-tight">How Can I Help You?</h3>
 
               {status === 'success' ? (
@@ -153,7 +168,7 @@ export default function ContactClient() {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                      <label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                         Name
                       </label>
                       <input
@@ -164,12 +179,12 @@ export default function ContactClient() {
                         value={formData.name}
                         onChange={handleChange}
                         placeholder="Saman Kumara"
-                        className="w-full bg-zinc-950 border border-zinc-850 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-700 outline-none transition-all duration-300"
+                        className="w-full bg-zinc-900/40 border border-zinc-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none transition-all duration-300 backdrop-blur-xs"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                      <label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                         Email Address
                       </label>
                       <input
@@ -180,13 +195,13 @@ export default function ContactClient() {
                         value={formData.email}
                         onChange={handleChange}
                         placeholder="saman@example.com"
-                        className="w-full bg-zinc-950 border border-zinc-850 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-700 outline-none transition-all duration-300"
+                        className="w-full bg-zinc-900/40 border border-zinc-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none transition-all duration-300 backdrop-blur-xs"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                    <label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-zinc-400">
                       Tell me about your project
                     </label>
                     <textarea
@@ -197,7 +212,7 @@ export default function ContactClient() {
                       onChange={handleChange}
                       rows={6}
                       placeholder="Hello, I'd like to schedule a development consultation for my web application..."
-                      className="w-full bg-zinc-950 border border-zinc-850 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-700 outline-none transition-all duration-300 resize-none"
+                      className="w-full bg-zinc-900/40 border border-zinc-800 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 rounded-lg px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-500 outline-none transition-all duration-300 backdrop-blur-xs resize-none"
                     />
                   </div>
 
