@@ -1,8 +1,24 @@
 import React from 'react';
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ThemePreloader from '../components/ThemePreloader';
 import './globals.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const plusJakartaSans = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
 
 export const metadata = {
   metadataBase: new URL('https://isharabandara.com'),
@@ -45,7 +61,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var hasLoaded = sessionStorage.getItem('has_loaded_before');
+                  if (hasLoaded === 'true') {
+                    document.documentElement.classList.add('preloader-loaded');
+                  }
+                } catch (e) {}
+              })();
+            `
+          }}
+        />
+      </head>
       <body className="bg-zinc-950 text-zinc-50 antialiased selection:bg-indigo-500/30 selection:text-indigo-200 min-h-screen flex flex-col relative overflow-x-hidden bg-grid-pattern">
         {/* Page Load Preloader & Offline Connection Status Overlay */}
         <ThemePreloader />

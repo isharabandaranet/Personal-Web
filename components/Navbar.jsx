@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="w-8 h-8 rounded-lg overflow-hidden border border-zinc-800 flex items-center justify-center bg-zinc-900 group-hover:border-zinc-600 transition-all duration-300">
-              <Image src="/img/logo.png" alt="IB Logo" width={24} height={24} className="w-6 h-6 object-contain" />
+              <Image src="/img/logo.png" alt="IB Logo" width={24} height={24} className="w-6 h-6 object-contain" priority />
             </div>
             <span className="font-heading font-bold text-lg tracking-tight text-white group-hover:text-indigo-400 transition-colors duration-300">
               Ishara Bandara
