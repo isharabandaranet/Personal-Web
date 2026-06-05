@@ -6,8 +6,8 @@ import Card from '../../components/ui/Card';
 import ScrollReveal from '../../components/ui/ScrollReveal';
 
 export const metadata = {
-  title: 'Founder Profile',
-  description: 'Meet Ishara Bandara, Founder & Lead Creative Technologist. Read about his work timeline, tech stacks, and career insights.',
+  title: 'About',
+  description: 'Meet Ishara Bandara, and know more about his work timeline, tech stacks, and career insights.',
 };
 
 export default function Founder() {
