@@ -69,7 +69,7 @@ export default function Founder() {
               <div className="p-8 space-y-6">
                 <div>
                   <h2 className="text-2xl font-bold text-white tracking-tight">Ishara Bandara</h2>
-                  <p className="text-sm text-indigo-400 font-semibold mt-1 h-5 flex items-center">
+                  <p className="text-sm text-indigo-400 font-semibold mt-1 h-5 flex items-center whitespace-nowrap">
                     <Typewriter words={["Developer", "Designer", "Software Engineer", "Creative Specialist"]} />
                   </p>
                 </div>

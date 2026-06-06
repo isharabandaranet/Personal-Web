@@ -9,7 +9,7 @@ export default function Typewriter({
   delayBetweenWords = 1800 
 }) {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentText, setCurrentText] = useState('');
+  const [currentText, setCurrentText] = useState(words[0] || '');
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Typewriter({
   }, [currentText, isDeleting, currentWordIndex, words, typingSpeed, deletingSpeed, delayBetweenWords]);
 
   return (
-    <span className="inline-flex items-center">
+    <span className="inline-flex items-center whitespace-nowrap">
       <span>{currentText}</span>
       <span 
         className="w-[2px] h-[1em] bg-indigo-400 ml-1 animate-pulse" 
