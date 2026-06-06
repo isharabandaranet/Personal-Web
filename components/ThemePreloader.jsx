@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemePreloader() {
@@ -46,50 +45,21 @@ export default function ThemePreloader() {
 
           <div className="relative z-10 flex flex-col items-center max-w-sm px-6 text-center">
             
-            {/* Premium Multi-Ring & Logo Spinner */}
-            <div className="relative w-28 h-28 flex items-center justify-center">
+            {/* Premium Multi-Ring Spinner */}
+            <div className="relative w-24 h-24 flex items-center justify-center">
               {/* Outer fast-rotating gradient ring (CSS-only animation) */}
-              <div className="absolute w-28 h-28 rounded-full border-[3px] border-transparent border-t-indigo-500 border-r-cyan-500 filter drop-shadow-[0_0_8px_rgba(99,102,241,0.3)] animate-[spin_1.2s_linear_infinite]" />
+              <div className="absolute w-24 h-24 rounded-full border-[3px] border-transparent border-t-indigo-500 border-r-cyan-500 filter drop-shadow-[0_0_8px_rgba(99,102,241,0.3)] animate-[spin_1.2s_linear_infinite]" />
 
               {/* Inner slow-reverse-rotating dashed ring */}
-              <div className="absolute w-24 h-24 rounded-full border border-dashed border-zinc-800 animate-[spin_2.2s_linear_infinite_reverse]" />
+              <div className="absolute w-20 h-20 rounded-full border border-dashed border-zinc-800 animate-[spin_2.2s_linear_infinite_reverse]" />
 
-              {/* Center Logo Container with gentle pulse */}
-              <div className="w-16 h-16 rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/90 flex items-center justify-center p-3.5 shadow-xl relative z-10 animate-pulse">
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 to-cyan-500/5 opacity-50" />
-                <Image 
-                  src="/img/logo.png" 
-                  alt="Ishara Bandara Logo" 
-                  width={40} 
-                  height={40} 
-                  className="w-10 h-10 object-contain relative z-20"
-                  priority
-                />
-              </div>
+              {/* Center subtle glowing dot */}
+              <div className="w-4 h-4 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_12px_rgba(99,102,241,0.6)]" />
 
               {/* Subtle ambient light dot rotating around the spinner */}
               <div className="absolute w-full h-full animate-[spin_2.8s_linear_infinite]">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400 blur-[1px] shadow-[0_0_6px_#22d3ee]" />
               </div>
-            </div>
-
-            {/* Title & Brand Name (CSS fade-in animation) */}
-            <h2 className="mt-8 font-heading font-bold text-xl tracking-tight text-white animate-preloader-fade-in">
-              Ishara Bandara
-            </h2>
-            
-            <p className="text-xs text-zinc-400 font-medium tracking-widest uppercase mt-1 animate-preloader-fade-in-delayed">
-              Creative Software Solutions
-            </p>
-
-            {/* Bouncing Dots Loading Indicator */}
-            <div className="flex gap-2 mt-5 justify-center">
-              {[0, 1, 2].map((idx) => (
-                <span
-                  key={idx}
-                  className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-cyan-400 shadow-[0_0_4px_rgba(99,102,241,0.4)] animate-preloader-bounce-${idx}`}
-                />
-              ))}
             </div>
             
           </div>
