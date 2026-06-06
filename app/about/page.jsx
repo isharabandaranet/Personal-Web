@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function Founder() {
   const skills = {
-    engineering: ["JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "Node.js", "Python (Flask)", "MySQL / PHP"],
+    engineering: ["JavaScript (ES6+)", "React.js", "Next.js", "Tailwind CSS", "Python (Flask)", "MySQL / PHP"],
     creative: ["User Interface (UI) Design", "Brand Identity & Logos", "Vector Illustration", "Video Editing", "Social Media Marketing", "Canva / Figma"],
     general: ["Teamwork", "Leadership", "Communication Skills", "Problem Solving", "Collaboration"]
   };
@@ -68,7 +68,7 @@ export default function Founder() {
               <div className="p-8 space-y-6">
                 <div>
                   <h2 className="text-2xl font-bold text-white tracking-tight">Ishara Bandara</h2>
-                  <p className="text-sm text-indigo-400 font-semibold mt-1">Founder & Creative Technologist</p>
+                  <p className="text-sm text-indigo-400 font-semibold mt-1">Developer | Designer</p>
                 </div>
 
                 <div className="space-y-4 pt-4 border-t border-zinc-800/60">
