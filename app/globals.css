@@ -96,15 +96,6 @@ h1, h2, h3, h4, h5, h6 {
   animation-play-state: paused;
 }
 
-/* Hide preloader immediately if it has loaded before in this session */
-.preloader-loaded #theme-preloader {
-  display: none !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: none !important;
-  animation: none !important;
-}
-
 /* Preloader CSS Animations */
 @keyframes preloader-bounce {
   0%, 100% {

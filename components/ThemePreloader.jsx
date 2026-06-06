@@ -4,27 +4,43 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ThemePreloader() {
+  const [isLoaded, setIsLoaded] = useState(false);
   const [showPreloader, setShowPreloader] = useState(true);
 
+  // Monitor page loading status
   useEffect(() => {
-    // Check if we are running in the browser and if loaded in this session
     if (typeof window !== 'undefined') {
-      const hasLoadedBefore = sessionStorage.getItem('has_loaded_before');
-
-      if (hasLoadedBefore === 'true') {
-        // Return visitor: hide preloader immediately (so no layout delay)
-        setShowPreloader(false);
+      if (document.readyState === 'complete') {
+        setIsLoaded(true);
       } else {
-        // First load of the session: show for 1.0s, then reveal the site
-        const timer = setTimeout(() => {
-          sessionStorage.setItem('has_loaded_before', 'true');
-          setShowPreloader(false);
-        }, 1000);
-
-        return () => clearTimeout(timer);
+        const handleLoad = () => setIsLoaded(true);
+        window.addEventListener('load', handleLoad);
+        return () => window.removeEventListener('load', handleLoad);
       }
     }
   }, []);
+
+  // Handle completion and preloader fade-out
+  useEffect(() => {
+    if (isLoaded) {
+      const timeout = setTimeout(() => {
+        setShowPreloader(false);
+      }, 300); // 300ms delay to make transition smooth
+      return () => clearTimeout(timeout);
+    }
+  }, [isLoaded]);
+
+  // Lock scroll during preloader display
+  useEffect(() => {
+    if (showPreloader) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [showPreloader]);
 
   return (
     <AnimatePresence>
@@ -59,3 +75,4 @@ export default function ThemePreloader() {
     </AnimatePresence>
   );
 }
+
