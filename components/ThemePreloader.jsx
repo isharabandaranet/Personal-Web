@@ -39,27 +39,18 @@ export default function ThemePreloader() {
           }}
           className="fixed inset-0 z-[9999] bg-zinc-950 flex flex-col items-center justify-center overflow-hidden bg-grid-pattern"
         >
-          {/* Ambient Background Glows */}
-          <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none animate-pulse" />
-          <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] bg-cyan-600/5 rounded-full blur-[100px] pointer-events-none animate-pulse" />
+          {/* Subtle Ambient Background Glow */}
+          <div className="absolute w-[300px] h-[300px] bg-zinc-800/10 rounded-full blur-[80px] pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center max-w-sm px-6 text-center">
             
-            {/* Premium Multi-Ring Spinner */}
-            <div className="relative w-24 h-24 flex items-center justify-center">
-              {/* Outer fast-rotating gradient ring (CSS-only animation) */}
-              <div className="absolute w-24 h-24 rounded-full border-[3px] border-transparent border-t-indigo-500 border-r-cyan-500 filter drop-shadow-[0_0_8px_rgba(99,102,241,0.3)] animate-[spin_1.2s_linear_infinite]" />
-
-              {/* Inner slow-reverse-rotating dashed ring */}
-              <div className="absolute w-20 h-20 rounded-full border border-dashed border-zinc-800 animate-[spin_2.2s_linear_infinite_reverse]" />
-
-              {/* Center subtle glowing dot */}
-              <div className="w-4 h-4 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_12px_rgba(99,102,241,0.6)]" />
-
-              {/* Subtle ambient light dot rotating around the spinner */}
-              <div className="absolute w-full h-full animate-[spin_2.8s_linear_infinite]">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-cyan-400 blur-[1px] shadow-[0_0_6px_#22d3ee]" />
-              </div>
+            {/* Minimalist Elegant Spinner */}
+            <div className="relative w-10 h-10 flex items-center justify-center">
+              {/* Spinning Ring */}
+              <div className="absolute w-10 h-10 rounded-full border-[1.5px] border-zinc-800 border-t-zinc-300 animate-[spin_0.8s_linear_infinite]" />
+              
+              {/* Inner subtle pulsing dot */}
+              <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-pulse" />
             </div>
             
           </div>
