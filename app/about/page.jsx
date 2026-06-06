@@ -70,7 +70,7 @@ export default function Founder() {
                 <div>
                   <h2 className="text-2xl font-bold text-white tracking-tight">Ishara Bandara</h2>
                   <p className="text-sm text-indigo-400 font-semibold mt-1 h-5 flex items-center whitespace-nowrap">
-                    <Typewriter words={["Developer", "Designer", "Software Engineer", "Creative Specialist"]} />
+                    <Typewriter words={["Developer", "Designer", "Computer Science Undergraduate"]} />
                   </p>
                 </div>
 
