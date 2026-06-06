@@ -23,13 +23,13 @@ export async function generateMetadata({ params }) {
 
   if (!project) {
     return {
-      title: 'Project Not Found | Ishara Bandara',
+      title: 'Project Not Found',
       description: 'The requested project could not be found.',
     };
   }
 
   return {
-    title: `${project.title} | Ishara Bandara`,
+    title: project.title,
     description: project.shortDescription,
   };
 }

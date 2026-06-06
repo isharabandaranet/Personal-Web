@@ -52,7 +52,7 @@ export default function ContactClient() {
       {/* Title */}
       <section className="text-center max-w-2xl mx-auto space-y-4">
         <ScrollReveal direction="down">
-          <h2 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Contact Me</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-indigo-400">Contact</h2>
         </ScrollReveal>
         <ScrollReveal direction="up" delay={0.1}>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight text-gradient">
