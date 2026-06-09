@@ -219,7 +219,7 @@ export const projects = [
     highlights: [
       "Custom brand logo blending shopping cart and bag",
       "Designed full suite of box design, packaging, and stationery",
-      "Eye caching color branding",
+      "Eye catching colors",
       "Created using Adobe Photoshop and Adobe Illustrator"
     ]
   }
