@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
@@ -13,6 +13,25 @@ import { projects } from '../../data/projectsData';
 export default function PortfolioClient() {
   const router = useRouter();
   const [activeFilter, setActiveFilter] = useState('all'); // 'all' | 'web' | 'software' | 'branding'
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tab = params.get('filter') || params.get('tab') || params.get('category') || window.location.hash.replace('#', '');
+      if (tab) {
+        const normalizedTab = tab.toLowerCase().trim();
+        if (['branding', 'marketing', 'branding-marketing', 'branding_marketing'].includes(normalizedTab)) {
+          setActiveFilter('branding');
+        } else if (['web', 'web-development', 'web_development', 'webdev'].includes(normalizedTab)) {
+          setActiveFilter('web');
+        } else if (['software', 'software-systems', 'software_systems'].includes(normalizedTab)) {
+          setActiveFilter('software');
+        } else if (normalizedTab === 'all') {
+          setActiveFilter('all');
+        }
+      }
+    }
+  }, []);
 
   const filters = [
     { label: 'All', value: 'all' },
