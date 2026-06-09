@@ -154,6 +154,7 @@ export const projects = [
       "/img/portfolio/poster-designs/3.png",
       "/img/portfolio/poster-designs/4.png",
       "/img/portfolio/poster-designs/5.jpg",
+      "/img/portfolio/poster-designs/buddabiwandana.png",
       "/img/portfolio/poster-designs/Paragon.png",
       "/img/portfolio/poster-designs/6.png",
       "/img/portfolio/poster-designs/ranjith.png",
