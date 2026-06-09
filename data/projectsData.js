@@ -177,7 +177,7 @@ export const projects = [
     year: "2023 - 2024",
     type: "design",
     tools: ["Photoshop", "Illustrator"],
-    image: "/img/portfolio/logo-designs/8.jpg",
+    image: "/img/portfolio/logo-designs/12.png",
     gallery: [
       "/img/portfolio/logo-designs/1.png",
       "/img/portfolio/logo-designs/2.png",
