@@ -154,8 +154,11 @@ export const projects = [
       "/img/portfolio/poster-designs/3.png",
       "/img/portfolio/poster-designs/4.png",
       "/img/portfolio/poster-designs/5.jpg",
+      "/img/portfolio/poster-designs/Paragon.png",
       "/img/portfolio/poster-designs/6.png",
-      "/img/portfolio/poster-designs/7.png"
+      "/img/portfolio/poster-designs/ranjith.png",
+      "/img/portfolio/poster-designs/7.png",
+      "/img/portfolio/poster-designs/Silananda.png"
     ],
     shortDescription: "A collection of tuition marketing and promotional posters.",
     description: "A compilation of promotional and marketing posters created primarily for the educational tuition field to promote A/L classes, schedules, and lecturer campaigns.",
@@ -190,6 +193,32 @@ export const projects = [
       "Diverse branding marks exploring various visual concepts",
       "Focus on vector art, clean layout, and modern aesthetics",
       "Designed as a hobby for personal skill improvement",
+      "Created using Adobe Photoshop and Adobe Illustrator"
+    ]
+  },
+  {
+    id: "Sell-Sigma",
+    title: "Sell Sigma Branding",
+    category: "Branding",
+    filter: "branding",
+    year: "2024",
+    type: "design",
+    tools: ["Photoshop", "Illustrator"],
+    image: "/img/portfolio/sell-sigma/logo-1.png",
+    gallery: [
+      "/img/portfolio/sell-sigma/logo-1.png",
+      "/img/portfolio/sell-sigma/logo-2.png",
+      "/img/portfolio/sell-sigma/logo-3.png",
+      "/img/portfolio/sell-sigma/pp-logo-colour-box.png",
+      "/img/portfolio/sell-sigma/pp-logo-colour-horizontal.png",
+      "/img/portfolio/sell-sigma/logo-4.png"
+    ],
+    shortDescription: "A unique brand identity design for a Sell Sigma",
+    description: "A unique visual branding identity. The design features a custom logo mark that creatively combines shopping bag and shopping cart icon to establish a clean and modern brand identity.",
+    highlights: [
+      "Custom brand logo blending shopping cart and bag",
+      "Designed full suite of box design, packaging, and stationery",
+      "Eye caching color branding",
       "Created using Adobe Photoshop and Adobe Illustrator"
     ]
   }
