@@ -53,12 +53,20 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'glass-panel bg-zinc-950/80 shadow-lg shadow-zinc-950/20 py-4'
-          : 'bg-transparent py-6 border-b border-transparent'
-          }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'py-4' : 'py-6'
+        }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        {/* Scrolled background layer separate from content to prevent nested backdrop-filter conflict */}
+        <div
+          className={`absolute inset-0 z-0 transition-all duration-300 border-b ${
+            isScrolled
+              ? 'frosted-glass border-zinc-800/50 shadow-lg shadow-zinc-950/20'
+              : 'bg-transparent border-transparent'
+          }`}
+        />
+
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between relative z-10">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3 group">
             <div className="w-8 h-8 rounded-lg overflow-hidden border border-zinc-800 flex items-center justify-center bg-zinc-900 group-hover:border-zinc-600 transition-all duration-300">
@@ -94,15 +102,15 @@ export default function Navbar() {
                       <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-indigo-400' : ''}`} />
                     </button>
 
-                    {/* Dropdown Menu Panel */}
+                    {/* Dropdown Menu Panel (Styled with identical frosted glass effect) */}
                     <AnimatePresence>
                       {isDropdownOpen && (
                         <motion.div
-                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                          animate={{ opacity: 1, y: 0, scale: 1 }}
-                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute left-1/2 -translate-x-1/2 mt-1 w-64 glass-panel bg-zinc-950/95 border border-zinc-800/80 shadow-2xl rounded-xl p-2 z-50"
+                          className="absolute left-1/2 -translate-x-1/2 mt-1 w-64 frosted-glass border border-zinc-800/80 shadow-2xl rounded-xl p-2 z-50"
                         >
                           <div className="space-y-1">
                             {link.dropdown.map((sublink) => {
@@ -164,7 +172,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Styled with identical frosted glass effect) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -172,7 +180,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[72px] z-40 md:hidden glass-panel bg-zinc-950/95 border-b border-zinc-800/80 px-6 py-6 flex flex-col space-y-2 overflow-y-auto max-h-[calc(100vh-80px)]"
+            className="fixed inset-x-0 top-[72px] z-40 md:hidden frosted-glass border-b border-zinc-800/80 px-6 py-6 flex flex-col space-y-2 overflow-y-auto max-h-[calc(100vh-80px)]"
           >
             {navLinks.map((link) => {
               if (link.dropdown) {
