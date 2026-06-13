@@ -59,7 +59,7 @@ export default function Navbar() {
       >
         {/* Scrolled background layer separate from content to prevent nested backdrop-filter conflict */}
         <div
-          className={`absolute inset-0 z-0 transition-all duration-300 border-b ${
+          className={`absolute inset-0 z-0 transition-colors duration-300 border-b ${
             isScrolled
               ? 'frosted-glass border-zinc-800/50 shadow-lg shadow-zinc-950/20'
               : 'bg-transparent border-transparent'
