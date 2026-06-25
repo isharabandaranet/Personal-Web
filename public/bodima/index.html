@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="si">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bodima Accounts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            /* Premium Dark Theme Colors */
+            --bg-body: #0F172A;
+            --bg-card: #1E293B;
+            --text-main: #F8FAFC;
+            --text-muted: #94A3B8;
+            --primary: #818CF8;
+            --primary-bg: rgba(99, 102, 241, 0.1);
+            --success: #34D399;
+            --danger: #F87171;
+            --border: #334155;
+            --nav-bg: rgba(15, 23, 42, 0.85);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            padding-bottom: 100px;
+            /* Space for bottom nav */
+        }
+
+        /* Modern Dark Header */
+        header {
+            background-color: var(--bg-body);
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-titles h1 {
+            font-size: 1.4rem;
+            margin-bottom: 2px;
+            font-weight: 700;
+            color: var(--text-main);
+            letter-spacing: 0.5px;
+        }
+
+        .header-titles p {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Fixed Refresh Button */
+        .refresh-btn {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .refresh-btn:hover,
+        .refresh-btn:active {
+            background: var(--primary-bg);
+            color: var(--primary);
+            border-color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 25px 15px;
+        }
+
+        /* Dark Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 25px 15px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+        }
+
+        .expense-card::after {
+            background: var(--danger);
+        }
+
+        .balance-card::after {
+            background: var(--success);
+        }
+
+        .stat-card h3 {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .stat-card .value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .expense-card .value {
+            color: var(--danger);
+            text-shadow: 0 0 10px rgba(248, 113, 113, 0.2);
+        }
+
+        .balance-card .value {
+            color: var(--success);
+            text-shadow: 0 0 10px rgba(52, 211, 153, 0.2);
+        }
+
+        /* Content Views */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h2.section-title {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-weight: 600;
+            padding-left: 5px;
+            border-left: 4px solid var(--primary);
+            padding-left: 10px;
+            border-radius: 2px;
+        }
+
+        /* Info Box */
+        .info-box {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .info-icon {
+            background: var(--primary-bg);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px auto;
+        }
+
+        .info-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        /* Dark Tables */
+        .table-container {
+            background: var(--bg-card);
+            border-radius: 20px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        th {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-muted);
+            padding: 15px;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+            border-bottom: 1px solid var(--border);
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-main);
+            white-space: nowrap;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Bottom Nav Glassmorphism */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 5px 20px 5px;
+            border-top: 1px solid var(--border);
+            z-index: 100;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.75rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 12px;
+        }
+
+        .nav-item svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 4px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+            transition: transform 0.2s;
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: var(--primary-bg);
+        }
+
+        .nav-item.active svg {
+            transform: translateY(-2px);
+            stroke-width: 2.5;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-titles">
+            <h1>බෝඩිමේ වියදම්</h1>
+            <p>Live Accounts</p>
+        </div>
+        <!-- Refresh Button Top Right -->
+        <button class="refresh-btn" onclick="location.reload()" aria-label="Refresh">
+            <svg style="width:20px;height:20px;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                </path>
+            </svg>
+        </button>
+    </header>
+
+    <div class="container">
+        <!-- Dashboard View -->
+        <div id="dashboard" class="tab-content active">
+            <div class="summary-grid">
+                <div class="stat-card expense-card">
+                    <h3>මුළු වියදම</h3>
+                    <div class="value" id="dashTotalExpenses">Rs 0.00</div>
+                </div>
+                <div class="stat-card balance-card">
+                    <h3>වත්මන් ශේෂය</h3>
+                    <div class="value" id="dashBalance">Rs 0.00</div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="info-icon">
+                    <svg style="width:30px;height:30px;color:var(--primary);" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                        </path>
+                    </svg>
+                </div>
+                <p class="info-text">
+                    සවිස්තරාත්මක වාර්තා බැලීම සඳහා පහළින් ඇති මෙනුව (Menu) භාවිතා කරන්න. 👇
+                </p>
+            </div>
+            <div id="dashboardTableContainer" style="display:none;"></div>
+        </div>
+
+        <!-- Income View -->
+        <div id="income" class="tab-content">
+            <h2 class="section-title">ආදායම් වාර්තා (Income)</h2>
+            <div class="table-container" id="incomeTableContainer">
+                <div class="loading-spinner">Loading Data...</div>
+            </div>
+        </div>
+
+        <!-- Expenses View -->
+        <div id="expenses" class="tab-content">
+            <h2 class="section-title">වියදම් වාර්තා (Expenses)</h2>
+            <div class="table-container" id="expensesTableContainer">
+                <div class="loading-spinner">Loading Data...</div>
+            </div>
+        </div>
+
+        <!-- Loans View -->
+        <div id="loans" class="tab-content">
+            <h2 class="section-title">ණය වාර්තා (Loans)</h2>
+            <div class="table-container" id="loansTableContainer">
+                <div class="loading-spinner">Loading Data...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('dashboard', this)">
+            <svg viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z">
+                </path>
+            </svg>
+            <span>Home</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('income', this)">
+            <svg viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+            </svg>
+            <span>Income</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('expenses', this)">
+            <svg viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"></path>
+            </svg>
+            <span>Expenses</span>
+        </div>
+        <div class="nav-item" onclick="switchTab('loans', this)">
+            <svg viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                </path>
+            </svg>
+            <span>Loans</span>
+        </div>
+    </nav>
+
+    <script>
+        const sheetId = '1k-C2R4_NYMilfeecrdQfryv070eOTzG01jY56vOjGMY';
+
+        const sheets = {
+            dashboard: { name: 'Dashboard', container: 'dashboardTableContainer' },
+            income: { name: 'Income', container: 'incomeTableContainer' },
+            expenses: { name: 'Expenses', container: 'expensesTableContainer' },
+            loans: { name: 'Loans', container: 'loansTableContainer' }
+        };
+
+        function switchTab(tabId, element) {
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            element.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function fetchSheetData(sheetKey) {
+            const sheetName = sheets[sheetKey].name;
+            const containerId = sheets[sheetKey].container;
+            const url = `https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?sheet=${encodeURIComponent(sheetName)}&tqx=out:json`;
+
+            fetch(url)
+                .then(res => res.text())
+                .then(text => {
+                    const jsonStart = text.indexOf('{');
+                    const jsonEnd = text.lastIndexOf('}') + 1;
+                    const jsonString = text.substring(jsonStart, jsonEnd);
+                    const data = JSON.parse(jsonString);
+
+                    renderTable(data.table, containerId, sheetKey);
+                })
+                .catch(err => {
+                    console.error(`Error loading sheet: ${sheetName}`, err);
+                    document.getElementById(containerId).innerHTML = '<div style="padding:30px; text-align:center; color:var(--danger); font-weight:500;">දත්ත ලබාගැනීමේ දෝෂයකි.</div>';
+                });
+        }
+
+        function renderTable(tableData, containerId, sheetKey) {
+            if (!tableData || !tableData.rows || tableData.rows.length === 0) {
+                document.getElementById(containerId).innerHTML = '<div style="padding:30px; text-align:center; color:var(--text-muted);">දත්ත කිසිවක් නොමැත.</div>';
+                return;
+            }
+
+            let html = '<table><thead><tr>';
+            tableData.cols.forEach(col => { html += `<th>${col.label || ''}</th>`; });
+            html += '</tr></thead><tbody>';
+
+            tableData.rows.forEach(row => {
+                html += '<tr>';
+                row.c.forEach(cell => {
+                    let cellValue = '';
+                    if (cell) cellValue = cell.f ? cell.f : (cell.v !== null ? cell.v : '');
+                    html += `<td>${cellValue}</td>`;
+                });
+                html += '</tr>';
+            });
+
+            html += '</tbody></table>';
+            document.getElementById(containerId).innerHTML = html;
+
+            if (sheetKey === 'dashboard') {
+                try {
+                    let expensesColIdx = -1;
+                    let balanceColIdx = -1;
+
+                    tableData.cols.forEach((col, idx) => {
+                        if (col && col.label) {
+                            let label = col.label.toLowerCase();
+                            if (label.includes('total expenses') || label.includes('expenses') || label.includes('මුළු වියදම')) {
+                                expensesColIdx = idx;
+                            }
+                            if (label.includes('balance') || label.includes('ශේෂය')) {
+                                balanceColIdx = idx;
+                            }
+                        }
+                    });
+
+                    if (tableData.rows.length > 0) {
+                        let firstRow = tableData.rows[0].c;
+
+                        if (expensesColIdx !== -1 && firstRow[expensesColIdx]) {
+                            let expVal = firstRow[expensesColIdx].f || firstRow[expensesColIdx].v || 'Rs 0.00';
+                            document.getElementById('dashTotalExpenses').innerText = expVal;
+                        }
+
+                        if (balanceColIdx !== -1 && firstRow[balanceColIdx]) {
+                            let balVal = firstRow[balanceColIdx].f || firstRow[balanceColIdx].v || 'Rs 0.00';
+                            document.getElementById('dashBalance').innerText = balVal;
+                        }
+                    }
+                } catch (e) { console.log("Error:", e); }
+            }
+        }
+
+        window.onload = function () {
+            Object.keys(sheets).forEach(key => { fetchSheetData(key); });
+        };
+    </script>
+
+</body>
+
+</html>
