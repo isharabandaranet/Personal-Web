@@ -3,6 +3,7 @@ export default function robots() {
     rules: {
       userAgent: '*',
       allow: '/',
+      disallow: '/bodima/',
     },
     sitemap: 'https://isharabandara.com/sitemap.xml',
   };
