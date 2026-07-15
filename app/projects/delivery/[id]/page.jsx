@@ -231,10 +231,10 @@ export default function DynamicClientDeliveryPage() {
         </div>
       )}
 
-      <div className="min-h-screen flex flex-col items-center justify-start px-4 py-16 relative overflow-hidden">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-zinc-800/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="min-h-screen flex flex-col items-center justify-start px-6 pt-28 pb-16 relative overflow-hidden">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-800/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-        <div className="w-full max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="glass-panel p-8 rounded-3xl shadow-xl relative overflow-hidden group">
@@ -273,15 +273,6 @@ export default function DynamicClientDeliveryPage() {
               })()}
             </div>
 
-            <div className="glass-panel p-6 rounded-2xl flex items-center justify-between shadow-lg">
-              <div>
-                <h3 className="text-zinc-200 font-medium mb-1">Need Assistance?</h3>
-                <p className="text-sm text-zinc-500">Reach out if you have any feedback or issues.</p>
-              </div>
-              <a href="/contact" className="flex items-center gap-2 bg-zinc-800 hover:bg-zinc-700 text-zinc-200 px-4 py-2 rounded-xl transition-colors text-sm font-medium">
-                <Mail className="w-4 h-4" />
-                Contact Me
-              </a>
             </div>
           </div>
 
@@ -374,16 +365,16 @@ export default function DynamicClientDeliveryPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
-                    <div className="text-left flex-1 min-w-0 pr-4">
-                      <h1 className="text-2xl md:text-3xl font-semibold text-zinc-50 tracking-tight mb-2">
+                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10 bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800/50">
+                    <div className="text-left flex-1 min-w-0">
+                      <h1 className="text-2xl font-semibold text-zinc-50 tracking-tight mb-2">
                         Project Files Unlocked
                       </h1>
-                      <p className="text-zinc-400 text-sm md:text-base leading-relaxed break-words">
-                        Ready for download. Linked securely to {user?.email}.
+                      <p className="text-zinc-400 text-sm leading-relaxed">
+                        Ready for download. Linked securely to <span className="text-zinc-300 font-medium">{user?.email}</span>.
                       </p>
                     </div>
-                    <Link href="/client/dashboard" className="px-5 py-2.5 bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-200 text-sm font-medium rounded-xl transition-colors shrink-0 flex items-center gap-2">
+                    <Link href="/client/dashboard" className="px-6 py-3 bg-zinc-100 hover:bg-white text-zinc-950 text-sm font-semibold rounded-xl transition-all shadow-lg shrink-0 flex items-center gap-2">
                       View Dashboard
                     </Link>
                   </div>
