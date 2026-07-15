@@ -37,6 +37,16 @@ export default function DynamicClientDeliveryPage() {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
       
+      if (currentUser) {
+        const nameParts = (currentUser.displayName || "").split(" ");
+        setCustomer(prev => ({
+          ...prev,
+          firstName: nameParts[0] || prev.firstName,
+          lastName: nameParts.slice(1).join(" ") || prev.lastName,
+          email: currentUser.email || prev.email
+        }));
+      }
+
       if (!id) return;
       const data = await getProjectById(id);
       setProject(data);
@@ -117,8 +127,12 @@ export default function DynamicClientDeliveryPage() {
   const orderId = `PRJ-${id}`;
 
   const handlePayment = async () => {
-    if (!customer.firstName || !customer.email || !customer.phone) {
-      showToast("Please fill in your first name, email, and phone number.", "error");
+    if (!customer.firstName || !customer.email) {
+      showToast("Could not retrieve your account details. Please sign in again.", "error");
+      return;
+    }
+    if (!customer.phone) {
+      showToast("Please provide your phone number for the payment gateway.", "error");
       return;
     }
 
@@ -328,13 +342,17 @@ export default function DynamicClientDeliveryPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-4 mb-8">
-                    <div className="grid grid-cols-2 gap-3">
-                      <input type="text" placeholder="First Name" value={customer.firstName} onChange={e => setCustomer({...customer, firstName: e.target.value})} className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 transition-colors placeholder:text-zinc-600" />
-                      <input type="text" placeholder="Last Name" value={customer.lastName} onChange={e => setCustomer({...customer, lastName: e.target.value})} className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 transition-colors placeholder:text-zinc-600" />
+                  <div className="bg-zinc-900/30 rounded-2xl p-5 mb-6 border border-zinc-800/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                    <div>
+                      <p className="text-zinc-500 text-xs uppercase tracking-wider font-semibold mb-1">Signed in as</p>
+                      <p className="text-zinc-200 font-medium text-sm">{customer.email}</p>
                     </div>
-                    <input type="email" placeholder="Email Address" value={customer.email} onChange={e => setCustomer({...customer, email: e.target.value})} className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 transition-colors placeholder:text-zinc-600" />
-                    <input type="tel" placeholder="Phone Number" value={customer.phone} onChange={e => setCustomer({...customer, phone: e.target.value})} className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-200 focus:outline-none focus:border-zinc-600 transition-colors placeholder:text-zinc-600" />
+                  </div>
+
+                  <div className="mb-8">
+                    <label className="block text-zinc-400 text-sm font-medium mb-2">Phone Number <span className="text-red-400">*</span></label>
+                    <input type="tel" placeholder="e.g. 0712345678" value={customer.phone} onChange={e => setCustomer({...customer, phone: e.target.value})} className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl px-4 py-3.5 text-sm text-zinc-200 focus:outline-none focus:border-indigo-500/50 transition-colors placeholder:text-zinc-600" />
+                    <p className="text-xs text-zinc-600 mt-2">Required by the PayHere payment gateway.</p>
                   </div>
 
                   <button onClick={handlePayment} disabled={isProcessing} className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-zinc-100 hover:bg-white text-zinc-950 font-semibold transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_4px_20px_rgba(255,255,255,0.1)] mb-6">
