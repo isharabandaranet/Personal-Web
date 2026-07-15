@@ -252,7 +252,7 @@ export default function DynamicClientDeliveryPage() {
                 if (pImage && pImage.includes("drive.google.com/file/d/")) {
                   const match = pImage.match(/\/d\/([a-zA-Z0-9_-]+)/);
                   if (match && match[1]) {
-                    pImage = `https://drive.google.com/uc?export=view&id=${match[1]}`;
+                    pImage = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
                   }
                 }
                 return pImage ? (

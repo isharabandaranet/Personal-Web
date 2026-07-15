@@ -19,7 +19,9 @@ export async function getProjectById(id) {
       price: data.price,
       previewImage: data.previewImage,
       downloads: data.downloads, // Downloads will be unlocked on client upon success
-      couponCode: data.couponCode // In a real high-security app, this should only be verified on the server, but for our simple lock, we can return it or verify it via API.
+      couponCode: data.couponCode, // In a real high-security app, this should only be verified on the server, but for our simple lock, we can return it or verify it via API.
+      paymentStatus: data.paymentStatus,
+      unlockedBy: data.unlockedBy || []
     };
   } catch (error) {
     console.error("Error fetching project:", error);
