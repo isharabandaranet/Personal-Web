@@ -363,16 +363,15 @@ export default function DynamicClientDeliveryPage() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-10 bg-zinc-900/50 p-6 rounded-2xl border border-zinc-800/50">
-                    <div className="text-left flex-1 min-w-0">
-                      <h1 className="text-2xl font-semibold text-zinc-50 tracking-tight mb-2">
-                        Project Files Unlocked
-                      </h1>
-                      <p className="text-zinc-400 text-sm leading-relaxed">
-                        Ready for download. Linked securely to <span className="text-zinc-300 font-medium">{user?.email}</span>.
-                      </p>
-                    </div>
-                    <Link href="/client/dashboard" className="px-6 py-3 bg-zinc-100 hover:bg-white text-zinc-950 text-sm font-semibold rounded-xl transition-all shadow-lg shrink-0 flex items-center gap-2">
+                  <div className="text-center mb-10">
+                    <h1 className="text-2xl md:text-3xl font-semibold text-zinc-50 tracking-tight mb-3">
+                      Project Files Unlocked
+                    </h1>
+                    <p className="text-zinc-400 text-sm leading-relaxed max-w-md mx-auto mb-8">
+                      Ready for download. Linked securely to <br className="hidden sm:block" />
+                      <span className="text-zinc-300 font-medium break-all">{user?.email}</span>.
+                    </p>
+                    <Link href="/client/dashboard" className="inline-flex px-8 py-3.5 bg-zinc-100 hover:bg-white text-zinc-950 font-semibold rounded-xl transition-all shadow-lg hover:shadow-[0_4px_20px_rgba(255,255,255,0.15)] items-center gap-2">
                       View Dashboard
                     </Link>
                   </div>
