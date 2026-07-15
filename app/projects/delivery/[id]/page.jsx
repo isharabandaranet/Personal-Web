@@ -231,10 +231,10 @@ export default function DynamicClientDeliveryPage() {
         </div>
       )}
 
-      <div className="min-h-screen flex flex-col items-center justify-start px-6 pt-28 pb-16 relative overflow-hidden">
+      <div className="min-h-screen flex flex-col items-center justify-start px-4 pt-28 pb-16 relative overflow-hidden">
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-zinc-800/20 rounded-full blur-[120px] -z-10 pointer-events-none" />
 
-        <div className="w-full max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
+        <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10">
           
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="glass-panel p-8 rounded-3xl shadow-xl relative overflow-hidden group">
