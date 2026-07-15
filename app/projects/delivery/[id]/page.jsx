@@ -272,8 +272,6 @@ export default function DynamicClientDeliveryPage() {
                 );
               })()}
             </div>
-
-            </div>
           </div>
 
           <div className="lg:col-span-5">
