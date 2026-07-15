@@ -99,16 +99,25 @@ export default function ClientDashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map(proj => (
               <div key={proj.id} className="glass-panel p-5 rounded-2xl border border-zinc-800/50 hover:border-indigo-500/30 transition-all duration-300 group flex flex-col">
-                {proj.previewImage ? (
-                  <div className="w-full aspect-video rounded-xl overflow-hidden mb-4 bg-zinc-900 border border-zinc-800">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={proj.previewImage} alt={proj.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                  </div>
-                ) : (
+                {(() => {
+                  let pImage = proj.previewImage;
+                  if (pImage && pImage.includes("drive.google.com/file/d/")) {
+                    const match = pImage.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                    if (match && match[1]) {
+                      pImage = `https://drive.google.com/thumbnail?id=${match[1]}&sz=w1000`;
+                    }
+                  }
+                  return pImage ? (
+                    <div className="w-full aspect-video rounded-xl overflow-hidden mb-4 bg-zinc-900 border border-zinc-800">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={pImage} alt={proj.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    </div>
+                  ) : (
                   <div className="w-full aspect-video rounded-xl mb-4 bg-zinc-900 border border-zinc-800 flex items-center justify-center">
                     <Package className="w-8 h-8 text-zinc-700" />
                   </div>
-                )}
+                  );
+                })()}
                 
                 <h3 className="font-semibold text-lg text-zinc-100 mb-1">{proj.title}</h3>
                 <p className="text-xs text-zinc-500 mb-6 flex-grow">
