@@ -61,8 +61,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`}>
-      <body className="bg-zinc-950 text-zinc-50 antialiased selection:bg-indigo-500/30 selection:text-indigo-200 min-h-screen flex flex-col relative overflow-x-hidden bg-grid-pattern">
+    <html lang="en" className={`${inter.variable} ${plusJakartaSans.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning className="bg-zinc-950 text-zinc-50 antialiased selection:bg-indigo-500/30 selection:text-indigo-200 min-h-screen flex flex-col relative overflow-x-hidden bg-grid-pattern">
         {/* Page Load Preloader & Offline Connection Status Overlay */}
         <ThemePreloader />
 
