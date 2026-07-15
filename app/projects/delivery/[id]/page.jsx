@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import Script from "next/script";
 import { Download, CheckCircle, ShieldCheck, FileZip, FileType2, FileCode2, ChevronRight, Lock, Key, FolderLock, Loader2, Image as ImageIcon, Video, Mail, CheckCircle2, AlertCircle, User, LogOut } from 'lucide-react';
-import { getProjectById, markAsPaid, markAsDownloaded } from "../actions";
+import { getProjectById } from "../actions";
+import { markAsPaid, markAsDownloaded } from "../../../admin/actions";
 import { auth } from "../../../../lib/firebase";
 import { onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
 
