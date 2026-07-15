@@ -36,9 +36,11 @@ export default function AdminDeliveriesPage() {
         setProjects(res.deliveries);
         setIsAuthenticated(true);
         showToast("Logged in successfully");
+      } else {
+        showToast(res.error || "Login failed", "error");
       }
     } catch (error) {
-      showToast(error.message, "error");
+      showToast(error.message || "An unexpected error occurred", "error");
     } finally {
       setIsLoading(false);
     }

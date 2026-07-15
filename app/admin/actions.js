@@ -2,13 +2,13 @@
 
 import { adminDb } from "../../lib/firebase-admin";
 import { FieldValue } from "firebase-admin/firestore";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, unstable_noStore as noStore } from "next/cache";
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "superadmin123";
 
 export async function createDelivery(data, password) {
   if (password !== ADMIN_PASSWORD) {
-    throw new Error("Unauthorized: Incorrect password");
+    return { success: false, error: "Unauthorized: Incorrect password" };
   }
 
   try {
@@ -19,13 +19,14 @@ export async function createDelivery(data, password) {
     return { success: true, id: docRef.id };
   } catch (error) {
     console.error("Error creating delivery:", error);
-    throw new Error("Failed to create project delivery in database");
+    return { success: false, error: "Failed to create project delivery in database" };
   }
 }
 
 export async function getDeliveries(password) {
+  noStore();
   if (password !== ADMIN_PASSWORD) {
-    throw new Error("Unauthorized: Incorrect password");
+    return { success: false, error: "Unauthorized: Incorrect password" };
   }
 
   try {
@@ -37,13 +38,13 @@ export async function getDeliveries(password) {
     return { success: true, deliveries };
   } catch (error) {
     console.error("Error fetching deliveries:", error);
-    throw new Error("Failed to fetch project deliveries");
+    return { success: false, error: "Failed to fetch project deliveries. Check Vercel Environment Variables." };
   }
 }
 
 export async function deleteDelivery(id, password) {
   if (password !== ADMIN_PASSWORD) {
-    throw new Error("Unauthorized: Incorrect password");
+    return { success: false, error: "Unauthorized: Incorrect password" };
   }
 
   try {
@@ -51,13 +52,13 @@ export async function deleteDelivery(id, password) {
     return { success: true };
   } catch (error) {
     console.error("Error deleting delivery:", error);
-    throw new Error("Failed to delete project delivery");
+    return { success: false, error: "Failed to delete project delivery" };
   }
 }
 
 export async function updateDelivery(id, data, password) {
   if (password !== ADMIN_PASSWORD) {
-    throw new Error("Unauthorized: Incorrect password");
+    return { success: false, error: "Unauthorized: Incorrect password" };
   }
 
   try {
@@ -65,7 +66,7 @@ export async function updateDelivery(id, data, password) {
     return { success: true };
   } catch (error) {
     console.error("Error updating delivery:", error);
-    throw new Error("Failed to update project delivery");
+    return { success: false, error: "Failed to update project delivery" };
   }
 }
 
@@ -89,6 +90,7 @@ export async function markAsPaid(id, userEmail = null) {
 }
 
 export async function markAsDownloaded(id) {
+  noStore();
   try {
     await adminDb.collection("projectDeliveries").doc(id).update({
       downloadCount: FieldValue.increment(1),
@@ -103,6 +105,7 @@ export async function markAsDownloaded(id) {
 }
 
 export async function getProjectDeliveriesForUser(email) {
+  noStore();
   try {
     const snapshot = await adminDb.collection("projectDeliveries")
       .where("unlockedBy", "array-contains", email)

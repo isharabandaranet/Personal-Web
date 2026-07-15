@@ -42,10 +42,14 @@ export default function DynamicClientDeliveryPage() {
       
       if (data) {
         // Unlock if globally paid (legacy support)
-        if (data.paymentStatus === "Paid" && !data.unlockedBy) {
+        if (data.paymentStatus === "Paid" && (!data.unlockedBy || data.unlockedBy.length === 0)) {
           setIsPaid(true);
+          // Auto claim if logged in
+          if (currentUser) {
+            markAsPaid(id, currentUser.email).catch(console.error);
+          }
         }
-        // Unlock if current user's email is in the unlockedBy array
+        // Unlock if user is in unlockedBy array
         else if (currentUser && data.unlockedBy && data.unlockedBy.includes(currentUser.email)) {
           setIsPaid(true);
         }
@@ -242,21 +246,30 @@ export default function DynamicClientDeliveryPage() {
                 <h2 className="text-xl font-semibold text-zinc-100">Project Preview</h2>
               </div>
               
-              {project.previewImage ? (
-                <div className="relative aspect-video rounded-2xl border border-zinc-800/50 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={project.previewImage} alt="Project Preview" className="w-full h-full object-cover" />
-                </div>
-              ) : (
-                <div className="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-800/50 overflow-hidden flex flex-col items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 to-zinc-900/80 z-0" />
-                  <div className="z-10 text-center p-6 text-zinc-400">
-                    <Video className="w-10 h-10 mx-auto mb-3 opacity-50" />
-                    <p className="font-medium text-zinc-300">{project.title}</p>
-                    <p className="text-sm mt-2 max-w-xs mx-auto">No preview image provided for this project.</p>
+              {(() => {
+                let pImage = project.previewImage;
+                if (pImage && pImage.includes("drive.google.com/file/d/")) {
+                  const match = pImage.match(/\/d\/([a-zA-Z0-9_-]+)/);
+                  if (match && match[1]) {
+                    pImage = `https://drive.google.com/uc?export=view&id=${match[1]}`;
+                  }
+                }
+                return pImage ? (
+                  <div className="relative aspect-video rounded-2xl border border-zinc-800/50 overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={pImage} alt="Project Preview" className="w-full h-full object-cover" />
                   </div>
-                </div>
-              )}
+                ) : (
+                  <div className="relative aspect-video bg-zinc-900 rounded-2xl border border-zinc-800/50 overflow-hidden flex flex-col items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/20 to-zinc-900/80 z-0" />
+                    <div className="z-10 text-center p-6 text-zinc-400">
+                      <Video className="w-10 h-10 mx-auto mb-3 opacity-50" />
+                      <p className="font-medium text-zinc-300">{project.title}</p>
+                      <p className="text-sm mt-2 max-w-xs mx-auto">No preview image provided for this project.</p>
+                    </div>
+                  </div>
+                );
+              })()}
             </div>
 
             <div className="glass-panel p-6 rounded-2xl flex items-center justify-between shadow-lg">
