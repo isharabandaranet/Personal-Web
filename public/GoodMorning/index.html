@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="si">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good Morning මැණික! ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            z-index: 10;
+            max-width: 85%;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        h1 {
+            color: #ff3366;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            line-height: 1.4;
+        }
+
+        p {
+            color: #444;
+            font-size: 1.2em;
+            line-height: 1.6;
+            display: none;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+
+        button {
+            background-color: #ff3366;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        .btn-wrong {
+            background-color: #888;
+            box-shadow: 0 5px 15px rgba(136, 136, 136, 0.4);
+        }
+
+        .btn-wrong:hover {
+            background-color: #666;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: #ff3366;
+            animation: float linear infinite;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-10vh) scale(1.2);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- මුල් ප්‍රශ්නය අහන කාඩ් එක -->
+    <div class="card" id="questionCard">
+        <h1>Heloowww. <br> Good Morning suduu ❤️</h1>
+        <p style="display: block;">උදේ නැගිටලා බලන්න ලස්සන දෙයක් ඕනි කිව්ව නිසා මේක එවන්නෙ. <br> ඇහැරුණු ගමන් ඔයාට
+            මුලින්ම මතක් වුණේ කාවද? 😉</p>
+        <div class="btn-container">
+            <button onclick="showLove()">ඔයාව තමයි! 🙈❤️</button>
+            <button class="btn-wrong" onclick="jokeAlert()">වෙන එක්කෙනෙ​ක්... 🤪</button>
+        </div>
+    </div>
+
+    <!-- ලස්සන මැසේජ් එක තියෙන කාඩ් එක -->
+    <div class="card" id="messageCard" style="display: none;">
+        <h1>Aneeeew 😍</h1>
+        <p id="msg">
+            මම ඔයාට ආදරෙයී...... ❤️<br><br>
+            ඔයා මේක බලද්දි මම තාම නිදි ඇති. රෑ නිදා ගන්න කලින් ඔයා වෙනුවෙන්ම​යි මේක හැදුවෙ ම​ං.<br><br>
+            ලස්සනට ලෑස්ති වෙලා පරිස්සමින් යන්න මගෙ මැනික. මං කෑම ගේන්න යනකොට call එකක් ගන්නම් ඔයාට.<br><br>
+            හො​දට වැඩ ටික කර ගන්න. All the best ❤️ <br><br> මං ආදරෙයි සුදූ ඔයාට ගොඩාaaaaa​ක්! 🥰❤️
+        </p>
+    </div>
+
+    <script>
+        function jokeAlert() {
+            alert("ඒහෙනම් ඉතින් ලස්සන message බලන්න වෙන්නෙ නෑ. 😒");
+        }
+
+        function showLove() {
+            document.getElementById('questionCard').style.display = 'none';
+            document.getElementById('messageCard').style.display = 'block';
+            document.getElementById('msg').style.display = 'block';
+
+            // හාට්ස් පාවෙන ඇනිමේෂන් එක
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 6000);
+            }, 400);
+        }
+    </script>
+</body>
+
+</html>
